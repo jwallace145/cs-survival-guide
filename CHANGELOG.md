@@ -11,5 +11,3 @@
 ### Miscellaneous
 
 * bootstrap initial release as v0.1.0 ([ecd0d9a](https://github.com/jwallace145/cs-survival-guide/commit/ecd0d9a956d235225f402540b43389f7a6e78258))
-
-## Changelog
