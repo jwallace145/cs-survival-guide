@@ -1,6 +1,10 @@
-# Commit validation: checks that commits follow Conventional Commits so
-# Release Please can compute versions correctly. Runs entirely in CI — no
-# local Node.js tooling is required for day-to-day development.
+# Commit validation: checks that commits reaching main follow Conventional
+# Commits so Release Please can compute versions correctly. Runs entirely in
+# CI — no local Node.js tooling is required for day-to-day development.
+#
+# PRs are squash-merged (the only merge method enabled on the repo), so the
+# PR title + body become the single commit on main. We therefore validate the
+# PR title on pull requests, and validate actual commits on direct pushes.
 name: Conventional Commits
 
 on:
@@ -15,7 +19,16 @@ permissions:
   pull-requests: read
 
 jobs:
+  pr-title:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: amannn/action-semantic-pull-request@v6
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   commitlint:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7

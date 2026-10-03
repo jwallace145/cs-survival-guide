@@ -5,9 +5,22 @@
 This repository uses [Conventional Commits](https://www.conventionalcommits.org).
 Commit messages drive automated versioning and the changelog via
 [Release Please](https://github.com/googleapis/release-please), so commits
-reaching `main` must follow the convention. A GitHub Actions workflow
-(`Conventional Commits`) validates this on pull requests and pushes to `main`
-— there is nothing to install locally.
+reaching `main` must follow the convention.
+
+Pull requests are **squash-merged** (the only merge method enabled), so
+`main` stays a linear history with one conventional commit per PR and no
+merge commits. The **PR title and body become that squash commit**, which
+means:
+
+- the PR title must be a Conventional Commit header
+  (e.g. `feat(algorithms): add sliding window guide`)
+- commits *inside* a PR branch can be messy work-in-progress commits —
+  they get squashed away
+- a `BREAKING CHANGE:` footer, if ever needed, goes in the PR body
+
+A GitHub Actions workflow (`Conventional Commits`) validates PR titles on
+pull requests and validates commit messages on direct pushes to `main` —
+there is nothing to install locally.
 
 ### Format
 
