@@ -1,0 +1,24 @@
+# Commit validation: checks that commits follow Conventional Commits so
+# Release Please can compute versions correctly. Runs entirely in CI — no
+# local Node.js tooling is required for day-to-day development.
+name: Conventional Commits
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: wagoid/commitlint-github-action@v6

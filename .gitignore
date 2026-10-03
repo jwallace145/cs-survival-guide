@@ -1,0 +1,10 @@
+# Python
+.venv/
+__pycache__/
+
+# Zensical build output
+site/
+.cache/
+
+# OS
+.DS_Store
