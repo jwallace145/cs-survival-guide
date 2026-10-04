@@ -1,0 +1,10 @@
+# Reference section fragment — not a standalone config. scripts/zensical.sh
+# appends it to zensical.toml when lib/cs_survival_kit exists, replacing
+# @KIT_VERSION@ with the installed library version.
+#
+# Generates the Reference section from the package sources; no hand-written
+# markdown. The section is appended after the explicit nav entries.
+[project.plugins.api-autonav]
+modules = ["lib/cs_survival_kit"]
+api_root_uri = "reference"
+nav_section_title = "Reference (cs-survival-kit @KIT_VERSION@)"

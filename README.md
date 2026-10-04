@@ -14,9 +14,61 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 
-zensical serve   # live-reloading dev server
-zensical build   # static build into site/
+scripts/install-kit.sh             # install the pinned library into lib/
+scripts/zensical.sh serve          # live-reloading dev server
+scripts/zensical.sh build --clean  # static build into site/
 ```
+
+`scripts/zensical.sh` passes its arguments to `zensical` and adds the
+Reference section when the library is present under `lib/`. Plain
+`zensical serve` and `zensical build` still work without the library; they
+just render the site without the Reference section.
+
+## API reference
+
+The Reference section is generated from the docstrings of
+[`cs-survival-kit`](https://github.com/jwallace145/cs-survival-kit), the
+library that accompanies the guide — no reference markdown is written by hand.
+
+- **`kit-version.txt`** is the single source of truth for which library
+  version the site documents.
+- **`scripts/install-kit.sh`** installs that version from PyPI into `lib/`
+  (git-ignored). If the pinned version is not on PyPI it warns and skips the
+  install, and the site builds without a Reference section.
+- **`scripts/zensical.sh`** builds the site. When `lib/cs_survival_kit`
+  exists it appends `zensical.reference.toml` to `zensical.toml` (as the
+  git-ignored `zensical.generated.toml`) so that mkdocstrings and api-autonav
+  render the Reference section, titled with the installed version.
+
+CI runs the same two scripts, on pull requests (`Build Docs`) and on deploy.
+
+### Previewing unreleased docstrings
+
+To preview docstrings from a local checkout of the library before a release:
+
+```bash
+scripts/link-local-kit.sh ../cs-survival-kit   # symlink lib/cs_survival_kit
+scripts/zensical.sh serve                      # reloads as the sources change
+
+scripts/install-kit.sh                         # back to the pinned version
+```
+
+Restart `scripts/zensical.sh serve` after switching between the two, or after
+editing `zensical.toml`: the generated config is assembled once at startup.
+
+### How a library release reaches the site
+
+1. `cs-survival-kit` publishes a release to PyPI and sends a `kit-released`
+   `repository_dispatch` to this repository.
+2. The `Bump Kit` workflow validates the version, waits for it to appear on
+   PyPI, and opens a `fix(deps): bump cs-survival-kit to X.Y.Z` PR that
+   updates `kit-version.txt`. It never merges on its own.
+3. Merging that PR redeploys the site with the new Reference section and,
+   being a `fix`, adds a patch release to the Release Please PR.
+4. Merging the Release Please PR tags the new version of the guide.
+
+`Bump Kit` can also be run manually from the Actions tab with a `version`
+input, to retry a missed release or pin back to an earlier one.
 
 ## Releases
 

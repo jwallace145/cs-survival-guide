@@ -30,7 +30,10 @@ jobs:
         with:
           python-version: "3.13"
       - run: pip install -r requirements.txt
-      - run: zensical build --clean
+      # Installs the library version pinned in kit-version.txt into lib/;
+      # warns and skips the Reference section if it is not on PyPI.
+      - run: scripts/install-kit.sh
+      - run: scripts/zensical.sh build --clean
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site
