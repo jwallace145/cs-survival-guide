@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.1.0...v0.2.0) (2026-10-04)
+
+
+### Features
+
+* **site:** render the cs-survival-kit API reference ([#2](https://github.com/jwallace145/cs-survival-guide/issues/2)) ([347991f](https://github.com/jwallace145/cs-survival-guide/commit/347991f07d6244456a047088650e1f5d0b1de1c4))
+
 ## 0.1.0 (2026-10-03)
 
 
