@@ -1,0 +1,28 @@
+# Pull request check: builds the Zensical site exactly as the deploy workflow
+# does (docs.yml), without deploying, so a broken build is caught before it
+# reaches main.
+name: Build Docs
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements.txt
+      # Installs the library version pinned in kit-version.txt into lib/;
+      # warns and skips the Reference section if it is not on PyPI.
+      - run: scripts/install-kit.sh
+      - run: scripts/zensical.sh build --clean

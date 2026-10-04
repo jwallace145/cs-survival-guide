@@ -6,5 +6,10 @@ __pycache__/
 site/
 .cache/
 
+# cs-survival-kit sources installed by scripts/install-kit.sh, and the config
+# assembled by scripts/zensical.sh
+lib/
+zensical.generated.toml
+
 # OS
 .DS_Store

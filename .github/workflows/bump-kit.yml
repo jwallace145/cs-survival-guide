@@ -1,0 +1,71 @@
+# Library version bump: when cs-survival-kit publishes a release, its release
+# workflow sends a `kit-released` repository_dispatch here. This workflow
+# waits for the version to reach PyPI, updates kit-version.txt, and opens a
+# PR. It never merges — merging the PR is a deliberate human step, after
+# which Release Please cuts a patch release of the guide.
+name: Bump Kit
+
+on:
+  repository_dispatch:
+    types: [kit-released]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: cs-survival-kit version to pin (e.g. 0.1.0)
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bump-kit
+  cancel-in-progress: false
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    env:
+      # Untrusted input: passed through the environment, never interpolated
+      # into a script.
+      VERSION: ${{ github.event.client_payload.version || inputs.version }}
+      RELEASE_URL: ${{ github.event.client_payload.release_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      # Rejects anything that is not MAJOR.MINOR.PATCH, then retries with
+      # backoff for up to 10 minutes until pip can download the version.
+      - name: Validate version and wait for PyPI
+        run: scripts/wait-for-kit.sh "$VERSION"
+      - name: Update kit-version.txt
+        id: bump
+        run: |
+          printf '%s\n' "$VERSION" > kit-version.txt
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          # Only link a release URL that points at the library's own releases;
+          # manual runs fall back to the releases page.
+          if [[ "$RELEASE_URL" == "https://github.com/jwallace145/cs-survival-kit/releases/tag/v$VERSION" ]]; then
+            echo "release_url=$RELEASE_URL" >> "$GITHUB_OUTPUT"
+          else
+            echo "release_url=https://github.com/jwallace145/cs-survival-kit/releases" >> "$GITHUB_OUTPUT"
+          fi
+      # A PR opened with the default GITHUB_TOKEN does not trigger workflows,
+      # so the PR is opened with the release bot's App token instead.
+      - uses: actions/create-github-app-token@v3
+        id: app-token
+        with:
+          client-id: ${{ secrets.RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
+      - uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+          branch: kit/bump-${{ steps.bump.outputs.version }}
+          add-paths: kit-version.txt
+          commit-message: "fix(deps): bump cs-survival-kit to ${{ steps.bump.outputs.version }}"
+          title: "fix(deps): bump cs-survival-kit to ${{ steps.bump.outputs.version }}"
+          body: |
+            Pins the Reference section to cs-survival-kit ${{ steps.bump.outputs.version }}.
+
+            Release notes: ${{ steps.bump.outputs.release_url }}
