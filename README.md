@@ -53,7 +53,8 @@ scripts/zensical.sh serve                      # reloads as the sources change
 scripts/install-kit.sh                         # back to the pinned version
 ```
 
-Restart `scripts/zensical.sh serve` after switching between the two.
+Restart `scripts/zensical.sh serve` after switching between the two, or after
+editing `zensical.toml`: the generated config is assembled once at startup.
 
 ### How a library release reaches the site
 

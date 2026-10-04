@@ -9,20 +9,24 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 version="$(tr -d '[:space:]' < kit-version.txt)"
-if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+semver='^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$'
+if [[ ! "$version" =~ $semver ]]; then
   echo "error: kit-version.txt does not contain a MAJOR.MINOR.PATCH version: '$version'" >&2
   exit 1
 fi
 
-# Start clean so a previous version or a local symlink never lingers.
-rm -rf lib/cs_survival_kit lib/cs_survival_kit-*.dist-info
-
-status="$(curl -sS -o /dev/null -w '%{http_code}' \
+status="$(curl -sS --retry 3 --retry-connrefused -o /dev/null -w '%{http_code}' \
   "https://pypi.org/pypi/cs-survival-kit/$version/json")" || status="000"
 
+# Start clean so a previous version or a local symlink never lingers.
+clean() {
+  rm -rf lib/cs_survival_kit lib/cs_survival_kit-*.dist-info
+}
+
 case "$status" in
-  200) ;;
+  200) clean ;;
   404)
+    clean
     message="cs-survival-kit $version is not on PyPI; building without the Reference section."
     if [[ -n "${GITHUB_ACTIONS:-}" ]]; then
       echo "::warning title=Reference section skipped::$message"

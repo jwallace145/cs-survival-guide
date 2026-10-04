@@ -11,6 +11,11 @@ cd "$(dirname "$0")/.."
 
 kit="lib/cs_survival_kit"
 
+# Only build and serve read the config; pass anything else straight through.
+if [[ "${1:-}" != "build" && "${1:-}" != "serve" ]]; then
+  exec zensical "$@"
+fi
+
 if [[ ! -e "$kit" ]]; then
   echo "note: $kit not found; building without the Reference section." >&2
   exec zensical "$@"

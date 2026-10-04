@@ -36,7 +36,7 @@ delay=10
 start=$SECONDS
 while true; do
   if python3 -m pip download --quiet --no-deps --no-cache-dir \
-    --dest "$download_dir" "cs-survival-kit==$version" > /dev/null 2>&1; then
+    --dest "$download_dir" "cs-survival-kit==$version" > "$download_dir/pip.log" 2>&1; then
     echo "cs-survival-kit $version is available on PyPI."
     exit 0
   fi
@@ -44,6 +44,8 @@ while true; do
   elapsed=$((SECONDS - start))
   if ((elapsed + delay > timeout)); then
     echo "error: cs-survival-kit $version did not appear on PyPI within ${timeout}s" >&2
+    echo "last pip output:" >&2
+    tail -n 5 "$download_dir/pip.log" >&2
     exit 1
   fi
 
