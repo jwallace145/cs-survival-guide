@@ -154,3 +154,7 @@ Release Please. The website's [Changelog
 page](https://jwallace145.github.io/cs-survival-guide/changelog/) renders the
 same file at build time (via the `pymdownx.snippets` include in
 `docs/changelog.md`) — nothing is maintained twice.
+
+## License
+
+Released under the [MIT License](LICENSE).
