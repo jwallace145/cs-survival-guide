@@ -42,6 +42,18 @@ library that accompanies the guide — no reference markdown is written by hand.
 
 CI runs the same two scripts, on pull requests (`Build Docs`) and on deploy.
 
+## Previewing a pull request
+
+Every pull request from a branch of this repository is built and published
+to `https://jwallace145.github.io/cs-survival-guide/pr-preview/pr-<number>/`
+by the `PR Preview` workflow, which leaves a comment on the pull request with
+the link. The preview is rebuilt on each push and removed when the pull
+request closes.
+
+Previews and the production site share the `gh-pages` branch, which GitHub
+Pages serves: `Deploy Docs` replaces everything except `pr-preview/` on each
+push to `main`.
+
 ## Benchmark results
 
 Guide pages show benchmark tables without containing any numbers. Each
