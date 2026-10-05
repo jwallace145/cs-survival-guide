@@ -92,4 +92,7 @@ chore(deps): update Zensical
 4. The site redeploys to GitHub Pages on every push to `main`, so the
    Changelog page and footer version update with the release merge.
 
+Before merging, a pull request can be reviewed as a live site: the
+`PR Preview` workflow comments a preview link on each pull request.
+
 The current version's source of truth is `version.txt`.
