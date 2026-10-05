@@ -19,8 +19,9 @@ means:
 - a `BREAKING CHANGE:` footer, if ever needed, goes in the PR body
 
 A GitHub Actions workflow (`Conventional Commits`) validates PR titles on
-pull requests and validates commit messages on direct pushes to `main` —
-there is nothing to install locally.
+pull requests — there is nothing to install locally. `main` is protected:
+every change lands through a PR, and the `build` and `pr-title` checks must
+pass before it can be merged.
 
 ### Format
 
@@ -79,7 +80,7 @@ chore(deps): update Zensical
 
 ## Release flow
 
-1. Conventional commits land on `main` (via PR or direct push).
+1. Conventional commits land on `main` via squash-merged PRs.
 2. Release Please maintains a pending release PR that accumulates those
    changes and previews the next version and changelog.
 3. Merging the release PR updates `version.txt`, `CHANGELOG.md`, and the
