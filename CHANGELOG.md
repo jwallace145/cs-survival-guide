@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.5.0...v0.6.0) (2026-10-05)
+
+
+### Features
+
+* **math:** add math cheat sheet and additive growth derivation ([#18](https://github.com/jwallace145/cs-survival-guide/issues/18)) ([6f192aa](https://github.com/jwallace145/cs-survival-guide/commit/6f192aa82916bfb6b49ed241cc9f7a0e11192e58))
+
 ## [0.5.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.4.0...v0.5.0) (2026-10-05)
 
 
