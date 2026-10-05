@@ -77,7 +77,9 @@ class RenderBenchmarkTest(unittest.TestCase):
         text = guide_macros.render_benchmark(results(), "demo", view="total")
         rows = [line for line in text.splitlines() if line.startswith("|")]
 
-        self.assertEqual(rows[0], "| n | `fast` | `slow` | `stub` |")
+        self.assertEqual(
+            rows[0], "| n | <code>fast</code> | <code>slow</code> | <code>stub</code> |"
+        )
         self.assertEqual(rows[1], "| ---: | ---: | ---: | ---: |")
         self.assertEqual(rows[2], "| 100 | 2 µs | 5 ms |  |")
         self.assertEqual(rows[3], "| 1,000 | 20 µs |  |  |")
@@ -117,7 +119,7 @@ class RenderBenchmarkTest(unittest.TestCase):
             results(), "demo", view="total", cases=["slow", "fast"]
         )
 
-        self.assertIn("| n | `slow` | `fast` |", text)
+        self.assertIn("| n | <code>slow</code> | <code>fast</code> |", text)
         self.assertNotIn("stub", text)
 
     def test_caption_names_version_interpreter_machine_and_date(self):
@@ -146,6 +148,130 @@ class RenderBenchmarkTest(unittest.TestCase):
             guide_macros.render_benchmark(
                 results(entry(per_item=False)), "demo", view="per_item"
             )
+
+
+class HeaderLabelTest(unittest.TestCase):
+    def test_long_labels_may_wrap_after_the_first_parenthesis_only(self):
+        self.assertEqual(
+            guide_macros._header_label("DynamicArray(geometric(1.5))"),
+            "<code>DynamicArray(<wbr>geometric(1.5))</code>",
+        )
+
+    def test_labels_are_escaped_and_cannot_break_the_table(self):
+        self.assertEqual(
+            guide_macros._header_label("a<b|c"), "<code>a&lt;b&#124;c</code>"
+        )
+
+
+class ChartTest(unittest.TestCase):
+    def chart(self, per_item=False, cases=None, source=None):
+        source = source or entry()
+        selected = [c for c in source["cases"] if cases is None or c["label"] in cases]
+        return guide_macros.render_chart(source, selected, per_item=per_item)
+
+    def test_is_a_single_line_so_it_survives_indentation_in_a_tab(self):
+        self.assertNotIn("\n", self.chart())
+
+    def test_draws_a_line_per_multi_point_case_and_a_marker_per_measurement(self):
+        chart = self.chart()
+
+        # "fast" has two sizes, "slow" has one, and "stub" has none.
+        self.assertEqual(chart.count("<polyline"), 1)
+        self.assertEqual(chart.count('class="bm-point'), 3)
+        self.assertEqual(chart.count('<span class="bm-key'), 2)
+        self.assertNotIn("stub", chart)
+
+    def test_each_point_has_a_tooltip_with_its_value(self):
+        self.assertIn("<title>fast, n = 1,000: 20 µs</title>", self.chart())
+        self.assertIn(
+            "<title>fast, n = 1,000: 20 ns</title>", self.chart(per_item=True)
+        )
+
+    def test_colour_follows_the_case_not_its_position_in_the_selection(self):
+        everything = self.chart()
+        only_slow = self.chart(cases=["slow"])
+
+        self.assertIn('<span class="bm-key bm-s1"', everything)
+        self.assertIn('<span class="bm-key bm-s1"', only_slow)
+        self.assertNotIn("bm-s0", only_slow)
+
+    def test_has_an_accessible_description_and_axis_titles(self):
+        chart = self.chart(per_item=True)
+
+        self.assertIn('role="img"', chart)
+        self.assertIn("Line chart of time per operation against input size", chart)
+        self.assertIn("time per operation (log scale)", chart)
+        self.assertIn("n, the input size (log scale)", chart)
+
+    def test_labels_are_escaped(self):
+        source = entry()
+        source["cases"][0]["label"] = "<b>&"
+
+        chart = self.chart(source=source)
+
+        self.assertIn("&lt;b&gt;&amp;", chart)
+        self.assertNotIn("<b>&", chart)
+
+    def test_no_chart_without_any_measurements(self):
+        self.assertEqual(self.chart(cases=["stub"]), "")
+
+    def test_render_benchmark_puts_a_chart_above_each_table(self):
+        both = guide_macros.render_benchmark(results(), "demo")
+        tables_only = guide_macros.render_benchmark(results(), "demo", chart=False)
+
+        self.assertEqual(both.count('<figure class="bm-chart">'), 2)
+        self.assertLess(both.index("<figure"), both.index("| n |"))
+        self.assertNotIn("<figure", tables_only)
+        self.assertIn("| n |", tables_only)
+
+    def test_more_than_four_cases_need_a_selection(self):
+        source = entry()
+        source["cases"] = [
+            {**source["cases"][0], "label": f"case {index}"} for index in range(5)
+        ]
+
+        with self.assertRaises(guide_macros.BenchmarkError) as raised:
+            guide_macros.render_benchmark(results(source), "demo")
+        self.assertIn("at most 4 cases", str(raised.exception))
+
+        chosen = guide_macros.render_benchmark(
+            results(source), "demo", cases=["case 4", "case 0"]
+        )
+        self.assertEqual(chosen.count('<span class="bm-key'), 4)  # two tabs, two keys
+        guide_macros.render_benchmark(results(source), "demo", chart=False)
+
+
+class AxisTest(unittest.TestCase):
+    def test_nice_bounds_snap_to_1_2_5(self):
+        self.assertAlmostEqual(guide_macros.nice_floor(1.48e-6), 1e-6)
+        self.assertAlmostEqual(guide_macros.nice_floor(2.3e-7), 2e-7)
+        self.assertAlmostEqual(guide_macros.nice_floor(5e-3), 5e-3)
+        self.assertAlmostEqual(guide_macros.nice_ceil(2.25), 5)
+        self.assertAlmostEqual(guide_macros.nice_ceil(1.7e-7), 2e-7)
+        self.assertAlmostEqual(guide_macros.nice_ceil(6e-5), 1e-4)
+        self.assertAlmostEqual(guide_macros.nice_ceil(1e-3), 1e-3)
+
+    def test_short_ranges_use_1_2_5_ticks(self):
+        ticks = guide_macros.log_ticks(1e-7, 5e-7)
+
+        self.assertEqual([round(t * 1e7) for t in ticks], [1, 2, 5])
+
+    def test_long_ranges_use_powers_of_ten(self):
+        ticks = guide_macros.log_ticks(100, 1_000_000)
+
+        self.assertEqual([round(t) for t in ticks], [100, 1000, 10_000, 100_000, 10**6])
+
+    def test_very_long_ranges_skip_decades_to_stay_under_the_limit(self):
+        ticks = guide_macros.log_ticks(1e-9, 1e3)
+
+        self.assertLessEqual(len(ticks), 7)
+        self.assertAlmostEqual(ticks[0], 1e-9)
+
+    def test_format_count(self):
+        self.assertEqual(
+            [guide_macros.format_count(n) for n in (100, 1000, 20_000, 10**6, 2.5e9)],
+            ["100", "1K", "20K", "1M", "2.5B"],
+        )
 
 
 class LoadResultsTest(unittest.TestCase):

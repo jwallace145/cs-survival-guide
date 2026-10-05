@@ -49,8 +49,10 @@ for n appends. Each append costs O(n) on average.
 ### Measured
 
 The benchmark below appends n integers to an empty array and times the whole
-run. Read the first tab down each column: a column that stays flat is
-constant cost per append, and one that climbs is not.
+run. The first tab divides each time by n, giving the cost of one append: a
+line that stays flat is constant cost per append, and one that climbs is not.
+The second tab shows the total time, where the steeper line is the quadratic
+one. Both axes are logarithmic.
 
 {{ benchmark("dynamic_array.append") }}
 
