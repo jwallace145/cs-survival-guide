@@ -9,14 +9,21 @@ reaching `main` must follow the convention.
 
 Pull requests are **squash-merged** (the only merge method enabled), so
 `main` stays a linear history with one conventional commit per PR and no
-merge commits. The **PR title and body become that squash commit**, which
-means:
+merge commits. The **PR title alone becomes that squash commit's message**,
+which means:
 
 - the PR title must be a Conventional Commit header
   (e.g. `feat(algorithms): add sliding window guide`)
 - commits *inside* a PR branch can be messy work-in-progress commits —
   they get squashed away
-- a `BREAKING CHANGE:` footer, if ever needed, goes in the PR body
+- the PR description is not part of the commit, so it can contain anything:
+  code samples, tables, checklists
+- a breaking change is marked with `!` in the title (`feat(site)!: ...`)
+
+The description is deliberately kept out of the commit. Release Please parses
+every commit message on `main`, and a description line that happens to look
+like a commit header (for example a code sample such as `Foo(bar=baz(1))`)
+makes the parse fail, which silently drops the commit from the next release.
 
 A GitHub Actions workflow (`Conventional Commits`) validates PR titles on
 pull requests — there is nothing to install locally. `main` is protected:
@@ -27,10 +34,6 @@ pass before it can be merged.
 
 ```text
 <type>(<optional scope>): <description>
-
-[optional body]
-
-[optional footer(s)]
 ```
 
 ### Types and their release impact
@@ -45,9 +48,9 @@ pass before it can be merged.
 | `chore` | Maintenance, e.g. `chore(deps): update Zensical` | none (shown in changelog) |
 | `build`, `ci`, `test`, `style` | Tooling and infrastructure | none (hidden from changelog) |
 
-A `BREAKING CHANGE:` footer or a `!` after the type (`feat!:`) marks a
-breaking change. While the project is in the `0.x` lifecycle, breaking changes
-bump the minor version; after `1.0.0` they bump the major version.
+A `!` after the type (`feat!:`) marks a breaking change. While the project is
+in the `0.x` lifecycle, breaking changes bump the minor version; after `1.0.0`
+they bump the major version.
 
 ### Suggested scopes
 
