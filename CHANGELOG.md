@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.5.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.4.0...v0.5.0) (2026-10-05)
+
+
+### Features
+
+* **data-structures:** add singly linked list guide ([#17](https://github.com/jwallace145/cs-survival-guide/issues/17)) ([d6db9f1](https://github.com/jwallace145/cs-survival-guide/commit/d6db9f148d13b7d09a3c1a9321df5c1af5b803e2))
+
+
+### Bug Fixes
+
+* **deps:** bump cs-survival-kit to 0.5.0 ([#14](https://github.com/jwallace145/cs-survival-guide/issues/14)) ([1b0e3d2](https://github.com/jwallace145/cs-survival-guide/commit/1b0e3d28592906c985e4a342b2cd4d76fba58e3a))
+* **deps:** bump cs-survival-kit to 0.6.0 ([#16](https://github.com/jwallace145/cs-survival-guide/issues/16)) ([569077f](https://github.com/jwallace145/cs-survival-guide/commit/569077f5b685a39456db551e180eae7442e870d3))
+
 ## [0.4.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.3.0...v0.4.0) (2026-10-05)
 
 
