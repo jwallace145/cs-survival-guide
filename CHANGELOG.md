@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.4.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.3.0...v0.4.0) (2026-10-05)
+
+
+### Features
+
+* **site:** chart benchmark results above each table ([#12](https://github.com/jwallace145/cs-survival-guide/issues/12)) ([9d4f9a2](https://github.com/jwallace145/cs-survival-guide/commit/9d4f9a2ef7a88a226006b3ce55f40008853355d4))
+
+
+### Miscellaneous
+
+* add MIT license ([#11](https://github.com/jwallace145/cs-survival-guide/issues/11)) ([0687fbf](https://github.com/jwallace145/cs-survival-guide/commit/0687fbff3435c0b63e82b562f7c52d7e46d10c0d))
+
 ## [0.3.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.2.0...v0.3.0) (2026-10-05)
 
 
