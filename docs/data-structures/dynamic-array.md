@@ -48,6 +48,135 @@ With **additive** growth, resizes never become rarer. A step of 16 copies the
 whole array every 16 appends, forever, which adds up to about n² / 32 copies
 for n appends. Each append costs O(n) on average.
 
+The two subsections below count the copies exactly. The formulas they lean
+on are collected in the [math cheat sheet](../math/cheat-sheet.md).
+
+### Counting the copies: additive growth
+
+Take an array that grows by a fixed step of $k$ slots and, to keep the
+arithmetic clean, starts with a capacity of $k$. Append $n$ elements and
+count every element copied by a resize.
+
+**When do resizes happen?** The capacity is always a multiple of $k$, and a
+resize happens when an append finds the array full. So the resizes happen at
+lengths
+
+$$
+k, \; 2k, \; 3k, \; \dots, \; mk
+$$
+
+where $m$ is the number of resizes. The last one happens at the largest
+multiple of $k$ that is still below $n$, so
+
+$$
+m = \left\lfloor \frac{n - 1}{k} \right\rfloor
+$$
+
+**What does each resize cost?** A resize copies every element in the array.
+The $i$-th resize happens at length $ik$, so it copies $ik$ elements.
+
+**Add them up.** The total number of copies $C(n)$ is the sum over all $m$
+resizes. The step $k$ is a constant, so it factors out, and what is left is
+the [arithmetic series](../math/cheat-sheet.md#arithmetic-series):
+
+$$
+\begin{aligned}
+C(n) &= \sum_{i=1}^{m} ik \\[4pt]
+     &= k \sum_{i=1}^{m} i \\[4pt]
+     &= k \cdot \frac{m(m+1)}{2}
+\end{aligned}
+$$
+
+**Put it in terms of $n$.** The number of resizes $m$ is $n / k$, give or
+take rounding. Substituting $m \approx n / k$:
+
+$$
+\begin{aligned}
+C(n) &\approx \frac{k}{2} \cdot \frac{n}{k} \left( \frac{n}{k} + 1 \right) \\[4pt]
+     &= \frac{n^2}{2k} + \frac{n}{2}
+\end{aligned}
+$$
+
+Handling the rounding exactly moves the answer by at most $n$. For every
+$n \ge k$:
+
+$$
+\frac{n^2}{2k} - \frac{n}{2} \;\le\; C(n) \;\le\; \frac{n^2}{2k} + \frac{n}{2}
+$$
+
+The $n^2$ term dominates both bounds, so
+
+$$
+C(n) = \Theta(n^2)
+$$
+
+The number of copies grows **quadratically** with the number of appends:
+doubling $n$ quadruples the copying. With a step of $k = 16$ the leading
+term is $n^2 / 32$, the figure quoted above.
+
+**Amortize.** The amortized cost of one append is the total cost of $n$
+appends divided by $n$. Each append also does one write of its own, which
+adds $n$ to the total:
+
+$$
+\frac{C(n) + n}{n} \approx \frac{n}{2k} + \frac{3}{2} = \Theta(n)
+$$
+
+Each append costs **linear** time on average. The step $k$ only appears in
+the denominator of a constant: a larger step makes the line shallower, but
+it is still a line.
+
+??? note "Starting from any initial capacity"
+
+    If the array starts with a capacity of $c_0$ instead of $k$, the
+    resizes happen at lengths $c_0, \; c_0 + k, \; c_0 + 2k, \; \dots$ and
+    there are $m = \lceil (n - c_0) / k \rceil$ of them. Numbering them from
+    0, the sum
+    [starts at index 0](../math/cheat-sheet.md#sums-that-start-at-index-0):
+
+    $$
+    \begin{aligned}
+    C(n) &= \sum_{i=0}^{m-1} (c_0 + ik) \\[4pt]
+         &= \sum_{i=0}^{m-1} c_0 + k \sum_{i=0}^{m-1} i \\[4pt]
+         &= m \, c_0 + k \cdot \frac{(m-1)\,m}{2}
+    \end{aligned}
+    $$
+
+    With $m \approx n / k$ the leading term is still $n^2 / (2k)$. The
+    initial capacity changes only the lower-order terms.
+
+### Counting the copies: doubling
+
+Run the same count for an array that starts with a capacity of 1 and
+doubles. Now the resizes happen at lengths
+
+$$
+1, \; 2, \; 4, \; \dots, \; 2^{m-1}
+$$
+
+and the last of them is below $n$, so $2^{m-1} < n$. The total is a
+[geometric series](../math/cheat-sheet.md#geometric-series):
+
+$$
+\begin{aligned}
+C(n) &= \sum_{i=0}^{m-1} 2^i \\[4pt]
+     &= 2^m - 1 \\[4pt]
+     &< 2n
+\end{aligned}
+$$
+
+Fewer than $2n$ copies for $n$ appends, so $C(n) = \Theta(n)$ and the
+amortized cost of an append is
+
+$$
+\frac{C(n) + n}{n} < 3 = \Theta(1)
+$$
+
+The difference between the two policies is the difference between the two
+series. An arithmetic series sums to roughly the *square* of its number of
+terms, and additive growth has $n / k$ terms. A geometric series sums to
+roughly twice its *last* term, and the last term here is below $n$.
+
 ### Measured
 
 The benchmark below appends n integers to an empty array and times the whole
