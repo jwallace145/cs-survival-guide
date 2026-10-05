@@ -21,7 +21,7 @@ nav = [
 # Rebuild on `zensical serve` when the library sources under lib/ change.
 watch = ["lib"]
 
-# extra_css = ["stylesheets/extra.css"]
+extra_css = ["stylesheets/benchmarks.css"]
 # extra_javascript = ["javascripts/extra.js"]
 
 [project.theme]

@@ -67,6 +67,18 @@ render_macros: true
   (time divided by the input size) or `"both"`, the default, which shows the
   two in tabs.
 - `cases` picks and orders the columns; the default is every case.
+- Each table has a line chart above it, with both axes logarithmic, so a
+  power law is a straight line and its steepness is the complexity: constant
+  cost is flat, linear rises at one decade per decade, quadratic at two. Pass
+  `chart=False` for tables only.
+
+The charts are inline SVG generated at build time, with no JavaScript and no
+chart library. Their colours live in `docs/stylesheets/benchmarks.css` and
+follow the light/dark theme. A chart shows at most four cases, because the
+four colours were measured as a set to be distinguishable from one another,
+including for colour-blind readers; with more cases, choose four with `cases`.
+Each series also has its own marker shape, and hovering a point shows its
+value.
 - Write prose around what is stable (the shape of the curve), not around a
   particular number, because the numbers change with every library release.
 
