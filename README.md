@@ -42,6 +42,41 @@ library that accompanies the guide — no reference markdown is written by hand.
 
 CI runs the same two scripts, on pull requests (`Build Docs`) and on deploy.
 
+## Benchmark results
+
+Guide pages show benchmark tables without containing any numbers. Each
+release of `cs-survival-kit` ships its results, measured on a GitHub-hosted
+runner when the release was built, in `cs_survival_kit/_data/benchmarks.json`.
+`guide_macros.py` reads that file from `lib/` at build time, so the tables
+always describe the library version pinned in `kit-version.txt` and update
+when that pin is bumped.
+
+A page opts in with front matter and then calls the `benchmark` macro:
+
+```markdown
+---
+render_macros: true
+---
+
+{{ benchmark("dynamic_array.append") }}
+{{ benchmark("dynamic_array.append", view="total") }}
+{{ benchmark("dynamic_array.append", view="per_item", cases=["list"]) }}
+```
+
+- `view` is `"total"` (time per run, with the fitted slope), `"per_item"`
+  (time divided by the input size) or `"both"`, the default, which shows the
+  two in tabs.
+- `cases` picks and orders the columns; the default is every case.
+- Write prose around what is stable (the shape of the curve), not around a
+  particular number, because the numbers change with every library release.
+
+If the library is not installed under `lib/`, the macro renders a warning box
+and the site still builds. With the library installed, CI treats an unknown
+benchmark or case name as a build failure; locally it is a warning box, so a
+page can be drafted against a local checkout whose results file is empty.
+
+The macros have unit tests: `python -m unittest discover -s tests`.
+
 ### Previewing unreleased docstrings
 
 To preview docstrings from a local checkout of the library before a release:

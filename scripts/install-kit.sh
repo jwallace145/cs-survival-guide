@@ -46,7 +46,10 @@ esac
 if python3 -m pip --version > /dev/null 2>&1; then
   python3 -m pip install --no-deps --target lib "cs-survival-kit==$version"
 elif command -v uv > /dev/null 2>&1; then
-  uv pip install --no-deps --target lib "cs-survival-kit==$version"
+  # --refresh-package: uv caches the package index, and a version published
+  # minutes ago would otherwise be reported as nonexistent.
+  uv pip install --no-deps --target lib --refresh-package cs-survival-kit \
+    "cs-survival-kit==$version"
 else
   echo "error: neither pip nor uv is available to install cs-survival-kit" >&2
   exit 1

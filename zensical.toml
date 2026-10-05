@@ -12,6 +12,9 @@ edit_uri = "edit/main/docs/"
 
 nav = [
   { "Home" = "index.md" },
+  { "Data Structures" = [
+    { "Dynamic Array" = "data-structures/dynamic-array.md" },
+  ] },
   { "Changelog" = "changelog.md" },
 ]
 
@@ -122,6 +125,15 @@ pymdownx.tabbed.alternate_style = true
 pymdownx.tabbed.combine_header_slug = true
 pymdownx.tasklist.custom_checkbox = true
 pymdownx.tilde = {}
+
+# Macros: pages that set `render_macros: true` in their front matter can call
+# the macros defined in guide_macros.py, such as `benchmark(...)`. Rendering
+# is opt-in so that braces on other pages are left alone.
+[project.plugins.macros]
+module_name = "guide_macros"
+render_by_default = false
+on_error_fail = true
+on_undefined = "strict"
 
 # API reference: mkdocstrings renders the cs-survival-kit docstrings from the
 # sources that scripts/install-kit.sh places under lib/. The Reference nav
