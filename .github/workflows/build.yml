@@ -25,4 +25,8 @@ jobs:
       # Installs the library version pinned in kit-version.txt into lib/;
       # warns and skips the Reference section if it is not on PyPI.
       - run: scripts/install-kit.sh
+      - run: python -m unittest discover -s tests
       - run: scripts/zensical.sh build --clean
+        env:
+          # A page naming a benchmark the pinned library lacks fails the build.
+          GUIDE_BENCHMARKS_STRICT: "1"
