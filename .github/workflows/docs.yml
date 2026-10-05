@@ -1,6 +1,7 @@
-# Documentation deployment: builds the Zensical site and publishes it to
-# GitHub Pages on every push to main. Release management lives separately in
-# release-please.yml.
+# Documentation deployment: builds the Zensical site and publishes it to the
+# gh-pages branch, which GitHub Pages serves, on every push to main. Pull
+# request previews share that branch under pr-preview/ (see preview.yml).
+# Release management lives separately in release-please.yml.
 name: Deploy Docs
 
 on:
@@ -9,9 +10,7 @@ on:
       - main
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: github-pages
@@ -19,13 +18,9 @@ concurrency:
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/configure-pages@v6
       - uses: actions/setup-python@v6
         with:
           python-version: "3.13"
@@ -37,8 +32,13 @@ jobs:
         env:
           # A page naming a benchmark the pinned library lacks fails the build.
           GUIDE_BENCHMARKS_STRICT: "1"
-      - uses: actions/upload-pages-artifact@v5
+      # GitHub Pages runs branch deployments through Jekyll unless told not to.
+      - run: touch site/.nojekyll
+      - uses: JamesIves/github-pages-deploy-action@v4
         with:
-          path: site
-      - uses: actions/deploy-pages@v5
-        id: deployment
+          folder: site
+          branch: gh-pages
+          # Leave pull request previews in place when replacing the site.
+          clean-exclude: pr-preview/
+          # Rebase onto a concurrent preview push instead of overwriting it.
+          force: false

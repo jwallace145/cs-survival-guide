@@ -1,0 +1,48 @@
+# Pull request previews: builds the Zensical site as the deploy workflow does
+# (docs.yml) and publishes it under pr-preview/pr-<number>/ on the gh-pages
+# branch, so a change can be reviewed on the live domain before it is merged.
+# The preview is removed when the pull request closes.
+name: PR Preview
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    # Pull requests from forks get a read-only token and cannot push a preview.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v6
+        if: github.event.action != 'closed'
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements.txt
+        if: github.event.action != 'closed'
+      - run: scripts/install-kit.sh
+        if: github.event.action != 'closed'
+      - run: scripts/zensical.sh build --clean
+        if: github.event.action != 'closed'
+        env:
+          GUIDE_BENCHMARKS_STRICT: "1"
+      # Deploys on open and push, removes on close, and keeps a comment on the
+      # pull request pointing at the preview.
+      - uses: rossjrw/pr-preview-action@v1
+        with:
+          source-dir: site
+          # The default comment embeds a QR code from a third-party service.
+          qr-code: "false"
