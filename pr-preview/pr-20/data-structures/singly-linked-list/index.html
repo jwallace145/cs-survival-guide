@@ -1,0 +1,2220 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A field guide to computer science fundamentals: algorithms, systems, databases, networking, and AI.">
+      
+      
+      
+        <link rel="canonical" href="https://jwallace145.github.io/cs-survival-guide/data-structures/singly-linked-list/">
+      
+      
+        <link rel="prev" href="../dynamic-array/">
+      
+      
+        <link rel="next" href="../../math/cheat-sheet/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.67">
+    
+    
+      
+        <title>Singly Linked List - CS Survival Guide</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ae390e2.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.96d1a7e4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/benchmarks.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#singly-linked-list" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CS Survival Guide" class="md-header__button md-logo" aria-label="CS Survival Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS Survival Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Singly Linked List
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun-moon" viewBox="0 0 24 24"><path d="M12 2v2M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715M16 12a4 4 0 0 0-4-4M19 5l-1.256 1.256M20 12h2"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/jwallace145/cs-survival-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jwallace145/cs-survival-guide
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CS Survival Guide" class="md-nav__button md-logo" aria-label="CS Survival Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    CS Survival Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jwallace145/cs-survival-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jwallace145/cs-survival-guide
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Data Structures
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Data Structures
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dynamic-array/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Dynamic Array
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Singly Linked List
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Singly Linked List
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        How it works
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-at-the-front" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Working at the front
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-at-the-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Working at the end
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finding-an-element" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Finding an element
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reversing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reversing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linked-list-or-dynamic-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Linked list or dynamic array?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Measured
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Measured">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-at-the-front" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Adding at the front
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-from-the-front" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Removing from the front
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-by-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reading by position
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-at-the-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Adding at the end
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Complexity
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Math
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Math
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/cheat-sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Cheat Sheet
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Changelog
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Reference (cs-survival-kit 0.6.0)
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Reference (cs-survival-kit 0.6.0)
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/cs_survival_kit/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>cs_survival_kit
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>cs_survival_kit
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>algorithms
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/cs_survival_kit/bench/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>bench
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1_3" id="__nav_5_1_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>bench
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/bench/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>cli
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/bench/core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>core
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/bench/storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>storage
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/cs_survival_kit/data_structures/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>data_structures
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1_4" id="__nav_5_1_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>data_structures
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/data_structures/abstract_list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>abstract_list
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/data_structures/dynamic_array/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>dynamic_array
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/data_structures/singly_linked_list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>singly_linked_list
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        How it works
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-at-the-front" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Working at the front
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-at-the-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Working at the end
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finding-an-element" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Finding an element
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reversing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reversing
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linked-list-or-dynamic-array" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Linked list or dynamic array?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Measured
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Measured">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adding-at-the-front" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Adding at the front
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-from-the-front" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Removing from the front
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-by-position" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reading by position
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-at-the-end" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Adding at the end
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Complexity
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../dynamic-array/" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    Data Structures
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="singly-linked-list">Singly Linked List<a class="headerlink" href="#singly-linked-list" title="Permanent link">&para;</a></h1>
+<p>A linked list stores a sequence as a chain of <strong>nodes</strong>. Each node holds one
+element and a link to the node after it. Nothing is stored side by side: the
+nodes can sit anywhere in memory, and the links are what put them in order.</p>
+<p>That is the opposite of a <a href="../dynamic-array/">dynamic array</a>, which keeps its
+elements in one contiguous block. The two are the classic implementations of
+the same idea, a list, and almost every difference between them follows from
+that one choice of layout.</p>
+<p>The guide's implementation is
+<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;SinglyLinkedList&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/singly_linked_list/#cs_survival_kit.data_structures.singly_linked_list.SinglyLinkedList"><code>SinglyLinkedList</code></a>.
+Like <code>DynamicArray</code>, it implements
+<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;AbstractList&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/abstract_list/#cs_survival_kit.data_structures.abstract_list.AbstractList"><code>AbstractList</code></a>,
+the interface the two share.</p>
+<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>graph LR
+  a["1"] --&gt; b["2"] --&gt; c["3"] --&gt; none(["None"])
+  head([head]) -.-&gt; a
+  tail([tail]) -...-&gt; c</code></pre>
+<p>The list itself keeps three things:</p>
+<ul>
+<li><strong><code>head</code></strong>, a reference to the first node. Every walk through the list
+  starts here.</li>
+<li><strong><code>tail</code></strong>, a reference to the last node, so that adding at the end does
+  not require walking the whole chain to find it.</li>
+<li><strong>a size count</strong>, so that <code>len</code> does not require walking the chain either.</li>
+</ul>
+<p>"Singly" linked means each node links only <strong>forward</strong>. Given a node you can
+reach everything after it and nothing before it. That one restriction decides
+which operations are cheap.</p>
+<h2 id="working-at-the-front">Working at the front<a class="headerlink" href="#working-at-the-front" title="Permanent link">&para;</a></h2>
+<p>Adding at the front creates a node, points it at the current head, and makes
+it the new head. Removing from the front moves the head to the second node.
+Neither touches any other node, so both are O(1) no matter how long the list
+is.</p>
+<p>An array cannot do this. Its first element lives in slot 0, so putting
+something in front of it means shifting every element one slot to the right,
+and removing it means shifting them all back. Both are O(n).</p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>In the library</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add at the front</td>
+<td><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;prepend&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/singly_linked_list/#cs_survival_kit.data_structures.singly_linked_list.SinglyLinkedList.prepend"><code>prepend</code></a></td>
+</tr>
+<tr>
+<td>Remove from the front</td>
+<td><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;pop_front&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/singly_linked_list/#cs_survival_kit.data_structures.singly_linked_list.SinglyLinkedList.pop_front"><code>pop_front</code></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="working-at-the-end">Working at the end<a class="headerlink" href="#working-at-the-end" title="Permanent link">&para;</a></h2>
+<p>With a tail reference,
+<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;append&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/singly_linked_list/#cs_survival_kit.data_structures.singly_linked_list.SinglyLinkedList.append"><code>append</code></a>
+is O(1) too: link the new node after the tail, then move the tail to it.</p>
+<p>Removing from the end is a different story. To unlink the last node you have
+to update the node <em>before</em> it, and there is no link pointing backward to
+find that node. The only way to reach it is to walk from the head, which is
+O(n). A singly linked list therefore has no cheap way to remove its last
+element. A doubly linked list, where each node also links backward, exists to
+fix exactly this.</p>
+<h2 id="finding-an-element">Finding an element<a class="headerlink" href="#finding-an-element" title="Permanent link">&para;</a></h2>
+<p>An array can compute where element <code>i</code> lives: its elements are evenly spaced
+in one block, so the position is a multiplication away. A linked list cannot.
+A node's location says nothing about where the next one is, so the only way
+to reach element <code>i</code> is to start at the head and follow <code>i</code> links.</p>
+<p>Reading by position, searching for a value, and removing a value all need
+that walk, so all three are O(n).</p>
+<p><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;remove&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/singly_linked_list/#cs_survival_kit.data_structures.singly_linked_list.SinglyLinkedList.remove"><code>remove</code></a>
+has one extra wrinkle. Unlinking a node means pointing the previous node past
+it, so the walk has to carry a reference to the previous node as it goes.</p>
+<h2 id="reversing">Reversing<a class="headerlink" href="#reversing" title="Permanent link">&para;</a></h2>
+<p><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;reverse&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/singly_linked_list/#cs_survival_kit.data_structures.singly_linked_list.SinglyLinkedList.reverse"><code>reverse</code></a>
+is the classic linked list exercise. It walks the list once and turns each
+link around to point at the node before it. Because overwriting a link loses
+the way forward, the walk keeps three references: the previous node, the
+current node, and the next node, saved just before its link is changed. At
+the end the old tail is the new head. No nodes are created, so it takes O(n)
+time and O(1) extra space.</p>
+<h2 id="linked-list-or-dynamic-array">Linked list or dynamic array?<a class="headerlink" href="#linked-list-or-dynamic-array" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Singly linked list</th>
+<th>Dynamic array</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add at the front</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Remove from the front</td>
+<td>O(1)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Add at the end</td>
+<td>O(1)</td>
+<td>O(1) amortized</td>
+</tr>
+<tr>
+<td>Remove from the end</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Read by position</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Search for a value</td>
+<td>O(n)</td>
+<td>O(n)</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>a node and a link per element</td>
+<td>one block, with some unused slots</td>
+</tr>
+</tbody>
+</table>
+<p>Neither is better. A linked list wins when the work is at the front of the
+sequence, which is why queues are often built on one. An array wins whenever
+elements are read by position, and that is most of the time, which is why
+the array is the default list in nearly every language.</p>
+<h2 id="measured">Measured<a class="headerlink" href="#measured" title="Permanent link">&para;</a></h2>
+<p>The benchmarks below time the library's <code>SinglyLinkedList</code> against its
+<code>DynamicArray</code>, Python's built-in <code>list</code> (a dynamic array written in C), and
+<code>collections.deque</code>, the standard library's structure for fast work at both
+ends. All chart axes are logarithmic.</p>
+<h3 id="adding-at-the-front">Adding at the front<a class="headerlink" href="#adding-at-the-front" title="Permanent link">&para;</a></h3>
+<p>Each run adds n elements to the front of an empty container. The first tab
+divides by n to give the cost of one insertion.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Time per operation</label><label for="__tabbed_1_2">Total time</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList.prepend</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>deque.appendleft</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list.insert(0, x)</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of time per operation against input size for the singly_linked_list.prepend benchmark, on logarithmic axes. Series: SinglyLinkedList.prepend, deque.appendleft, list.insert(0, x). The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="249.6" y2="249.6"/><text class="bm-tick" x="68" y="249.6" dy="0.32em" text-anchor="end">100 ns</text><line class="bm-grid" x1="76" x2="698" y1="131.8" y2="131.8"/><text class="bm-tick" x="68" y="131.8" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-grid" x1="76" x2="698" y1="14.0" y2="14.0"/><text class="bm-tick" x="68" y="14.0" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">time per operation (log scale)</text><polyline class="bm-line bm-s0" points="93.6,208.7 240.3,206.3 387.0,204.8 533.7,199.4 680.4,194.9"/><polyline class="bm-line bm-s1" points="93.6,316.8 240.3,316.3 387.0,313.8 533.7,313.9 680.4,295.7"/><polyline class="bm-line bm-s2" points="240.3,234.8 284.5,205.8 342.8,162.6 387.0,127.4 431.2,92.3 489.5,45.4"/><g class="bm-point bm-s0" transform="translate(93.6 208.7)"><title>SinglyLinkedList.prepend, n = 100: 222 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 206.3)"><title>SinglyLinkedList.prepend, n = 1,000: 233 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 204.8)"><title>SinglyLinkedList.prepend, n = 10,000: 240 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 199.4)"><title>SinglyLinkedList.prepend, n = 100,000: 267 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 194.9)"><title>SinglyLinkedList.prepend, n = 1,000,000: 291 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 316.8)"><title>deque.appendleft, n = 100: 26.9 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 316.3)"><title>deque.appendleft, n = 1,000: 27.2 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 313.8)"><title>deque.appendleft, n = 10,000: 28.5 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 313.9)"><title>deque.appendleft, n = 100,000: 28.5 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 295.7)"><title>deque.appendleft, n = 1,000,000: 40.6 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 234.8)"><title>list.insert(0, x), n = 1,000: 134 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(284.5 205.8)"><title>list.insert(0, x), n = 2,000: 236 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(342.8 162.6)"><title>list.insert(0, x), n = 5,000: 548 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 127.4)"><title>list.insert(0, x), n = 10,000: 1.09 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(431.2 92.3)"><title>list.insert(0, x), n = 20,000: 2.17 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(489.5 45.4)"><title>list.insert(0, x), n = 50,000: 5.41 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;"><code>SinglyLinkedList.prepend</code></th>
+<th style="text-align: right;"><code>deque.appendleft</code></th>
+<th style="text-align: right;"><code>list.insert(<wbr>0, x)</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">222 ns</td>
+<td style="text-align: right;">26.9 ns</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">233 ns</td>
+<td style="text-align: right;">27.2 ns</td>
+<td style="text-align: right;">134 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">2,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">236 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">5,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">548 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">240 ns</td>
+<td style="text-align: right;">28.5 ns</td>
+<td style="text-align: right;">1.09 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">20,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">2.17 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">50,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">5.41 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">100,000</td>
+<td style="text-align: right;">267 ns</td>
+<td style="text-align: right;">28.5 ns</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000,000</td>
+<td style="text-align: right;">291 ns</td>
+<td style="text-align: right;">40.6 ns</td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList.prepend</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>deque.appendleft</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list.insert(0, x)</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the singly_linked_list.prepend benchmark, on logarithmic axes. Series: SinglyLinkedList.prepend, deque.appendleft, list.insert(0, x). The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="290.8" y2="290.8"/><text class="bm-tick" x="68" y="290.8" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="231.9" y2="231.9"/><text class="bm-tick" x="68" y="231.9" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-grid" x1="76" x2="698" y1="173.0" y2="173.0"/><text class="bm-tick" x="68" y="173.0" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="114.1" y2="114.1"/><text class="bm-tick" x="68" y="114.1" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="55.2" y2="55.2"/><text class="bm-tick" x="68" y="55.2" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,270.4 240.3,210.2 387.0,150.6 533.7,88.9 680.4,27.8"/><polyline class="bm-line bm-s1" points="93.6,324.4 240.3,265.2 387.0,205.1 533.7,146.2 680.4,78.2"/><polyline class="bm-line bm-s2" points="240.3,224.5 284.5,192.2 342.8,147.2 387.0,111.9 431.2,76.6 489.5,29.7"/><g class="bm-point bm-s0" transform="translate(93.6 270.4)"><title>SinglyLinkedList.prepend, n = 100: 22.2 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 210.2)"><title>SinglyLinkedList.prepend, n = 1,000: 233 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 150.6)"><title>SinglyLinkedList.prepend, n = 10,000: 2.4 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 88.9)"><title>SinglyLinkedList.prepend, n = 100,000: 26.7 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 27.8)"><title>SinglyLinkedList.prepend, n = 1,000,000: 291 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 324.4)"><title>deque.appendleft, n = 100: 2.69 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 265.2)"><title>deque.appendleft, n = 1,000: 27.2 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 205.1)"><title>deque.appendleft, n = 10,000: 285 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 146.2)"><title>deque.appendleft, n = 100,000: 2.85 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 78.2)"><title>deque.appendleft, n = 1,000,000: 40.6 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 224.5)"><title>list.insert(0, x), n = 1,000: 134 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(284.5 192.2)"><title>list.insert(0, x), n = 2,000: 471 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(342.8 147.2)"><title>list.insert(0, x), n = 5,000: 2.74 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 111.9)"><title>list.insert(0, x), n = 10,000: 10.9 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(431.2 76.6)"><title>list.insert(0, x), n = 20,000: 43.3 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(489.5 29.7)"><title>list.insert(0, x), n = 50,000: 271 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;"><code>SinglyLinkedList.prepend</code></th>
+<th style="text-align: right;"><code>deque.appendleft</code></th>
+<th style="text-align: right;"><code>list.insert(<wbr>0, x)</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">22.2 µs</td>
+<td style="text-align: right;">2.69 µs</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">233 µs</td>
+<td style="text-align: right;">27.2 µs</td>
+<td style="text-align: right;">134 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">2,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">471 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">5,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">2.74 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">2.4 ms</td>
+<td style="text-align: right;">285 µs</td>
+<td style="text-align: right;">10.9 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;">20,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">43.3 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;">50,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">271 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;">100,000</td>
+<td style="text-align: right;">26.7 ms</td>
+<td style="text-align: right;">2.85 ms</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000,000</td>
+<td style="text-align: right;">291 ms</td>
+<td style="text-align: right;">40.6 ms</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>slope</strong></td>
+<td style="text-align: right;"><strong>1.03</strong></td>
+<td style="text-align: right;"><strong>1.04</strong></td>
+<td style="text-align: right;"><strong>1.95</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><small>Measured on cs-survival-kit 0.6.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-05. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
+<p>The linked list and the deque are flat: an insertion costs the same whether
+the list holds a hundred elements or a million. The built-in list climbs
+steadily, because every insertion at index 0 shifts everything already there.
+On the total-time tab that is the difference between a line of slope 1 and a
+line of slope 2.</p>
+<p>At the smallest sizes the built-in list still beats the linked list, because
+shifting a short run of slots in C is cheaper than creating one node in
+Python. Complexity describes how cost grows, not who wins at small sizes.</p>
+<h3 id="removing-from-the-front">Removing from the front<a class="headerlink" href="#removing-from-the-front" title="Permanent link">&para;</a></h3>
+<p>Each run empties a container of n elements from the front.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Time per operation</label><label for="__tabbed_2_2">Total time</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList.pop_front</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>deque.popleft</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list.pop(0)</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of time per operation against input size for the singly_linked_list.pop_front benchmark, on logarithmic axes. Series: SinglyLinkedList.pop_front, deque.popleft, list.pop(0). The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="332.0" y2="332.0"/><text class="bm-tick" x="68" y="332.0" dy="0.32em" text-anchor="end">10 ns</text><line class="bm-grid" x1="76" x2="698" y1="214.2" y2="214.2"/><text class="bm-tick" x="68" y="214.2" dy="0.32em" text-anchor="end">100 ns</text><line class="bm-grid" x1="76" x2="698" y1="96.4" y2="96.4"/><text class="bm-tick" x="68" y="96.4" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">time per operation (log scale)</text><polyline class="bm-line bm-s0" points="93.6,191.2 240.3,186.3 387.0,184.5 533.7,182.4 680.4,183.0"/><polyline class="bm-line bm-s1" points="93.6,303.9 240.3,275.3 387.0,267.6 533.7,267.3 680.4,264.8"/><polyline class="bm-line bm-s2" points="240.3,211.3 284.5,189.1 342.8,149.8 387.0,114.8 431.2,81.0 489.5,34.6"/><g class="bm-point bm-s0" transform="translate(93.6 191.2)"><title>SinglyLinkedList.pop_front, n = 100: 157 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 186.3)"><title>SinglyLinkedList.pop_front, n = 1,000: 173 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 184.5)"><title>SinglyLinkedList.pop_front, n = 10,000: 179 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 182.4)"><title>SinglyLinkedList.pop_front, n = 100,000: 186 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 183.0)"><title>SinglyLinkedList.pop_front, n = 1,000,000: 184 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 303.9)"><title>deque.popleft, n = 100: 17.3 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 275.3)"><title>deque.popleft, n = 1,000: 30.3 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 267.6)"><title>deque.popleft, n = 10,000: 35.2 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 267.3)"><title>deque.popleft, n = 100,000: 35.4 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 264.8)"><title>deque.popleft, n = 1,000,000: 37.2 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 211.3)"><title>list.pop(0), n = 1,000: 106 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(284.5 189.1)"><title>list.pop(0), n = 2,000: 163 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(342.8 149.8)"><title>list.pop(0), n = 5,000: 352 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 114.8)"><title>list.pop(0), n = 10,000: 697 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(431.2 81.0)"><title>list.pop(0), n = 20,000: 1.35 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(489.5 34.6)"><title>list.pop(0), n = 50,000: 3.34 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;"><code>SinglyLinkedList.pop_front</code></th>
+<th style="text-align: right;"><code>deque.popleft</code></th>
+<th style="text-align: right;"><code>list.pop(<wbr>0)</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">157 ns</td>
+<td style="text-align: right;">17.3 ns</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">173 ns</td>
+<td style="text-align: right;">30.3 ns</td>
+<td style="text-align: right;">106 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">2,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">163 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">5,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">352 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">179 ns</td>
+<td style="text-align: right;">35.2 ns</td>
+<td style="text-align: right;">697 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">20,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">1.35 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">50,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">3.34 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">100,000</td>
+<td style="text-align: right;">186 ns</td>
+<td style="text-align: right;">35.4 ns</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000,000</td>
+<td style="text-align: right;">184 ns</td>
+<td style="text-align: right;">37.2 ns</td>
+<td style="text-align: right;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList.pop_front</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>deque.popleft</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list.pop(0)</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the singly_linked_list.pop_front benchmark, on logarithmic axes. Series: SinglyLinkedList.pop_front, deque.popleft, list.pop(0). The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="332.0" y2="332.0"/><text class="bm-tick" x="68" y="332.0" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-grid" x1="76" x2="698" y1="272.0" y2="272.0"/><text class="bm-tick" x="68" y="272.0" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="212.0" y2="212.0"/><text class="bm-tick" x="68" y="212.0" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-grid" x1="76" x2="698" y1="152.0" y2="152.0"/><text class="bm-tick" x="68" y="152.0" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="92.0" y2="92.0"/><text class="bm-tick" x="68" y="92.0" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="32.1" y2="32.1"/><text class="bm-tick" x="68" y="32.1" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,260.3 240.3,197.8 387.0,136.9 533.7,75.9 680.4,16.2"/><polyline class="bm-line bm-s1" points="93.6,317.7 240.3,243.1 387.0,179.3 533.7,119.1 680.4,57.8"/><polyline class="bm-line bm-s2" points="240.3,210.6 284.5,181.2 342.8,137.3 387.0,101.4 431.2,66.2 489.5,18.7"/><g class="bm-point bm-s0" transform="translate(93.6 260.3)"><title>SinglyLinkedList.pop_front, n = 100: 15.7 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 197.8)"><title>SinglyLinkedList.pop_front, n = 1,000: 173 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 136.9)"><title>SinglyLinkedList.pop_front, n = 10,000: 1.79 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 75.9)"><title>SinglyLinkedList.pop_front, n = 100,000: 18.6 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 16.2)"><title>SinglyLinkedList.pop_front, n = 1,000,000: 184 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 317.7)"><title>deque.popleft, n = 100: 1.73 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 243.1)"><title>deque.popleft, n = 1,000: 30.3 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 179.3)"><title>deque.popleft, n = 10,000: 352 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 119.1)"><title>deque.popleft, n = 100,000: 3.54 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 57.8)"><title>deque.popleft, n = 1,000,000: 37.2 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 210.6)"><title>list.pop(0), n = 1,000: 106 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(284.5 181.2)"><title>list.pop(0), n = 2,000: 326 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(342.8 137.3)"><title>list.pop(0), n = 5,000: 1.76 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 101.4)"><title>list.pop(0), n = 10,000: 6.97 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(431.2 66.2)"><title>list.pop(0), n = 20,000: 27 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(489.5 18.7)"><title>list.pop(0), n = 50,000: 167 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;"><code>SinglyLinkedList.pop_front</code></th>
+<th style="text-align: right;"><code>deque.popleft</code></th>
+<th style="text-align: right;"><code>list.pop(<wbr>0)</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">15.7 µs</td>
+<td style="text-align: right;">1.73 µs</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">173 µs</td>
+<td style="text-align: right;">30.3 µs</td>
+<td style="text-align: right;">106 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">2,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">326 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">5,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">1.76 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">1.79 ms</td>
+<td style="text-align: right;">352 µs</td>
+<td style="text-align: right;">6.97 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;">20,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">27 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;">50,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">167 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;">100,000</td>
+<td style="text-align: right;">18.6 ms</td>
+<td style="text-align: right;">3.54 ms</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000,000</td>
+<td style="text-align: right;">184 ms</td>
+<td style="text-align: right;">37.2 ms</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>slope</strong></td>
+<td style="text-align: right;"><strong>1.02</strong></td>
+<td style="text-align: right;"><strong>1.07</strong></td>
+<td style="text-align: right;"><strong>1.89</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><small>Measured on cs-survival-kit 0.6.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-05. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
+<p>The same picture, for the same reason: removing the first element of an array
+shifts every remaining element one slot to the left.</p>
+<h3 id="reading-by-position">Reading by position<a class="headerlink" href="#reading-by-position" title="Permanent link">&para;</a></h3>
+<p>Here n is the size of the container, and every run performs the same 100
+reads at positions spread evenly across it. The time is not divided by n: a
+flat line means a read costs the same in a container of any size.</p>
+<figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>DynamicArray</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the singly_linked_list.index benchmark, on logarithmic axes. Series: SinglyLinkedList, DynamicArray, list. The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="332.0" y2="332.0"/><text class="bm-tick" x="68" y="332.0" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-grid" x1="76" x2="698" y1="272.0" y2="272.0"/><text class="bm-tick" x="68" y="272.0" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="212.0" y2="212.0"/><text class="bm-tick" x="68" y="212.0" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-grid" x1="76" x2="698" y1="152.0" y2="152.0"/><text class="bm-tick" x="68" y="152.0" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="92.0" y2="92.0"/><text class="bm-tick" x="68" y="92.0" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="32.1" y2="32.1"/><text class="bm-tick" x="68" y="32.1" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="289.2" x2="289.2" y1="332" y2="337"/><text class="bm-tick" x="289.2" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="484.8" x2="484.8" y1="332" y2="337"/><text class="bm-tick" x="484.8" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">100K</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,204.9 289.2,144.4 484.8,82.5 680.4,22.5"/><polyline class="bm-line bm-s1" points="93.6,259.1 289.2,257.3 484.8,256.9 680.4,256.8"/><polyline class="bm-line bm-s2" points="93.6,321.5 289.2,319.0 484.8,318.5 680.4,318.4"/><g class="bm-point bm-s0" transform="translate(93.6 204.9)"><title>SinglyLinkedList, n = 100: 131 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(289.2 144.4)"><title>SinglyLinkedList, n = 1,000: 1.34 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(484.8 82.5)"><title>SinglyLinkedList, n = 10,000: 14.4 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 22.5)"><title>SinglyLinkedList, n = 100,000: 145 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 259.1)"><title>DynamicArray, n = 100: 16.4 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(289.2 257.3)"><title>DynamicArray, n = 1,000: 17.6 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(484.8 256.9)"><title>DynamicArray, n = 10,000: 17.8 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 256.8)"><title>DynamicArray, n = 100,000: 18 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(93.6 321.5)"><title>list, n = 100: 1.49 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(289.2 319.0)"><title>list, n = 1,000: 1.65 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(484.8 318.5)"><title>list, n = 10,000: 1.68 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(680.4 318.4)"><title>list, n = 100,000: 1.69 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;"><code>SinglyLinkedList</code></th>
+<th style="text-align: right;"><code>DynamicArray</code></th>
+<th style="text-align: right;"><code>list</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">131 µs</td>
+<td style="text-align: right;">16.4 µs</td>
+<td style="text-align: right;">1.49 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">1.34 ms</td>
+<td style="text-align: right;">17.6 µs</td>
+<td style="text-align: right;">1.65 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">14.4 ms</td>
+<td style="text-align: right;">17.8 µs</td>
+<td style="text-align: right;">1.68 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">100,000</td>
+<td style="text-align: right;">145 ms</td>
+<td style="text-align: right;">18 µs</td>
+<td style="text-align: right;">1.69 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>slope</strong></td>
+<td style="text-align: right;"><strong>1.02</strong></td>
+<td style="text-align: right;"><strong>0.01</strong></td>
+<td style="text-align: right;"><strong>0.02</strong></td>
+</tr>
+</tbody>
+</table>
+<p><small>Measured on cs-survival-kit 0.6.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-05. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
+<p>This is the linked list's weak spot and the array's strength. Both arrays are
+flat. The linked list's time grows in step with the size of the list, since
+each read walks from the head to the position it wants.</p>
+<h3 id="adding-at-the-end">Adding at the end<a class="headerlink" href="#adding-at-the-end" title="Permanent link">&para;</a></h3>
+<p>Each run appends n elements to an empty container.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Time per operation</label><label for="__tabbed_3_2">Total time</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>DynamicArray</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of time per operation against input size for the singly_linked_list.append benchmark, on logarithmic axes. Series: SinglyLinkedList, DynamicArray, list. The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="332.0" y2="332.0"/><text class="bm-tick" x="68" y="332.0" dy="0.32em" text-anchor="end">10 ns</text><line class="bm-grid" x1="76" x2="698" y1="275.7" y2="275.7"/><text class="bm-tick" x="68" y="275.7" dy="0.32em" text-anchor="end">20 ns</text><line class="bm-grid" x1="76" x2="698" y1="201.2" y2="201.2"/><text class="bm-tick" x="68" y="201.2" dy="0.32em" text-anchor="end">50 ns</text><line class="bm-grid" x1="76" x2="698" y1="144.8" y2="144.8"/><text class="bm-tick" x="68" y="144.8" dy="0.32em" text-anchor="end">100 ns</text><line class="bm-grid" x1="76" x2="698" y1="88.5" y2="88.5"/><text class="bm-tick" x="68" y="88.5" dy="0.32em" text-anchor="end">200 ns</text><line class="bm-grid" x1="76" x2="698" y1="14.0" y2="14.0"/><text class="bm-tick" x="68" y="14.0" dy="0.32em" text-anchor="end">500 ns</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">time per operation (log scale)</text><polyline class="bm-line bm-s0" points="93.6,82.9 240.3,80.3 387.0,78.2 533.7,66.7 680.4,62.3"/><polyline class="bm-line bm-s1" points="93.6,105.7 240.3,111.1 387.0,95.4 533.7,102.2 680.4,102.5"/><polyline class="bm-line bm-s2" points="93.6,267.6 240.3,277.6 387.0,275.7 533.7,280.0 680.4,245.1"/><g class="bm-point bm-s0" transform="translate(93.6 82.9)"><title>SinglyLinkedList, n = 100: 214 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 80.3)"><title>SinglyLinkedList, n = 1,000: 221 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 78.2)"><title>SinglyLinkedList, n = 10,000: 227 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 66.7)"><title>SinglyLinkedList, n = 100,000: 261 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 62.3)"><title>SinglyLinkedList, n = 1,000,000: 276 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 105.7)"><title>DynamicArray, n = 100: 162 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 111.1)"><title>DynamicArray, n = 1,000: 151 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 95.4)"><title>DynamicArray, n = 10,000: 184 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 102.2)"><title>DynamicArray, n = 100,000: 169 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 102.5)"><title>DynamicArray, n = 1,000,000: 168 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(93.6 267.6)"><title>list, n = 100: 22.1 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 277.6)"><title>list, n = 1,000: 19.5 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 275.7)"><title>list, n = 10,000: 20 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(533.7 280.0)"><title>list, n = 100,000: 19 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(680.4 245.1)"><title>list, n = 1,000,000: 29.1 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;"><code>SinglyLinkedList</code></th>
+<th style="text-align: right;"><code>DynamicArray</code></th>
+<th style="text-align: right;"><code>list</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">214 ns</td>
+<td style="text-align: right;">162 ns</td>
+<td style="text-align: right;">22.1 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">221 ns</td>
+<td style="text-align: right;">151 ns</td>
+<td style="text-align: right;">19.5 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">227 ns</td>
+<td style="text-align: right;">184 ns</td>
+<td style="text-align: right;">20 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">100,000</td>
+<td style="text-align: right;">261 ns</td>
+<td style="text-align: right;">169 ns</td>
+<td style="text-align: right;">19 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000,000</td>
+<td style="text-align: right;">276 ns</td>
+<td style="text-align: right;">168 ns</td>
+<td style="text-align: right;">29.1 ns</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>DynamicArray</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the singly_linked_list.append benchmark, on logarithmic axes. Series: SinglyLinkedList, DynamicArray, list. The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="290.8" y2="290.8"/><text class="bm-tick" x="68" y="290.8" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="231.9" y2="231.9"/><text class="bm-tick" x="68" y="231.9" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-grid" x1="76" x2="698" y1="173.0" y2="173.0"/><text class="bm-tick" x="68" y="173.0" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="114.1" y2="114.1"/><text class="bm-tick" x="68" y="114.1" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="55.2" y2="55.2"/><text class="bm-tick" x="68" y="55.2" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,271.3 240.3,211.6 387.0,152.0 533.7,89.5 680.4,29.2"/><polyline class="bm-line bm-s1" points="93.6,278.5 240.3,221.3 387.0,157.4 533.7,100.7 680.4,41.8"/><polyline class="bm-line bm-s2" points="93.6,329.5 240.3,273.7 387.0,214.2 533.7,156.6 680.4,86.7"/><g class="bm-point bm-s0" transform="translate(93.6 271.3)"><title>SinglyLinkedList, n = 100: 21.4 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 211.6)"><title>SinglyLinkedList, n = 1,000: 221 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 152.0)"><title>SinglyLinkedList, n = 10,000: 2.27 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 89.5)"><title>SinglyLinkedList, n = 100,000: 26.1 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 29.2)"><title>SinglyLinkedList, n = 1,000,000: 276 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 278.5)"><title>DynamicArray, n = 100: 16.2 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 221.3)"><title>DynamicArray, n = 1,000: 151 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 157.4)"><title>DynamicArray, n = 10,000: 1.84 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 100.7)"><title>DynamicArray, n = 100,000: 16.9 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 41.8)"><title>DynamicArray, n = 1,000,000: 168 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(93.6 329.5)"><title>list, n = 100: 2.21 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 273.7)"><title>list, n = 1,000: 19.5 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 214.2)"><title>list, n = 10,000: 200 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(533.7 156.6)"><title>list, n = 100,000: 1.9 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(680.4 86.7)"><title>list, n = 1,000,000: 29.1 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;"><code>SinglyLinkedList</code></th>
+<th style="text-align: right;"><code>DynamicArray</code></th>
+<th style="text-align: right;"><code>list</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">21.4 µs</td>
+<td style="text-align: right;">16.2 µs</td>
+<td style="text-align: right;">2.21 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">221 µs</td>
+<td style="text-align: right;">151 µs</td>
+<td style="text-align: right;">19.5 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">2.27 ms</td>
+<td style="text-align: right;">1.84 ms</td>
+<td style="text-align: right;">200 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">100,000</td>
+<td style="text-align: right;">26.1 ms</td>
+<td style="text-align: right;">16.9 ms</td>
+<td style="text-align: right;">1.9 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000,000</td>
+<td style="text-align: right;">276 ms</td>
+<td style="text-align: right;">168 ms</td>
+<td style="text-align: right;">29.1 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>slope</strong></td>
+<td style="text-align: right;"><strong>1.03</strong></td>
+<td style="text-align: right;"><strong>1.01</strong></td>
+<td style="text-align: right;"><strong>1.02</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><small>Measured on cs-survival-kit 0.6.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-05. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
+<p>All three are flat, as the complexity table predicts: appending is O(1) for
+each of them. They differ only by a constant. The linked list pays for
+creating a node on every append, while the dynamic array usually just writes
+into a slot it already has.</p>
+<h2 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add or remove at the front</td>
+<td>O(1)</td>
+<td></td>
+</tr>
+<tr>
+<td>Add at the end</td>
+<td>O(1)</td>
+<td>needs the tail reference</td>
+</tr>
+<tr>
+<td>Read by position</td>
+<td>O(n)</td>
+<td>walks from the head</td>
+</tr>
+<tr>
+<td>Search for a value</td>
+<td>O(n)</td>
+<td></td>
+</tr>
+<tr>
+<td>Remove a value</td>
+<td>O(n)</td>
+<td>finding it is the cost; unlinking is O(1)</td>
+</tr>
+<tr>
+<td>Reverse</td>
+<td>O(n)</td>
+<td>in place, O(1) extra space</td>
+</tr>
+<tr>
+<td>Length</td>
+<td>O(1)</td>
+<td>from the stored count</td>
+</tr>
+<tr>
+<td>Iterate</td>
+<td>O(n)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../dynamic-array/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dynamic Array">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Dynamic Array
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../math/cheat-sheet/" class="md-footer__link md-footer__link--next" aria-label="Next: Cheat Sheet">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Cheat Sheet
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      CS Survival Guide v0.6.0
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.67a597eb.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
