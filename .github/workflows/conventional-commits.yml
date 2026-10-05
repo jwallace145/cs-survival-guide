@@ -2,8 +2,8 @@
 # Commits so Release Please can compute versions correctly. Runs entirely in
 # CI — no local Node.js tooling is required for day-to-day development.
 #
-# PRs are squash-merged (the only merge method enabled on the repo), so the
-# PR title + body become the single commit on main. We therefore validate the
+# PRs are squash-merged (the only merge method enabled on the repo), and the
+# PR title alone becomes the commit message on main. We therefore validate the
 # PR title on pull requests, and validate actual commits on direct pushes.
 name: Conventional Commits
 

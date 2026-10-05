@@ -80,7 +80,7 @@ lifecycle.
 ```text
 feat:                      -> minor release (0.1.0 -> 0.2.0)
 fix:                       -> patch release (0.2.0 -> 0.2.1)
-BREAKING CHANGE / feat!:   -> while in 0.x, also bumps the minor version
+feat!: (breaking change)   -> while in 0.x, also bumps the minor version
 ```
 
 [Release Please](https://github.com/googleapis/release-please) watches `main`
