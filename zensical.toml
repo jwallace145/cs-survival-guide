@@ -16,6 +16,9 @@ nav = [
     { "Dynamic Array" = "data-structures/dynamic-array.md" },
     { "Singly Linked List" = "data-structures/singly-linked-list.md" },
   ] },
+  { "Math" = [
+    { "Cheat Sheet" = "math/cheat-sheet.md" },
+  ] },
   { "Changelog" = "changelog.md" },
 ]
 
@@ -23,7 +26,12 @@ nav = [
 watch = ["lib"]
 
 extra_css = ["stylesheets/benchmarks.css"]
-# extra_javascript = ["javascripts/extra.js"]
+# MathJax typesets the LaTeX that pymdownx.arithmatex marks up; mathjax.js
+# holds its configuration and must load first.
+extra_javascript = [
+  "javascripts/mathjax.js",
+  "https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js",
+]
 
 [project.theme]
 # variant = "classic"
