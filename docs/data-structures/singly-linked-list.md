@@ -66,8 +66,8 @@ Removing from the end is a different story. To unlink the last node you have
 to update the node *before* it, and there is no link pointing backward to
 find that node. The only way to reach it is to walk from the head, which is
 O(n). A singly linked list therefore has no cheap way to remove its last
-element. A doubly linked list, where each node also links backward, exists to
-fix exactly this.
+element. A [doubly linked list](doubly-linked-list.md), where each node also
+links backward, exists to fix exactly this.
 
 ## Finding an element
 
