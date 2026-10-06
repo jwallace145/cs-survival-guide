@@ -1,0 +1,2193 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A field guide to computer science fundamentals: algorithms, systems, databases, networking, and AI.">
+      
+      
+      
+        <link rel="canonical" href="https://jwallace145.github.io/cs-survival-guide/data-structures/dynamic-array/">
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../singly-linked-list/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.67">
+    
+    
+      
+        <title>Dynamic Array - CS Survival Guide</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ae390e2.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.96d1a7e4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/benchmarks.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dynamic-array" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="CS Survival Guide" class="md-header__button md-logo" aria-label="CS Survival Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CS Survival Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Dynamic Array
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun-moon" viewBox="0 0 24 24"><path d="M12 2v2M14.837 16.385a6 6 0 1 1-7.223-7.222c.624-.147.97.66.715 1.248a4 4 0 0 0 5.26 5.259c.589-.255 1.396.09 1.248.715M16 12a4 4 0 0 0-4-4M19 5l-1.256 1.256M20 12h2"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/jwallace145/cs-survival-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jwallace145/cs-survival-guide
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="CS Survival Guide" class="md-nav__button md-logo" aria-label="CS Survival Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    CS Survival Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/jwallace145/cs-survival-guide" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jwallace145/cs-survival-guide
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Data Structures
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+            <label class="md-nav__title" for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Data Structures
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Dynamic Array
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Dynamic Array
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        How it works
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#growth-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Growth policies
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#amortized-cost-of-append" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Amortized cost of append
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Amortized cost of append">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#counting-the-copies-additive-growth" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Counting the copies: additive growth
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#counting-the-copies-doubling" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Counting the copies: doubling
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Measured
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-a-factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Choosing a factor
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-larger-step-does-not-fix-additive-growth" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A larger step does not fix additive growth
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Complexity
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../singly-linked-list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Singly Linked List
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Math
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Math
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../math/cheat-sheet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Cheat Sheet
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Changelog
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Reference (cs-survival-kit 0.7.0)
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        
+          <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  Reference (cs-survival-kit 0.7.0)
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/cs_survival_kit/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>cs_survival_kit
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>cs_survival_kit
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/algorithms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>algorithms
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/cs_survival_kit/bench/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>bench
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1_3" id="__nav_5_1_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_3_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1_3">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>bench
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/bench/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>cli
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/bench/core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>core
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/bench/storage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>storage
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../reference/cs_survival_kit/data_structures/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>data_structures
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1_4" id="__nav_5_1_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        
+          <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_4_label" aria-expanded="false">
+            <label class="md-nav__title" for="__nav_5_1_4">
+              <span class="md-nav__icon md-icon"></span>
+              
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>data_structures
+
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix>
+              
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/data_structures/abstract_list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>abstract_list
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/data_structures/doubly_linked_list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>doubly_linked_list
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/data_structures/dynamic_array/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>dynamic_array
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/data_structures/singly_linked_list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>singly_linked_list
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+                
+              
+            </ul>
+          </nav>
+        
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        How it works
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#growth-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Growth policies
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#amortized-cost-of-append" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Amortized cost of append
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Amortized cost of append">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#counting-the-copies-additive-growth" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Counting the copies: additive growth
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#counting-the-copies-doubling" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Counting the copies: doubling
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measured" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Measured
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-a-factor" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Choosing a factor
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-larger-step-does-not-fix-additive-growth" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        A larger step does not fix additive growth
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Complexity
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="././" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    Data Structures
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="dynamic-array">Dynamic Array<a class="headerlink" href="#dynamic-array" title="Permanent link">&para;</a></h1>
+<p>A dynamic array is an array that grows. It stores its elements in a
+fixed-size block of memory and, when that block fills up, allocates a larger
+one and copies everything across. Python's <code>list</code>, Java's <code>ArrayList</code> and
+C++'s <code>std::vector</code> are all dynamic arrays.</p>
+<p>The guide's implementation is
+<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;DynamicArray&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/dynamic_array/#cs_survival_kit.data_structures.dynamic_array.DynamicArray"><code>DynamicArray</code></a>.
+For the other classic way to store a sequence, and how the two compare, see
+the <a href="../singly-linked-list/">singly linked list</a>.</p>
+<h2 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h2>
+<p>The array keeps two numbers: its <strong>length</strong>, the number of elements in use,
+and its <strong>capacity</strong>, the number of slots allocated. Appending writes into
+the next free slot. When the length reaches the capacity there is no free
+slot, so the array <strong>resizes</strong>: it allocates a new block, copies every
+element into it, and carries on.</p>
+<p>A single resize costs O(n), because it copies all n elements. What matters is
+how often that happens, and that is decided by the <strong>growth policy</strong>: the
+rule for choosing the new capacity.</p>
+<h2 id="growth-policies">Growth policies<a class="headerlink" href="#growth-policies" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Policy</th>
+<th>New capacity</th>
+<th>In the library</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Doubling</td>
+<td>twice the current capacity</td>
+<td><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;doubling&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/dynamic_array/#cs_survival_kit.data_structures.dynamic_array.doubling"><code>doubling</code></a></td>
+</tr>
+<tr>
+<td>Geometric</td>
+<td>the current capacity times a factor above 1</td>
+<td><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;geometric&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/dynamic_array/#cs_survival_kit.data_structures.dynamic_array.geometric"><code>geometric</code></a></td>
+</tr>
+<tr>
+<td>Additive</td>
+<td>the current capacity plus a fixed step</td>
+<td><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;additive&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/dynamic_array/#cs_survival_kit.data_structures.dynamic_array.additive"><code>additive</code></a></td>
+</tr>
+</tbody>
+</table>
+<p>Doubling is geometric growth with a factor of 2.</p>
+<h2 id="amortized-cost-of-append">Amortized cost of append<a class="headerlink" href="#amortized-cost-of-append" title="Permanent link">&para;</a></h2>
+<p>With <strong>geometric</strong> growth, each resize is bigger than the last, but resizes
+also become rarer at exactly the same rate. Appending n elements copies
+fewer than 2n elements in total with doubling, so the average cost per append
+is constant. This is <strong>amortized O(1)</strong>: an individual append is occasionally
+expensive, but any long run of appends averages out to a constant each.</p>
+<p>With <strong>additive</strong> growth, resizes never become rarer. A step of 16 copies the
+whole array every 16 appends, forever, which adds up to about n² / 32 copies
+for n appends. Each append costs O(n) on average.</p>
+<p>The two subsections below count the copies exactly. The formulas they lean
+on are collected in the <a href="../../math/cheat-sheet/">math cheat sheet</a>.</p>
+<h3 id="counting-the-copies-additive-growth">Counting the copies: additive growth<a class="headerlink" href="#counting-the-copies-additive-growth" title="Permanent link">&para;</a></h3>
+<p>Take an array that grows by a fixed step of <span class="arithmatex">\(k\)</span> slots and, to keep the
+arithmetic clean, starts with a capacity of <span class="arithmatex">\(k\)</span>. Append <span class="arithmatex">\(n\)</span> elements and
+count every element copied by a resize.</p>
+<p><strong>When do resizes happen?</strong> The capacity is always a multiple of <span class="arithmatex">\(k\)</span>, and a
+resize happens when an append finds the array full. So the resizes happen at
+lengths</p>
+<div class="arithmatex">\[
+k, \; 2k, \; 3k, \; \dots, \; mk
+\]</div>
+<p>where <span class="arithmatex">\(m\)</span> is the number of resizes. The last one happens at the largest
+multiple of <span class="arithmatex">\(k\)</span> that is still below <span class="arithmatex">\(n\)</span>, so</p>
+<div class="arithmatex">\[
+m = \left\lfloor \frac{n - 1}{k} \right\rfloor
+\]</div>
+<p><strong>What does each resize cost?</strong> A resize copies every element in the array.
+The <span class="arithmatex">\(i\)</span>-th resize happens at length <span class="arithmatex">\(ik\)</span>, so it copies <span class="arithmatex">\(ik\)</span> elements.</p>
+<p><strong>Add them up.</strong> The total number of copies <span class="arithmatex">\(C(n)\)</span> is the sum over all <span class="arithmatex">\(m\)</span>
+resizes. The step <span class="arithmatex">\(k\)</span> is a constant, so it factors out, and what is left is
+the <a href="../../math/cheat-sheet/#arithmetic-series">arithmetic series</a>:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+C(n) &amp;= \sum_{i=1}^{m} ik \\[4pt]
+     &amp;= k \sum_{i=1}^{m} i \\[4pt]
+     &amp;= k \cdot \frac{m(m+1)}{2}
+\end{aligned}
+\]</div>
+<p><strong>Put it in terms of <span class="arithmatex">\(n\)</span>.</strong> The number of resizes <span class="arithmatex">\(m\)</span> is <span class="arithmatex">\(n / k\)</span>, give or
+take rounding. Substituting <span class="arithmatex">\(m \approx n / k\)</span>:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+C(n) &amp;\approx \frac{k}{2} \cdot \frac{n}{k} \left( \frac{n}{k} + 1 \right) \\[4pt]
+     &amp;= \frac{n^2}{2k} + \frac{n}{2}
+\end{aligned}
+\]</div>
+<p>Handling the rounding exactly moves the answer by at most <span class="arithmatex">\(n\)</span>. For every
+<span class="arithmatex">\(n \ge k\)</span>:</p>
+<div class="arithmatex">\[
+\frac{n^2}{2k} - \frac{n}{2} \;\le\; C(n) \;\le\; \frac{n^2}{2k} + \frac{n}{2}
+\]</div>
+<p>The <span class="arithmatex">\(n^2\)</span> term dominates both bounds, so</p>
+<div class="arithmatex">\[
+C(n) = \Theta(n^2)
+\]</div>
+<p>The number of copies grows <strong>quadratically</strong> with the number of appends:
+doubling <span class="arithmatex">\(n\)</span> quadruples the copying. With a step of <span class="arithmatex">\(k = 16\)</span> the leading
+term is <span class="arithmatex">\(n^2 / 32\)</span>, the figure quoted above.</p>
+<p><strong>Amortize.</strong> The amortized cost of one append is the total cost of <span class="arithmatex">\(n\)</span>
+appends divided by <span class="arithmatex">\(n\)</span>. Each append also does one write of its own, which
+adds <span class="arithmatex">\(n\)</span> to the total:</p>
+<div class="arithmatex">\[
+\frac{C(n) + n}{n} \approx \frac{n}{2k} + \frac{3}{2} = \Theta(n)
+\]</div>
+<p>Each append costs <strong>linear</strong> time on average. The step <span class="arithmatex">\(k\)</span> only appears in
+the denominator of a constant: a larger step makes the line shallower, but
+it is still a line.</p>
+<details class="note">
+<summary>Starting from any initial capacity</summary>
+<p>If the array starts with a capacity of <span class="arithmatex">\(c_0\)</span> instead of <span class="arithmatex">\(k\)</span>, the
+resizes happen at lengths <span class="arithmatex">\(c_0, \; c_0 + k, \; c_0 + 2k, \; \dots\)</span> and
+there are <span class="arithmatex">\(m = \lceil (n - c_0) / k \rceil\)</span> of them. Numbering them from
+0, the sum
+<a href="../../math/cheat-sheet/#sums-that-start-at-index-0">starts at index 0</a>:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+C(n) &amp;= \sum_{i=0}^{m-1} (c_0 + ik) \\[4pt]
+     &amp;= \sum_{i=0}^{m-1} c_0 + k \sum_{i=0}^{m-1} i \\[4pt]
+     &amp;= m \, c_0 + k \cdot \frac{(m-1)\,m}{2}
+\end{aligned}
+\]</div>
+<p>With <span class="arithmatex">\(m \approx n / k\)</span> the leading term is still <span class="arithmatex">\(n^2 / (2k)\)</span>. The
+initial capacity changes only the lower-order terms.</p>
+</details>
+<h3 id="counting-the-copies-doubling">Counting the copies: doubling<a class="headerlink" href="#counting-the-copies-doubling" title="Permanent link">&para;</a></h3>
+<p>Run the same count for an array that starts with a capacity of 1 and
+doubles. Now the resizes happen at lengths</p>
+<div class="arithmatex">\[
+1, \; 2, \; 4, \; \dots, \; 2^{m-1}
+\]</div>
+<p>and the last of them is below <span class="arithmatex">\(n\)</span>, so <span class="arithmatex">\(2^{m-1} &lt; n\)</span>. The total is a
+<a href="../../math/cheat-sheet/#geometric-series">geometric series</a>:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+C(n) &amp;= \sum_{i=0}^{m-1} 2^i \\[4pt]
+     &amp;= 2^m - 1 \\[4pt]
+     &amp;&lt; 2n
+\end{aligned}
+\]</div>
+<p>Fewer than <span class="arithmatex">\(2n\)</span> copies for <span class="arithmatex">\(n\)</span> appends, so <span class="arithmatex">\(C(n) = \Theta(n)\)</span> and the
+amortized cost of an append is</p>
+<div class="arithmatex">\[
+\frac{C(n) + n}{n} &lt; 3 = \Theta(1)
+\]</div>
+<p>The difference between the two policies is the difference between the two
+series. An arithmetic series sums to roughly the <em>square</em> of its number of
+terms, and additive growth has <span class="arithmatex">\(n / k\)</span> terms. A geometric series sums to
+roughly twice its <em>last</em> term, and the last term here is below <span class="arithmatex">\(n\)</span>.</p>
+<h3 id="measured">Measured<a class="headerlink" href="#measured" title="Permanent link">&para;</a></h3>
+<p>The benchmark below appends n integers to an empty array and times the whole
+run. The first tab divides each time by n, giving the cost of one append: a
+line that stays flat is constant cost per append, and one that climbs is not.
+The second tab shows the total time, where the steeper line is the quadratic
+one. Both axes are logarithmic.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Time per operation</label><label for="__tabbed_1_2">Total time</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>DynamicArray(doubling)</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>DynamicArray(geometric(1.5))</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>DynamicArray(additive(16))</code></span><span class="bm-key bm-s3"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></svg><code>list</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of time per operation against input size for the dynamic_array.append benchmark, on logarithmic axes. Series: DynamicArray(doubling), DynamicArray(geometric(1.5)), DynamicArray(additive(16)), list. The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="271.9" y2="271.9"/><text class="bm-tick" x="68" y="271.9" dy="0.32em" text-anchor="end">100 ns</text><line class="bm-grid" x1="76" x2="698" y1="185.9" y2="185.9"/><text class="bm-tick" x="68" y="185.9" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-grid" x1="76" x2="698" y1="100.0" y2="100.0"/><text class="bm-tick" x="68" y="100.0" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="14.0" y2="14.0"/><text class="bm-tick" x="68" y="14.0" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">time per operation (log scale)</text><polyline class="bm-line bm-s0" points="93.6,223.6 240.3,224.7 387.0,221.2 533.7,221.8 680.4,221.9"/><polyline class="bm-line bm-s1" points="93.6,218.0 240.3,221.0 387.0,218.6 533.7,217.0 680.4,218.4"/><polyline class="bm-line bm-s2" points="240.3,173.9 284.5,151.5 342.8,116.2 387.0,91.0 431.2,64.9 489.5,32.4"/><polyline class="bm-line bm-s3" points="93.6,327.6 240.3,327.7 387.0,329.3 533.7,326.7 680.4,315.0"/><g class="bm-point bm-s0" transform="translate(93.6 223.6)"><title>DynamicArray(doubling), n = 100: 365 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 224.7)"><title>DynamicArray(doubling), n = 1,000: 354 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 221.2)"><title>DynamicArray(doubling), n = 10,000: 389 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 221.8)"><title>DynamicArray(doubling), n = 100,000: 383 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 221.9)"><title>DynamicArray(doubling), n = 1,000,000: 381 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 218.0)"><title>DynamicArray(geometric(1.5)), n = 100: 424 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 221.0)"><title>DynamicArray(geometric(1.5)), n = 1,000: 391 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 218.6)"><title>DynamicArray(geometric(1.5)), n = 10,000: 417 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 217.0)"><title>DynamicArray(geometric(1.5)), n = 100,000: 436 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 218.4)"><title>DynamicArray(geometric(1.5)), n = 1,000,000: 419 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 173.9)"><title>DynamicArray(additive(16)), n = 1,000: 1.38 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(284.5 151.5)"><title>DynamicArray(additive(16)), n = 2,000: 2.52 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(342.8 116.2)"><title>DynamicArray(additive(16)), n = 5,000: 6.47 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 91.0)"><title>DynamicArray(additive(16)), n = 10,000: 12.7 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(431.2 64.9)"><title>DynamicArray(additive(16)), n = 20,000: 25.6 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(489.5 32.4)"><title>DynamicArray(additive(16)), n = 50,000: 61.1 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s3" transform="translate(93.6 327.6)"><title>list, n = 100: 22.5 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(240.3 327.7)"><title>list, n = 1,000: 22.4 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(387.0 329.3)"><title>list, n = 10,000: 21.5 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(533.7 326.7)"><title>list, n = 100,000: 23 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(680.4 315.0)"><title>list, n = 1,000,000: 31.5 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g></svg></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;"><code>DynamicArray(<wbr>doubling)</code></th>
+<th style="text-align: right;"><code>DynamicArray(<wbr>geometric(1.5))</code></th>
+<th style="text-align: right;"><code>DynamicArray(<wbr>additive(16))</code></th>
+<th style="text-align: right;"><code>list</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">365 ns</td>
+<td style="text-align: right;">424 ns</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">22.5 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">354 ns</td>
+<td style="text-align: right;">391 ns</td>
+<td style="text-align: right;">1.38 µs</td>
+<td style="text-align: right;">22.4 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">2,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">2.52 µs</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">5,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">6.47 µs</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">389 ns</td>
+<td style="text-align: right;">417 ns</td>
+<td style="text-align: right;">12.7 µs</td>
+<td style="text-align: right;">21.5 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">20,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">25.6 µs</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">50,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">61.1 µs</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">100,000</td>
+<td style="text-align: right;">383 ns</td>
+<td style="text-align: right;">436 ns</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">23 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000,000</td>
+<td style="text-align: right;">381 ns</td>
+<td style="text-align: right;">419 ns</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">31.5 ns</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>DynamicArray(doubling)</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>DynamicArray(geometric(1.5))</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>DynamicArray(additive(16))</code></span><span class="bm-key bm-s3"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></svg><code>list</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the dynamic_array.append benchmark, on logarithmic axes. Series: DynamicArray(doubling), DynamicArray(geometric(1.5)), DynamicArray(additive(16)), list. The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="297.3" y2="297.3"/><text class="bm-tick" x="68" y="297.3" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="247.6" y2="247.6"/><text class="bm-tick" x="68" y="247.6" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-grid" x1="76" x2="698" y1="197.9" y2="197.9"/><text class="bm-tick" x="68" y="197.9" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="148.1" y2="148.1"/><text class="bm-tick" x="68" y="148.1" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="98.4" y2="98.4"/><text class="bm-tick" x="68" y="98.4" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-grid" x1="76" x2="698" y1="48.7" y2="48.7"/><text class="bm-tick" x="68" y="48.7" dy="0.32em" text-anchor="end">1 s</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,269.3 240.3,220.3 387.0,168.5 533.7,119.2 680.4,69.6"/><polyline class="bm-line bm-s1" points="93.6,266.1 240.3,218.1 387.0,167.0 533.7,116.4 680.4,67.5"/><polyline class="bm-line bm-s2" points="240.3,190.9 284.5,163.0 342.8,122.8 387.0,93.2 431.2,63.2 489.5,24.6"/><polyline class="bm-line bm-s3" points="93.6,329.5 240.3,279.8 387.0,231.0 533.7,179.8 680.4,123.4"/><g class="bm-point bm-s0" transform="translate(93.6 269.3)"><title>DynamicArray(doubling), n = 100: 36.5 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 220.3)"><title>DynamicArray(doubling), n = 1,000: 354 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 168.5)"><title>DynamicArray(doubling), n = 10,000: 3.89 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 119.2)"><title>DynamicArray(doubling), n = 100,000: 38.3 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 69.6)"><title>DynamicArray(doubling), n = 1,000,000: 381 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 266.1)"><title>DynamicArray(geometric(1.5)), n = 100: 42.4 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 218.1)"><title>DynamicArray(geometric(1.5)), n = 1,000: 391 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 167.0)"><title>DynamicArray(geometric(1.5)), n = 10,000: 4.17 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 116.4)"><title>DynamicArray(geometric(1.5)), n = 100,000: 43.6 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 67.5)"><title>DynamicArray(geometric(1.5)), n = 1,000,000: 419 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 190.9)"><title>DynamicArray(additive(16)), n = 1,000: 1.38 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(284.5 163.0)"><title>DynamicArray(additive(16)), n = 2,000: 5.03 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(342.8 122.8)"><title>DynamicArray(additive(16)), n = 5,000: 32.3 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 93.2)"><title>DynamicArray(additive(16)), n = 10,000: 127 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(431.2 63.2)"><title>DynamicArray(additive(16)), n = 20,000: 512 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(489.5 24.6)"><title>DynamicArray(additive(16)), n = 50,000: 3.06 s</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s3" transform="translate(93.6 329.5)"><title>list, n = 100: 2.25 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(240.3 279.8)"><title>list, n = 1,000: 22.4 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(387.0 231.0)"><title>list, n = 10,000: 215 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(533.7 179.8)"><title>list, n = 100,000: 2.3 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(680.4 123.4)"><title>list, n = 1,000,000: 31.5 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g></svg></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;"><code>DynamicArray(<wbr>doubling)</code></th>
+<th style="text-align: right;"><code>DynamicArray(<wbr>geometric(1.5))</code></th>
+<th style="text-align: right;"><code>DynamicArray(<wbr>additive(16))</code></th>
+<th style="text-align: right;"><code>list</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">36.5 µs</td>
+<td style="text-align: right;">42.4 µs</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">2.25 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">354 µs</td>
+<td style="text-align: right;">391 µs</td>
+<td style="text-align: right;">1.38 ms</td>
+<td style="text-align: right;">22.4 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">2,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">5.03 ms</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">5,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">32.3 ms</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">3.89 ms</td>
+<td style="text-align: right;">4.17 ms</td>
+<td style="text-align: right;">127 ms</td>
+<td style="text-align: right;">215 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">20,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">512 ms</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">50,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">3.06 s</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">100,000</td>
+<td style="text-align: right;">38.3 ms</td>
+<td style="text-align: right;">43.6 ms</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">2.3 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000,000</td>
+<td style="text-align: right;">381 ms</td>
+<td style="text-align: right;">419 ms</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">31.5 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>slope</strong></td>
+<td style="text-align: right;"><strong>1.01</strong></td>
+<td style="text-align: right;"><strong>1.00</strong></td>
+<td style="text-align: right;"><strong>1.98</strong></td>
+<td style="text-align: right;"><strong>1.03</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><small>Measured on cs-survival-kit 0.7.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-06. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
+<p>Both geometric policies stay flat as n grows by four orders of magnitude,
+just like the built-in <code>list</code>. The additive column grows in step with n.
+<code>list</code> is faster throughout because it is implemented in C; what the two
+share is the shape of the curve.</p>
+<h2 id="choosing-a-factor">Choosing a factor<a class="headerlink" href="#choosing-a-factor" title="Permanent link">&para;</a></h2>
+<p>Any factor above 1 gives amortized O(1) appends. The factor trades time for
+memory: a larger one resizes less often, but leaves more of the capacity
+unused straight after a resize.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Time per operation</label><label for="__tabbed_2_2">Total time</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>geometric(1.25)</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>geometric(1.5)</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>geometric(2.0)</code></span><span class="bm-key bm-s3"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></svg><code>geometric(3.0)</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of time per operation against input size for the dynamic_array.append.geometric_factors benchmark, on logarithmic axes. Series: geometric(1.25), geometric(1.5), geometric(2.0), geometric(3.0). The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="332.0" y2="332.0"/><text class="bm-tick" x="68" y="332.0" dy="0.32em" text-anchor="end">200 ns</text><line class="bm-grid" x1="76" x2="698" y1="151.0" y2="151.0"/><text class="bm-tick" x="68" y="151.0" dy="0.32em" text-anchor="end">500 ns</text><line class="bm-grid" x1="76" x2="698" y1="14.0" y2="14.0"/><text class="bm-tick" x="68" y="14.0" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">time per operation (log scale)</text><polyline class="bm-line bm-s0" points="93.6,150.9 240.3,166.1 387.0,160.5 533.7,151.4 680.4,148.9"/><polyline class="bm-line bm-s1" points="93.6,187.1 240.3,202.3 387.0,190.2 533.7,180.3 680.4,190.5"/><polyline class="bm-line bm-s2" points="93.6,218.1 240.3,224.6 387.0,206.2 533.7,210.4 680.4,212.0"/><polyline class="bm-line bm-s3" points="93.6,231.2 240.3,215.2 387.0,213.2 533.7,212.3 680.4,210.9"/><g class="bm-point bm-s0" transform="translate(93.6 150.9)"><title>geometric(1.25), n = 100: 500 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 166.1)"><title>geometric(1.25), n = 1,000: 463 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 160.5)"><title>geometric(1.25), n = 10,000: 476 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 151.4)"><title>geometric(1.25), n = 100,000: 499 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 148.9)"><title>geometric(1.25), n = 1,000,000: 505 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 187.1)"><title>geometric(1.5), n = 100: 416 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 202.3)"><title>geometric(1.5), n = 1,000: 386 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 190.2)"><title>geometric(1.5), n = 10,000: 410 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 180.3)"><title>geometric(1.5), n = 100,000: 431 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 190.5)"><title>geometric(1.5), n = 1,000,000: 409 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(93.6 218.1)"><title>geometric(2.0), n = 100: 356 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 224.6)"><title>geometric(2.0), n = 1,000: 344 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 206.2)"><title>geometric(2.0), n = 10,000: 378 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(533.7 210.4)"><title>geometric(2.0), n = 100,000: 370 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(680.4 212.0)"><title>geometric(2.0), n = 1,000,000: 367 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s3" transform="translate(93.6 231.2)"><title>geometric(3.0), n = 100: 333 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(240.3 215.2)"><title>geometric(3.0), n = 1,000: 361 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(387.0 213.2)"><title>geometric(3.0), n = 10,000: 365 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(533.7 212.3)"><title>geometric(3.0), n = 100,000: 367 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(680.4 210.9)"><title>geometric(3.0), n = 1,000,000: 369 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g></svg></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;"><code>geometric(<wbr>1.25)</code></th>
+<th style="text-align: right;"><code>geometric(<wbr>1.5)</code></th>
+<th style="text-align: right;"><code>geometric(<wbr>2.0)</code></th>
+<th style="text-align: right;"><code>geometric(<wbr>3.0)</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">500 ns</td>
+<td style="text-align: right;">416 ns</td>
+<td style="text-align: right;">356 ns</td>
+<td style="text-align: right;">333 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">463 ns</td>
+<td style="text-align: right;">386 ns</td>
+<td style="text-align: right;">344 ns</td>
+<td style="text-align: right;">361 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">476 ns</td>
+<td style="text-align: right;">410 ns</td>
+<td style="text-align: right;">378 ns</td>
+<td style="text-align: right;">365 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">100,000</td>
+<td style="text-align: right;">499 ns</td>
+<td style="text-align: right;">431 ns</td>
+<td style="text-align: right;">370 ns</td>
+<td style="text-align: right;">367 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000,000</td>
+<td style="text-align: right;">505 ns</td>
+<td style="text-align: right;">409 ns</td>
+<td style="text-align: right;">367 ns</td>
+<td style="text-align: right;">369 ns</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>geometric(1.25)</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>geometric(1.5)</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>geometric(2.0)</code></span><span class="bm-key bm-s3"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></svg><code>geometric(3.0)</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the dynamic_array.append.geometric_factors benchmark, on logarithmic axes. Series: geometric(1.25), geometric(1.5), geometric(2.0), geometric(3.0). The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="284.7" y2="284.7"/><text class="bm-tick" x="68" y="284.7" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-grid" x1="76" x2="698" y1="217.0" y2="217.0"/><text class="bm-tick" x="68" y="217.0" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="149.3" y2="149.3"/><text class="bm-tick" x="68" y="149.3" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="81.7" y2="81.7"/><text class="bm-tick" x="68" y="81.7" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-grid" x1="76" x2="698" y1="14.0" y2="14.0"/><text class="bm-tick" x="68" y="14.0" dy="0.32em" text-anchor="end">1 s</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,305.1 240.3,239.7 387.0,171.1 533.7,102.1 680.4,34.1"/><polyline class="bm-line bm-s1" points="93.6,310.5 240.3,245.0 387.0,175.6 533.7,106.4 680.4,40.2"/><polyline class="bm-line bm-s2" points="93.6,315.1 240.3,248.4 387.0,177.9 533.7,110.9 680.4,43.5"/><polyline class="bm-line bm-s3" points="93.6,317.0 240.3,247.0 387.0,179.0 533.7,111.2 680.4,43.3"/><g class="bm-point bm-s0" transform="translate(93.6 305.1)"><title>geometric(1.25), n = 100: 50 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 239.7)"><title>geometric(1.25), n = 1,000: 463 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 171.1)"><title>geometric(1.25), n = 10,000: 4.76 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 102.1)"><title>geometric(1.25), n = 100,000: 49.9 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 34.1)"><title>geometric(1.25), n = 1,000,000: 505 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 310.5)"><title>geometric(1.5), n = 100: 41.6 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 245.0)"><title>geometric(1.5), n = 1,000: 386 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 175.6)"><title>geometric(1.5), n = 10,000: 4.1 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 106.4)"><title>geometric(1.5), n = 100,000: 43.1 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 40.2)"><title>geometric(1.5), n = 1,000,000: 409 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(93.6 315.1)"><title>geometric(2.0), n = 100: 35.6 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 248.4)"><title>geometric(2.0), n = 1,000: 344 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 177.9)"><title>geometric(2.0), n = 10,000: 3.78 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(533.7 110.9)"><title>geometric(2.0), n = 100,000: 37 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(680.4 43.5)"><title>geometric(2.0), n = 1,000,000: 367 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s3" transform="translate(93.6 317.0)"><title>geometric(3.0), n = 100: 33.3 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(240.3 247.0)"><title>geometric(3.0), n = 1,000: 361 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(387.0 179.0)"><title>geometric(3.0), n = 10,000: 3.65 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(533.7 111.2)"><title>geometric(3.0), n = 100,000: 36.7 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(680.4 43.3)"><title>geometric(3.0), n = 1,000,000: 369 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g></svg></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;"><code>geometric(<wbr>1.25)</code></th>
+<th style="text-align: right;"><code>geometric(<wbr>1.5)</code></th>
+<th style="text-align: right;"><code>geometric(<wbr>2.0)</code></th>
+<th style="text-align: right;"><code>geometric(<wbr>3.0)</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">100</td>
+<td style="text-align: right;">50 µs</td>
+<td style="text-align: right;">41.6 µs</td>
+<td style="text-align: right;">35.6 µs</td>
+<td style="text-align: right;">33.3 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">463 µs</td>
+<td style="text-align: right;">386 µs</td>
+<td style="text-align: right;">344 µs</td>
+<td style="text-align: right;">361 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">4.76 ms</td>
+<td style="text-align: right;">4.1 ms</td>
+<td style="text-align: right;">3.78 ms</td>
+<td style="text-align: right;">3.65 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;">100,000</td>
+<td style="text-align: right;">49.9 ms</td>
+<td style="text-align: right;">43.1 ms</td>
+<td style="text-align: right;">37 ms</td>
+<td style="text-align: right;">36.7 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000,000</td>
+<td style="text-align: right;">505 ms</td>
+<td style="text-align: right;">409 ms</td>
+<td style="text-align: right;">367 ms</td>
+<td style="text-align: right;">369 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>slope</strong></td>
+<td style="text-align: right;"><strong>1.00</strong></td>
+<td style="text-align: right;"><strong>1.00</strong></td>
+<td style="text-align: right;"><strong>1.01</strong></td>
+<td style="text-align: right;"><strong>1.01</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><small>Measured on cs-survival-kit 0.7.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-06. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
+<h2 id="a-larger-step-does-not-fix-additive-growth">A larger step does not fix additive growth<a class="headerlink" href="#a-larger-step-does-not-fix-additive-growth" title="Permanent link">&para;</a></h2>
+<p>It is tempting to think a big enough step makes additive growth acceptable.
+A larger step does start out cheap, but the cost per append still rises with
+n. It delays the quadratic behaviour without removing it.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Time per operation</label><label for="__tabbed_3_2">Total time</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>additive(16)</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>additive(256)</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>additive(4096)</code></span><span class="bm-key bm-s3"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></svg><code>doubling</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of time per operation against input size for the dynamic_array.append.additive_steps benchmark, on logarithmic axes. Series: additive(16), additive(256), additive(4096), doubling. The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="249.6" y2="249.6"/><text class="bm-tick" x="68" y="249.6" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-grid" x1="76" x2="698" y1="131.8" y2="131.8"/><text class="bm-tick" x="68" y="131.8" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="14.0" y2="14.0"/><text class="bm-tick" x="68" y="14.0" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="289.2" x2="289.2" y1="332" y2="337"/><text class="bm-tick" x="289.2" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="484.8" x2="484.8" y1="332" y2="337"/><text class="bm-tick" x="484.8" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">time per operation (log scale)</text><polyline class="bm-line bm-s0" points="93.6,233.4 152.5,201.0 230.3,154.8 289.2,119.4 348.1,85.9 425.9,37.4"/><polyline class="bm-line bm-s1" points="230.3,268.5 289.2,243.7 348.1,216.2 425.9,174.7 484.8,143.3 543.7,108.8"/><polyline class="bm-line bm-s2" points="425.9,279.5 484.8,260.1 543.7,237.7 621.5,198.3 680.4,165.7"/><polyline class="bm-line bm-s3" points="93.6,304.5 289.2,298.9 484.8,300.3 680.4,300.6"/><g class="bm-point bm-s0" transform="translate(93.6 233.4)"><title>additive(16), n = 1,000: 1.37 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(152.5 201.0)"><title>additive(16), n = 2,000: 2.59 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(230.3 154.8)"><title>additive(16), n = 5,000: 6.39 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(289.2 119.4)"><title>additive(16), n = 10,000: 12.8 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(348.1 85.9)"><title>additive(16), n = 20,000: 24.5 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(425.9 37.4)"><title>additive(16), n = 50,000: 63.3 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(230.3 268.5)"><title>additive(256), n = 5,000: 692 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(289.2 243.7)"><title>additive(256), n = 10,000: 1.12 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(348.1 216.2)"><title>additive(256), n = 20,000: 1.92 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(425.9 174.7)"><title>additive(256), n = 50,000: 4.33 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(484.8 143.3)"><title>additive(256), n = 100,000: 7.99 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(543.7 108.8)"><title>additive(256), n = 200,000: 15.7 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(425.9 279.5)"><title>additive(4096), n = 50,000: 558 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(484.8 260.1)"><title>additive(4096), n = 100,000: 816 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(543.7 237.7)"><title>additive(4096), n = 200,000: 1.26 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(621.5 198.3)"><title>additive(4096), n = 500,000: 2.73 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(680.4 165.7)"><title>additive(4096), n = 1,000,000: 5.16 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s3" transform="translate(93.6 304.5)"><title>doubling, n = 1,000: 342 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(289.2 298.9)"><title>doubling, n = 10,000: 382 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(484.8 300.3)"><title>doubling, n = 100,000: 371 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(680.4 300.6)"><title>doubling, n = 1,000,000: 369 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g></svg></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;"><code>additive(<wbr>16)</code></th>
+<th style="text-align: right;"><code>additive(<wbr>256)</code></th>
+<th style="text-align: right;"><code>additive(<wbr>4096)</code></th>
+<th style="text-align: right;"><code>doubling</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">1.37 µs</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">342 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">2,000</td>
+<td style="text-align: right;">2.59 µs</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">5,000</td>
+<td style="text-align: right;">6.39 µs</td>
+<td style="text-align: right;">692 ns</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">12.8 µs</td>
+<td style="text-align: right;">1.12 µs</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">382 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">20,000</td>
+<td style="text-align: right;">24.5 µs</td>
+<td style="text-align: right;">1.92 µs</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">50,000</td>
+<td style="text-align: right;">63.3 µs</td>
+<td style="text-align: right;">4.33 µs</td>
+<td style="text-align: right;">558 ns</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">100,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">7.99 µs</td>
+<td style="text-align: right;">816 ns</td>
+<td style="text-align: right;">371 ns</td>
+</tr>
+<tr>
+<td style="text-align: right;">200,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">15.7 µs</td>
+<td style="text-align: right;">1.26 µs</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">500,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">2.73 µs</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">5.16 µs</td>
+<td style="text-align: right;">369 ns</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>additive(16)</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>additive(256)</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>additive(4096)</code></span><span class="bm-key bm-s3"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></svg><code>doubling</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the dynamic_array.append.additive_steps benchmark, on logarithmic axes. Series: additive(16), additive(256), additive(4096), doubling. The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="284.7" y2="284.7"/><text class="bm-tick" x="68" y="284.7" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="217.0" y2="217.0"/><text class="bm-tick" x="68" y="217.0" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="149.3" y2="149.3"/><text class="bm-tick" x="68" y="149.3" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-grid" x1="76" x2="698" y1="81.7" y2="81.7"/><text class="bm-tick" x="68" y="81.7" dy="0.32em" text-anchor="end">1 s</text><line class="bm-grid" x1="76" x2="698" y1="14.0" y2="14.0"/><text class="bm-tick" x="68" y="14.0" dy="0.32em" text-anchor="end">10 s</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="289.2" x2="289.2" y1="332" y2="337"/><text class="bm-tick" x="289.2" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="484.8" x2="484.8" y1="332" y2="337"/><text class="bm-tick" x="484.8" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,275.4 152.5,236.4 230.3,182.9 289.2,142.2 348.1,102.6 425.9,47.8"/><polyline class="bm-line bm-s1" points="230.3,248.2 289.2,213.6 348.1,177.5 425.9,126.7 484.8,88.3 543.7,48.1"/><polyline class="bm-line bm-s2" points="425.9,186.9 484.8,155.3 543.7,122.1 621.5,72.5 680.4,33.4"/><polyline class="bm-line bm-s3" points="93.6,316.2 289.2,245.3 484.8,178.5 680.4,111.0"/><g class="bm-point bm-s0" transform="translate(93.6 275.4)"><title>additive(16), n = 1,000: 1.37 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(152.5 236.4)"><title>additive(16), n = 2,000: 5.18 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(230.3 182.9)"><title>additive(16), n = 5,000: 31.9 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(289.2 142.2)"><title>additive(16), n = 10,000: 128 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(348.1 102.6)"><title>additive(16), n = 20,000: 490 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(425.9 47.8)"><title>additive(16), n = 50,000: 3.17 s</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(230.3 248.2)"><title>additive(256), n = 5,000: 3.46 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(289.2 213.6)"><title>additive(256), n = 10,000: 11.2 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(348.1 177.5)"><title>additive(256), n = 20,000: 38.4 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(425.9 126.7)"><title>additive(256), n = 50,000: 216 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(484.8 88.3)"><title>additive(256), n = 100,000: 799 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(543.7 48.1)"><title>additive(256), n = 200,000: 3.14 s</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(425.9 186.9)"><title>additive(4096), n = 50,000: 27.9 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(484.8 155.3)"><title>additive(4096), n = 100,000: 81.6 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(543.7 122.1)"><title>additive(4096), n = 200,000: 253 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(621.5 72.5)"><title>additive(4096), n = 500,000: 1.36 s</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(680.4 33.4)"><title>additive(4096), n = 1,000,000: 5.16 s</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s3" transform="translate(93.6 316.2)"><title>doubling, n = 1,000: 342 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(289.2 245.3)"><title>doubling, n = 10,000: 3.82 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(484.8 178.5)"><title>doubling, n = 100,000: 37.1 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g><g class="bm-point bm-s3" transform="translate(680.4 111.0)"><title>doubling, n = 1,000,000: 369 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.4L5.4,0L0,5.4L-5.4,0Z"/></g></svg></figure></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;"><code>additive(<wbr>16)</code></th>
+<th style="text-align: right;"><code>additive(<wbr>256)</code></th>
+<th style="text-align: right;"><code>additive(<wbr>4096)</code></th>
+<th style="text-align: right;"><code>doubling</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">1.37 ms</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">342 µs</td>
+</tr>
+<tr>
+<td style="text-align: right;">2,000</td>
+<td style="text-align: right;">5.18 ms</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">5,000</td>
+<td style="text-align: right;">31.9 ms</td>
+<td style="text-align: right;">3.46 ms</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">128 ms</td>
+<td style="text-align: right;">11.2 ms</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">3.82 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;">20,000</td>
+<td style="text-align: right;">490 ms</td>
+<td style="text-align: right;">38.4 ms</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">50,000</td>
+<td style="text-align: right;">3.17 s</td>
+<td style="text-align: right;">216 ms</td>
+<td style="text-align: right;">27.9 ms</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">100,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">799 ms</td>
+<td style="text-align: right;">81.6 ms</td>
+<td style="text-align: right;">37.1 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;">200,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">3.14 s</td>
+<td style="text-align: right;">253 ms</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">500,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">1.36 s</td>
+<td style="text-align: right;"></td>
+</tr>
+<tr>
+<td style="text-align: right;">1,000,000</td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;">5.16 s</td>
+<td style="text-align: right;">369 ms</td>
+</tr>
+<tr>
+<td style="text-align: right;"><strong>slope</strong></td>
+<td style="text-align: right;"><strong>1.98</strong></td>
+<td style="text-align: right;"><strong>1.85</strong></td>
+<td style="text-align: right;"><strong>1.75</strong></td>
+<td style="text-align: right;"><strong>1.01</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><small>Measured on cs-survival-kit 0.7.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-06. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
+<h2 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read or write by index</td>
+<td>O(1)</td>
+<td></td>
+</tr>
+<tr>
+<td>Append</td>
+<td>O(1) amortized</td>
+<td>O(n) for the append that triggers a resize</td>
+</tr>
+<tr>
+<td>Pop from the end</td>
+<td>O(1)</td>
+<td></td>
+</tr>
+<tr>
+<td>Iterate</td>
+<td>O(n)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>These assume a geometric growth policy.</p>
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../.." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../singly-linked-list/" class="md-footer__link md-footer__link--next" aria-label="Next: Singly Linked List">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Singly Linked List
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      CS Survival Guide v0.6.1
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog" role="status" aria-atomic="true">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.67a597eb.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
