@@ -66,10 +66,10 @@ the list, and a position near either end is a few steps away no matter how
 long the list is.
 
 This halves the average walk without changing its shape. Reading position
-`i` is $O(\min(i,\, n - 1 - i))$, which is still O(n) in the middle, so reading by
-position is not where a doubly linked list beats an array. What it does win
-is the last few positions: `a[n - 1]` is O(1) here and O(n) in a singly
-linked list.
+`i` is $O(\min(i,\, n - 1 - i))$, which is still O(n) in the middle, so
+reading by position is not where a doubly linked list beats an array. What
+it does win is the last few positions: `a[n - 1]` is O(1) here and O(n) in a
+singly linked list.
 
 [`insert`][cs_survival_kit.data_structures.doubly_linked_list.DoublyLinkedList.insert]
 and
