@@ -1561,10 +1561,10 @@ and follows <code>n - 1 - i</code> backward links. The walk is never longer than
 the list, and a position near either end is a few steps away no matter how
 long the list is.</p>
 <p>This halves the average walk without changing its shape. Reading position
-<code>i</code> is <span class="arithmatex">\(O(\min(i,\, n - 1 - i))\)</span>, which is still O(n) in the middle, so reading by
-position is not where a doubly linked list beats an array. What it does win
-is the last few positions: <code>a[n - 1]</code> is O(1) here and O(n) in a singly
-linked list.</p>
+<code>i</code> is <span class="arithmatex">\(O(\min(i,\, n - 1 - i))\)</span>, which is still O(n) in the middle, so
+reading by position is not where a doubly linked list beats an array. What
+it does win is the last few positions: <code>a[n - 1]</code> is O(1) here and O(n) in a
+singly linked list.</p>
 <p><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;insert&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/doubly_linked_list/#cs_survival_kit.data_structures.doubly_linked_list.DoublyLinkedList.insert"><code>insert</code></a>
 and
 <a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;pop&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/doubly_linked_list/#cs_survival_kit.data_structures.doubly_linked_list.DoublyLinkedList.pop"><code>pop</code></a>
