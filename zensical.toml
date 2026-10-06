@@ -20,6 +20,9 @@ nav = [
   { "Math" = [
     { "Cheat Sheet" = "math/cheat-sheet.md" },
   ] },
+  { "Networking" = [
+    { "HTTP Cheat Sheet" = "networking/http-cheat-sheet.md" },
+  ] },
   { "Changelog" = "changelog.md" },
 ]
 
