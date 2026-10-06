@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.7.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.6.0...v0.7.0) (2026-10-06)
+
+
+### Features
+
+* **data-structures:** add doubly linked list guide ([#21](https://github.com/jwallace145/cs-survival-guide/issues/21)) ([f4ffd70](https://github.com/jwallace145/cs-survival-guide/commit/f4ffd7014824fe53dd5e97de84a0bbbb365aa831))
+
+
+### Bug Fixes
+
+* **deps:** bump cs-survival-kit to 0.7.0 ([#22](https://github.com/jwallace145/cs-survival-guide/issues/22)) ([618a6c8](https://github.com/jwallace145/cs-survival-guide/commit/618a6c82393670e6fd14c590e6d79565a11e2007))
+
+
+### Miscellaneous
+
+* add AGENTS.md with standing rules for coding agents ([#24](https://github.com/jwallace145/cs-survival-guide/issues/24)) ([de23e80](https://github.com/jwallace145/cs-survival-guide/commit/de23e802cea7f0daff1cc5edfba03236d7219360))
+
 ## [0.6.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.5.0...v0.6.0) (2026-10-05)
 
 
