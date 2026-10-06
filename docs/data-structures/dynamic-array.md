@@ -12,7 +12,8 @@ C++'s `std::vector` are all dynamic arrays.
 The guide's implementation is
 [`DynamicArray`][cs_survival_kit.data_structures.dynamic_array.DynamicArray].
 For the other classic way to store a sequence, and how the two compare, see
-the [singly linked list](singly-linked-list.md).
+the [singly linked list](singly-linked-list.md) and the
+[doubly linked list](doubly-linked-list.md).
 
 ## How it works
 
