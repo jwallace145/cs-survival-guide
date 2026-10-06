@@ -725,7 +725,7 @@
   <span class="md-ellipsis">
     
   
-  Reference (cs-survival-kit 0.6.0)
+  Reference (cs-survival-kit 0.7.0)
 
     
   </span>
@@ -741,7 +741,7 @@
               <span class="md-nav__icon md-icon"></span>
               
   
-  Reference (cs-survival-kit 0.6.0)
+  Reference (cs-survival-kit 0.7.0)
 
             </label>
             <ul class="md-nav__list" data-md-scrollfix>
@@ -1020,6 +1020,8 @@
       
         
       
+        
+      
     
     
     
@@ -1085,6 +1087,33 @@
     
   
   <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>abstract_list
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+                
+              
+                
+                  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../reference/cs_survival_kit/data_structures/doubly_linked_list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>doubly_linked_list
 
     
   </span>
@@ -1480,17 +1509,17 @@ and removing it means shifting them all back. Both are O(n).</p>
 <tbody>
 <tr>
 <td>Add at the front</td>
-<td><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;prepend&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/singly_linked_list/#cs_survival_kit.data_structures.singly_linked_list.SinglyLinkedList.prepend"><code>prepend</code></a></td>
+<td><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;prepend&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/#cs_survival_kit.data_structures.AbstractList.prepend"><code>prepend</code></a></td>
 </tr>
 <tr>
 <td>Remove from the front</td>
-<td><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;pop_front&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/singly_linked_list/#cs_survival_kit.data_structures.singly_linked_list.SinglyLinkedList.pop_front"><code>pop_front</code></a></td>
+<td><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;pop_front&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/#cs_survival_kit.data_structures.AbstractList.pop_front"><code>pop_front</code></a></td>
 </tr>
 </tbody>
 </table>
 <h2 id="working-at-the-end">Working at the end<a class="headerlink" href="#working-at-the-end" title="Permanent link">&para;</a></h2>
 <p>With a tail reference,
-<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;append&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/singly_linked_list/#cs_survival_kit.data_structures.singly_linked_list.SinglyLinkedList.append"><code>append</code></a>
+<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;append&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/#cs_survival_kit.data_structures.AbstractList.append"><code>append</code></a>
 is O(1) too: link the new node after the tail, then move the tail to it.</p>
 <p>Removing from the end is a different story. To unlink the last node you have
 to update the node <em>before</em> it, and there is no link pointing backward to
@@ -1505,7 +1534,7 @@ A node's location says nothing about where the next one is, so the only way
 to reach element <code>i</code> is to start at the head and follow <code>i</code> links.</p>
 <p>Reading by position, searching for a value, and removing a value all need
 that walk, so all three are O(n).</p>
-<p><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;remove&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/singly_linked_list/#cs_survival_kit.data_structures.singly_linked_list.SinglyLinkedList.remove"><code>remove</code></a>
+<p><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;remove&lt;/span&gt;" href="../../reference/cs_survival_kit/data_structures/#cs_survival_kit.data_structures.AbstractList.remove"><code>remove</code></a>
 has one extra wrinkle. Unlinking a node means pointing the previous node past
 it, so the walk has to carry a reference to the previous node as it goes.</p>
 <h2 id="reversing">Reversing<a class="headerlink" href="#reversing" title="Permanent link">&para;</a></h2>
@@ -1578,7 +1607,7 @@ divides by n to give the cost of one insertion.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Time per operation</label><label for="__tabbed_1_2">Total time</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList.prepend</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>deque.appendleft</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list.insert(0, x)</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of time per operation against input size for the singly_linked_list.prepend benchmark, on logarithmic axes. Series: SinglyLinkedList.prepend, deque.appendleft, list.insert(0, x). The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="249.6" y2="249.6"/><text class="bm-tick" x="68" y="249.6" dy="0.32em" text-anchor="end">100 ns</text><line class="bm-grid" x1="76" x2="698" y1="131.8" y2="131.8"/><text class="bm-tick" x="68" y="131.8" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-grid" x1="76" x2="698" y1="14.0" y2="14.0"/><text class="bm-tick" x="68" y="14.0" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">time per operation (log scale)</text><polyline class="bm-line bm-s0" points="93.6,208.7 240.3,206.3 387.0,204.8 533.7,199.4 680.4,194.9"/><polyline class="bm-line bm-s1" points="93.6,316.8 240.3,316.3 387.0,313.8 533.7,313.9 680.4,295.7"/><polyline class="bm-line bm-s2" points="240.3,234.8 284.5,205.8 342.8,162.6 387.0,127.4 431.2,92.3 489.5,45.4"/><g class="bm-point bm-s0" transform="translate(93.6 208.7)"><title>SinglyLinkedList.prepend, n = 100: 222 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 206.3)"><title>SinglyLinkedList.prepend, n = 1,000: 233 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 204.8)"><title>SinglyLinkedList.prepend, n = 10,000: 240 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 199.4)"><title>SinglyLinkedList.prepend, n = 100,000: 267 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 194.9)"><title>SinglyLinkedList.prepend, n = 1,000,000: 291 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 316.8)"><title>deque.appendleft, n = 100: 26.9 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 316.3)"><title>deque.appendleft, n = 1,000: 27.2 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 313.8)"><title>deque.appendleft, n = 10,000: 28.5 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 313.9)"><title>deque.appendleft, n = 100,000: 28.5 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 295.7)"><title>deque.appendleft, n = 1,000,000: 40.6 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 234.8)"><title>list.insert(0, x), n = 1,000: 134 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(284.5 205.8)"><title>list.insert(0, x), n = 2,000: 236 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(342.8 162.6)"><title>list.insert(0, x), n = 5,000: 548 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 127.4)"><title>list.insert(0, x), n = 10,000: 1.09 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(431.2 92.3)"><title>list.insert(0, x), n = 20,000: 2.17 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(489.5 45.4)"><title>list.insert(0, x), n = 50,000: 5.41 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList.prepend</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>deque.appendleft</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list.insert(0, x)</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of time per operation against input size for the singly_linked_list.prepend benchmark, on logarithmic axes. Series: SinglyLinkedList.prepend, deque.appendleft, list.insert(0, x). The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="249.6" y2="249.6"/><text class="bm-tick" x="68" y="249.6" dy="0.32em" text-anchor="end">100 ns</text><line class="bm-grid" x1="76" x2="698" y1="131.8" y2="131.8"/><text class="bm-tick" x="68" y="131.8" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-grid" x1="76" x2="698" y1="14.0" y2="14.0"/><text class="bm-tick" x="68" y="14.0" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">time per operation (log scale)</text><polyline class="bm-line bm-s0" points="93.6,190.8 240.3,189.4 387.0,188.6 533.7,183.9 680.4,182.2"/><polyline class="bm-line bm-s1" points="93.6,314.4 240.3,314.6 387.0,312.8 533.7,312.9 680.4,294.9"/><polyline class="bm-line bm-s2" points="240.3,233.7 284.5,205.0 342.8,162.5 387.0,127.4 431.2,92.3 489.5,45.7"/><g class="bm-point bm-s0" transform="translate(93.6 190.8)"><title>SinglyLinkedList.prepend, n = 100: 316 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 189.4)"><title>SinglyLinkedList.prepend, n = 1,000: 325 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 188.6)"><title>SinglyLinkedList.prepend, n = 10,000: 330 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 183.9)"><title>SinglyLinkedList.prepend, n = 100,000: 362 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 182.2)"><title>SinglyLinkedList.prepend, n = 1,000,000: 374 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 314.4)"><title>deque.appendleft, n = 100: 28.2 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 314.6)"><title>deque.appendleft, n = 1,000: 28.1 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 312.8)"><title>deque.appendleft, n = 10,000: 29.1 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 312.9)"><title>deque.appendleft, n = 100,000: 29.1 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 294.9)"><title>deque.appendleft, n = 1,000,000: 41.3 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 233.7)"><title>list.insert(0, x), n = 1,000: 136 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(284.5 205.0)"><title>list.insert(0, x), n = 2,000: 239 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(342.8 162.5)"><title>list.insert(0, x), n = 5,000: 549 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 127.4)"><title>list.insert(0, x), n = 10,000: 1.09 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(431.2 92.3)"><title>list.insert(0, x), n = 20,000: 2.17 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(489.5 45.7)"><title>list.insert(0, x), n = 50,000: 5.38 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
 <table>
 <thead>
 <tr>
@@ -1591,32 +1620,32 @@ divides by n to give the cost of one insertion.</p>
 <tbody>
 <tr>
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">222 ns</td>
-<td style="text-align: right;">26.9 ns</td>
+<td style="text-align: right;">316 ns</td>
+<td style="text-align: right;">28.2 ns</td>
 <td style="text-align: right;"></td>
 </tr>
 <tr>
 <td style="text-align: right;">1,000</td>
-<td style="text-align: right;">233 ns</td>
-<td style="text-align: right;">27.2 ns</td>
-<td style="text-align: right;">134 ns</td>
+<td style="text-align: right;">325 ns</td>
+<td style="text-align: right;">28.1 ns</td>
+<td style="text-align: right;">136 ns</td>
 </tr>
 <tr>
 <td style="text-align: right;">2,000</td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
-<td style="text-align: right;">236 ns</td>
+<td style="text-align: right;">239 ns</td>
 </tr>
 <tr>
 <td style="text-align: right;">5,000</td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
-<td style="text-align: right;">548 ns</td>
+<td style="text-align: right;">549 ns</td>
 </tr>
 <tr>
 <td style="text-align: right;">10,000</td>
-<td style="text-align: right;">240 ns</td>
-<td style="text-align: right;">28.5 ns</td>
+<td style="text-align: right;">330 ns</td>
+<td style="text-align: right;">29.1 ns</td>
 <td style="text-align: right;">1.09 µs</td>
 </tr>
 <tr>
@@ -1629,25 +1658,25 @@ divides by n to give the cost of one insertion.</p>
 <td style="text-align: right;">50,000</td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
-<td style="text-align: right;">5.41 µs</td>
+<td style="text-align: right;">5.38 µs</td>
 </tr>
 <tr>
 <td style="text-align: right;">100,000</td>
-<td style="text-align: right;">267 ns</td>
-<td style="text-align: right;">28.5 ns</td>
+<td style="text-align: right;">362 ns</td>
+<td style="text-align: right;">29.1 ns</td>
 <td style="text-align: right;"></td>
 </tr>
 <tr>
 <td style="text-align: right;">1,000,000</td>
-<td style="text-align: right;">291 ns</td>
-<td style="text-align: right;">40.6 ns</td>
+<td style="text-align: right;">374 ns</td>
+<td style="text-align: right;">41.3 ns</td>
 <td style="text-align: right;"></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="tabbed-block">
-<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList.prepend</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>deque.appendleft</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list.insert(0, x)</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the singly_linked_list.prepend benchmark, on logarithmic axes. Series: SinglyLinkedList.prepend, deque.appendleft, list.insert(0, x). The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="290.8" y2="290.8"/><text class="bm-tick" x="68" y="290.8" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="231.9" y2="231.9"/><text class="bm-tick" x="68" y="231.9" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-grid" x1="76" x2="698" y1="173.0" y2="173.0"/><text class="bm-tick" x="68" y="173.0" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="114.1" y2="114.1"/><text class="bm-tick" x="68" y="114.1" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="55.2" y2="55.2"/><text class="bm-tick" x="68" y="55.2" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,270.4 240.3,210.2 387.0,150.6 533.7,88.9 680.4,27.8"/><polyline class="bm-line bm-s1" points="93.6,324.4 240.3,265.2 387.0,205.1 533.7,146.2 680.4,78.2"/><polyline class="bm-line bm-s2" points="240.3,224.5 284.5,192.2 342.8,147.2 387.0,111.9 431.2,76.6 489.5,29.7"/><g class="bm-point bm-s0" transform="translate(93.6 270.4)"><title>SinglyLinkedList.prepend, n = 100: 22.2 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 210.2)"><title>SinglyLinkedList.prepend, n = 1,000: 233 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 150.6)"><title>SinglyLinkedList.prepend, n = 10,000: 2.4 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 88.9)"><title>SinglyLinkedList.prepend, n = 100,000: 26.7 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 27.8)"><title>SinglyLinkedList.prepend, n = 1,000,000: 291 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 324.4)"><title>deque.appendleft, n = 100: 2.69 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 265.2)"><title>deque.appendleft, n = 1,000: 27.2 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 205.1)"><title>deque.appendleft, n = 10,000: 285 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 146.2)"><title>deque.appendleft, n = 100,000: 2.85 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 78.2)"><title>deque.appendleft, n = 1,000,000: 40.6 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 224.5)"><title>list.insert(0, x), n = 1,000: 134 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(284.5 192.2)"><title>list.insert(0, x), n = 2,000: 471 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(342.8 147.2)"><title>list.insert(0, x), n = 5,000: 2.74 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 111.9)"><title>list.insert(0, x), n = 10,000: 10.9 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(431.2 76.6)"><title>list.insert(0, x), n = 20,000: 43.3 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(489.5 29.7)"><title>list.insert(0, x), n = 50,000: 271 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList.prepend</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>deque.appendleft</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list.insert(0, x)</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the singly_linked_list.prepend benchmark, on logarithmic axes. Series: SinglyLinkedList.prepend, deque.appendleft, list.insert(0, x). The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="290.8" y2="290.8"/><text class="bm-tick" x="68" y="290.8" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="231.9" y2="231.9"/><text class="bm-tick" x="68" y="231.9" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-grid" x1="76" x2="698" y1="173.0" y2="173.0"/><text class="bm-tick" x="68" y="173.0" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="114.1" y2="114.1"/><text class="bm-tick" x="68" y="114.1" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="55.2" y2="55.2"/><text class="bm-tick" x="68" y="55.2" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,261.4 240.3,201.8 387.0,142.5 533.7,81.2 680.4,21.4"/><polyline class="bm-line bm-s1" points="93.6,323.2 240.3,264.4 387.0,204.6 533.7,145.7 680.4,77.8"/><polyline class="bm-line bm-s2" points="240.3,224.0 284.5,191.8 342.8,147.2 387.0,111.9 431.2,76.6 489.5,29.9"/><g class="bm-point bm-s0" transform="translate(93.6 261.4)"><title>SinglyLinkedList.prepend, n = 100: 31.6 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 201.8)"><title>SinglyLinkedList.prepend, n = 1,000: 325 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 142.5)"><title>SinglyLinkedList.prepend, n = 10,000: 3.3 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 81.2)"><title>SinglyLinkedList.prepend, n = 100,000: 36.2 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 21.4)"><title>SinglyLinkedList.prepend, n = 1,000,000: 374 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 323.2)"><title>deque.appendleft, n = 100: 2.82 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 264.4)"><title>deque.appendleft, n = 1,000: 28.1 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 204.6)"><title>deque.appendleft, n = 10,000: 291 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 145.7)"><title>deque.appendleft, n = 100,000: 2.91 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 77.8)"><title>deque.appendleft, n = 1,000,000: 41.3 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 224.0)"><title>list.insert(0, x), n = 1,000: 136 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(284.5 191.8)"><title>list.insert(0, x), n = 2,000: 479 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(342.8 147.2)"><title>list.insert(0, x), n = 5,000: 2.75 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 111.9)"><title>list.insert(0, x), n = 10,000: 10.9 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(431.2 76.6)"><title>list.insert(0, x), n = 20,000: 43.3 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(489.5 29.9)"><title>list.insert(0, x), n = 50,000: 269 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
 <table>
 <thead>
 <tr>
@@ -1660,32 +1689,32 @@ divides by n to give the cost of one insertion.</p>
 <tbody>
 <tr>
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">22.2 µs</td>
-<td style="text-align: right;">2.69 µs</td>
+<td style="text-align: right;">31.6 µs</td>
+<td style="text-align: right;">2.82 µs</td>
 <td style="text-align: right;"></td>
 </tr>
 <tr>
 <td style="text-align: right;">1,000</td>
-<td style="text-align: right;">233 µs</td>
-<td style="text-align: right;">27.2 µs</td>
-<td style="text-align: right;">134 µs</td>
+<td style="text-align: right;">325 µs</td>
+<td style="text-align: right;">28.1 µs</td>
+<td style="text-align: right;">136 µs</td>
 </tr>
 <tr>
 <td style="text-align: right;">2,000</td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
-<td style="text-align: right;">471 µs</td>
+<td style="text-align: right;">479 µs</td>
 </tr>
 <tr>
 <td style="text-align: right;">5,000</td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
-<td style="text-align: right;">2.74 ms</td>
+<td style="text-align: right;">2.75 ms</td>
 </tr>
 <tr>
 <td style="text-align: right;">10,000</td>
-<td style="text-align: right;">2.4 ms</td>
-<td style="text-align: right;">285 µs</td>
+<td style="text-align: right;">3.3 ms</td>
+<td style="text-align: right;">291 µs</td>
 <td style="text-align: right;">10.9 ms</td>
 </tr>
 <tr>
@@ -1698,24 +1727,24 @@ divides by n to give the cost of one insertion.</p>
 <td style="text-align: right;">50,000</td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
-<td style="text-align: right;">271 ms</td>
+<td style="text-align: right;">269 ms</td>
 </tr>
 <tr>
 <td style="text-align: right;">100,000</td>
-<td style="text-align: right;">26.7 ms</td>
-<td style="text-align: right;">2.85 ms</td>
+<td style="text-align: right;">36.2 ms</td>
+<td style="text-align: right;">2.91 ms</td>
 <td style="text-align: right;"></td>
 </tr>
 <tr>
 <td style="text-align: right;">1,000,000</td>
-<td style="text-align: right;">291 ms</td>
-<td style="text-align: right;">40.6 ms</td>
+<td style="text-align: right;">374 ms</td>
+<td style="text-align: right;">41.3 ms</td>
 <td style="text-align: right;"></td>
 </tr>
 <tr>
 <td style="text-align: right;"><strong>slope</strong></td>
+<td style="text-align: right;"><strong>1.02</strong></td>
 <td style="text-align: right;"><strong>1.03</strong></td>
-<td style="text-align: right;"><strong>1.04</strong></td>
 <td style="text-align: right;"><strong>1.95</strong></td>
 </tr>
 </tbody>
@@ -1723,7 +1752,7 @@ divides by n to give the cost of one insertion.</p>
 </div>
 </div>
 </div>
-<p><small>Measured on cs-survival-kit 0.6.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-05. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
+<p><small>Measured on cs-survival-kit 0.7.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-06. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
 <p>The linked list and the deque are flat: an insertion costs the same whether
 the list holds a hundred elements or a million. The built-in list climbs
 steadily, because every insertion at index 0 shifts everything already there.
@@ -1737,7 +1766,7 @@ Python. Complexity describes how cost grows, not who wins at small sizes.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Time per operation</label><label for="__tabbed_2_2">Total time</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList.pop_front</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>deque.popleft</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list.pop(0)</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of time per operation against input size for the singly_linked_list.pop_front benchmark, on logarithmic axes. Series: SinglyLinkedList.pop_front, deque.popleft, list.pop(0). The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="332.0" y2="332.0"/><text class="bm-tick" x="68" y="332.0" dy="0.32em" text-anchor="end">10 ns</text><line class="bm-grid" x1="76" x2="698" y1="214.2" y2="214.2"/><text class="bm-tick" x="68" y="214.2" dy="0.32em" text-anchor="end">100 ns</text><line class="bm-grid" x1="76" x2="698" y1="96.4" y2="96.4"/><text class="bm-tick" x="68" y="96.4" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">time per operation (log scale)</text><polyline class="bm-line bm-s0" points="93.6,191.2 240.3,186.3 387.0,184.5 533.7,182.4 680.4,183.0"/><polyline class="bm-line bm-s1" points="93.6,303.9 240.3,275.3 387.0,267.6 533.7,267.3 680.4,264.8"/><polyline class="bm-line bm-s2" points="240.3,211.3 284.5,189.1 342.8,149.8 387.0,114.8 431.2,81.0 489.5,34.6"/><g class="bm-point bm-s0" transform="translate(93.6 191.2)"><title>SinglyLinkedList.pop_front, n = 100: 157 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 186.3)"><title>SinglyLinkedList.pop_front, n = 1,000: 173 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 184.5)"><title>SinglyLinkedList.pop_front, n = 10,000: 179 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 182.4)"><title>SinglyLinkedList.pop_front, n = 100,000: 186 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 183.0)"><title>SinglyLinkedList.pop_front, n = 1,000,000: 184 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 303.9)"><title>deque.popleft, n = 100: 17.3 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 275.3)"><title>deque.popleft, n = 1,000: 30.3 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 267.6)"><title>deque.popleft, n = 10,000: 35.2 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 267.3)"><title>deque.popleft, n = 100,000: 35.4 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 264.8)"><title>deque.popleft, n = 1,000,000: 37.2 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 211.3)"><title>list.pop(0), n = 1,000: 106 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(284.5 189.1)"><title>list.pop(0), n = 2,000: 163 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(342.8 149.8)"><title>list.pop(0), n = 5,000: 352 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 114.8)"><title>list.pop(0), n = 10,000: 697 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(431.2 81.0)"><title>list.pop(0), n = 20,000: 1.35 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(489.5 34.6)"><title>list.pop(0), n = 50,000: 3.34 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList.pop_front</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>deque.popleft</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list.pop(0)</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of time per operation against input size for the singly_linked_list.pop_front benchmark, on logarithmic axes. Series: SinglyLinkedList.pop_front, deque.popleft, list.pop(0). The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="332.0" y2="332.0"/><text class="bm-tick" x="68" y="332.0" dy="0.32em" text-anchor="end">10 ns</text><line class="bm-grid" x1="76" x2="698" y1="214.2" y2="214.2"/><text class="bm-tick" x="68" y="214.2" dy="0.32em" text-anchor="end">100 ns</text><line class="bm-grid" x1="76" x2="698" y1="96.4" y2="96.4"/><text class="bm-tick" x="68" y="96.4" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">time per operation (log scale)</text><polyline class="bm-line bm-s0" points="93.6,151.5 240.3,148.1 387.0,146.6 533.7,145.6 680.4,145.3"/><polyline class="bm-line bm-s1" points="93.6,303.7 240.3,275.0 387.0,268.1 533.7,267.3 680.4,264.4"/><polyline class="bm-line bm-s2" points="240.3,213.3 284.5,189.1 342.8,149.8 387.0,114.9 431.2,81.0 489.5,35.2"/><g class="bm-point bm-s0" transform="translate(93.6 151.5)"><title>SinglyLinkedList.pop_front, n = 100: 340 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 148.1)"><title>SinglyLinkedList.pop_front, n = 1,000: 364 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 146.6)"><title>SinglyLinkedList.pop_front, n = 10,000: 375 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 145.6)"><title>SinglyLinkedList.pop_front, n = 100,000: 382 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 145.3)"><title>SinglyLinkedList.pop_front, n = 1,000,000: 384 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 303.7)"><title>deque.popleft, n = 100: 17.4 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 275.0)"><title>deque.popleft, n = 1,000: 30.4 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 268.1)"><title>deque.popleft, n = 10,000: 34.9 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 267.3)"><title>deque.popleft, n = 100,000: 35.4 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 264.4)"><title>deque.popleft, n = 1,000,000: 37.5 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 213.3)"><title>list.pop(0), n = 1,000: 102 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(284.5 189.1)"><title>list.pop(0), n = 2,000: 163 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(342.8 149.8)"><title>list.pop(0), n = 5,000: 352 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 114.9)"><title>list.pop(0), n = 10,000: 696 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(431.2 81.0)"><title>list.pop(0), n = 20,000: 1.35 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(489.5 35.2)"><title>list.pop(0), n = 50,000: 3.3 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
 <table>
 <thead>
 <tr>
@@ -1750,15 +1779,15 @@ Python. Complexity describes how cost grows, not who wins at small sizes.</p>
 <tbody>
 <tr>
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">157 ns</td>
-<td style="text-align: right;">17.3 ns</td>
+<td style="text-align: right;">340 ns</td>
+<td style="text-align: right;">17.4 ns</td>
 <td style="text-align: right;"></td>
 </tr>
 <tr>
 <td style="text-align: right;">1,000</td>
-<td style="text-align: right;">173 ns</td>
-<td style="text-align: right;">30.3 ns</td>
-<td style="text-align: right;">106 ns</td>
+<td style="text-align: right;">364 ns</td>
+<td style="text-align: right;">30.4 ns</td>
+<td style="text-align: right;">102 ns</td>
 </tr>
 <tr>
 <td style="text-align: right;">2,000</td>
@@ -1774,9 +1803,9 @@ Python. Complexity describes how cost grows, not who wins at small sizes.</p>
 </tr>
 <tr>
 <td style="text-align: right;">10,000</td>
-<td style="text-align: right;">179 ns</td>
-<td style="text-align: right;">35.2 ns</td>
-<td style="text-align: right;">697 ns</td>
+<td style="text-align: right;">375 ns</td>
+<td style="text-align: right;">34.9 ns</td>
+<td style="text-align: right;">696 ns</td>
 </tr>
 <tr>
 <td style="text-align: right;">20,000</td>
@@ -1788,25 +1817,25 @@ Python. Complexity describes how cost grows, not who wins at small sizes.</p>
 <td style="text-align: right;">50,000</td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
-<td style="text-align: right;">3.34 µs</td>
+<td style="text-align: right;">3.3 µs</td>
 </tr>
 <tr>
 <td style="text-align: right;">100,000</td>
-<td style="text-align: right;">186 ns</td>
+<td style="text-align: right;">382 ns</td>
 <td style="text-align: right;">35.4 ns</td>
 <td style="text-align: right;"></td>
 </tr>
 <tr>
 <td style="text-align: right;">1,000,000</td>
-<td style="text-align: right;">184 ns</td>
-<td style="text-align: right;">37.2 ns</td>
+<td style="text-align: right;">384 ns</td>
+<td style="text-align: right;">37.5 ns</td>
 <td style="text-align: right;"></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="tabbed-block">
-<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList.pop_front</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>deque.popleft</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list.pop(0)</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the singly_linked_list.pop_front benchmark, on logarithmic axes. Series: SinglyLinkedList.pop_front, deque.popleft, list.pop(0). The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="332.0" y2="332.0"/><text class="bm-tick" x="68" y="332.0" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-grid" x1="76" x2="698" y1="272.0" y2="272.0"/><text class="bm-tick" x="68" y="272.0" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="212.0" y2="212.0"/><text class="bm-tick" x="68" y="212.0" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-grid" x1="76" x2="698" y1="152.0" y2="152.0"/><text class="bm-tick" x="68" y="152.0" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="92.0" y2="92.0"/><text class="bm-tick" x="68" y="92.0" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="32.1" y2="32.1"/><text class="bm-tick" x="68" y="32.1" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,260.3 240.3,197.8 387.0,136.9 533.7,75.9 680.4,16.2"/><polyline class="bm-line bm-s1" points="93.6,317.7 240.3,243.1 387.0,179.3 533.7,119.1 680.4,57.8"/><polyline class="bm-line bm-s2" points="240.3,210.6 284.5,181.2 342.8,137.3 387.0,101.4 431.2,66.2 489.5,18.7"/><g class="bm-point bm-s0" transform="translate(93.6 260.3)"><title>SinglyLinkedList.pop_front, n = 100: 15.7 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 197.8)"><title>SinglyLinkedList.pop_front, n = 1,000: 173 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 136.9)"><title>SinglyLinkedList.pop_front, n = 10,000: 1.79 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 75.9)"><title>SinglyLinkedList.pop_front, n = 100,000: 18.6 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 16.2)"><title>SinglyLinkedList.pop_front, n = 1,000,000: 184 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 317.7)"><title>deque.popleft, n = 100: 1.73 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 243.1)"><title>deque.popleft, n = 1,000: 30.3 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 179.3)"><title>deque.popleft, n = 10,000: 352 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 119.1)"><title>deque.popleft, n = 100,000: 3.54 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 57.8)"><title>deque.popleft, n = 1,000,000: 37.2 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 210.6)"><title>list.pop(0), n = 1,000: 106 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(284.5 181.2)"><title>list.pop(0), n = 2,000: 326 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(342.8 137.3)"><title>list.pop(0), n = 5,000: 1.76 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 101.4)"><title>list.pop(0), n = 10,000: 6.97 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(431.2 66.2)"><title>list.pop(0), n = 20,000: 27 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(489.5 18.7)"><title>list.pop(0), n = 50,000: 167 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList.pop_front</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>deque.popleft</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list.pop(0)</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the singly_linked_list.pop_front benchmark, on logarithmic axes. Series: SinglyLinkedList.pop_front, deque.popleft, list.pop(0). The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="332.0" y2="332.0"/><text class="bm-tick" x="68" y="332.0" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-grid" x1="76" x2="698" y1="276.2" y2="276.2"/><text class="bm-tick" x="68" y="276.2" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="220.4" y2="220.4"/><text class="bm-tick" x="68" y="220.4" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-grid" x1="76" x2="698" y1="164.6" y2="164.6"/><text class="bm-tick" x="68" y="164.6" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="108.8" y2="108.8"/><text class="bm-tick" x="68" y="108.8" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="53.0" y2="53.0"/><text class="bm-tick" x="68" y="53.0" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,246.5 240.3,189.1 387.0,132.6 533.7,76.3 680.4,20.4"/><polyline class="bm-line bm-s1" points="93.6,318.6 240.3,249.2 387.0,190.1 533.7,134.0 680.4,76.8"/><polyline class="bm-line bm-s2" points="240.3,220.0 284.5,191.7 342.8,150.9 387.0,117.6 431.2,84.8 489.5,40.8"/><g class="bm-point bm-s0" transform="translate(93.6 246.5)"><title>SinglyLinkedList.pop_front, n = 100: 34 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 189.1)"><title>SinglyLinkedList.pop_front, n = 1,000: 364 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 132.6)"><title>SinglyLinkedList.pop_front, n = 10,000: 3.75 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 76.3)"><title>SinglyLinkedList.pop_front, n = 100,000: 38.2 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 20.4)"><title>SinglyLinkedList.pop_front, n = 1,000,000: 384 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 318.6)"><title>deque.popleft, n = 100: 1.74 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 249.2)"><title>deque.popleft, n = 1,000: 30.4 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 190.1)"><title>deque.popleft, n = 10,000: 349 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 134.0)"><title>deque.popleft, n = 100,000: 3.54 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 76.8)"><title>deque.popleft, n = 1,000,000: 37.5 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 220.0)"><title>list.pop(0), n = 1,000: 102 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(284.5 191.7)"><title>list.pop(0), n = 2,000: 326 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(342.8 150.9)"><title>list.pop(0), n = 5,000: 1.76 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 117.6)"><title>list.pop(0), n = 10,000: 6.96 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(431.2 84.8)"><title>list.pop(0), n = 20,000: 27 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(489.5 40.8)"><title>list.pop(0), n = 50,000: 165 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
 <table>
 <thead>
 <tr>
@@ -1819,15 +1848,15 @@ Python. Complexity describes how cost grows, not who wins at small sizes.</p>
 <tbody>
 <tr>
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">15.7 µs</td>
-<td style="text-align: right;">1.73 µs</td>
+<td style="text-align: right;">34 µs</td>
+<td style="text-align: right;">1.74 µs</td>
 <td style="text-align: right;"></td>
 </tr>
 <tr>
 <td style="text-align: right;">1,000</td>
-<td style="text-align: right;">173 µs</td>
-<td style="text-align: right;">30.3 µs</td>
-<td style="text-align: right;">106 µs</td>
+<td style="text-align: right;">364 µs</td>
+<td style="text-align: right;">30.4 µs</td>
+<td style="text-align: right;">102 µs</td>
 </tr>
 <tr>
 <td style="text-align: right;">2,000</td>
@@ -1843,9 +1872,9 @@ Python. Complexity describes how cost grows, not who wins at small sizes.</p>
 </tr>
 <tr>
 <td style="text-align: right;">10,000</td>
-<td style="text-align: right;">1.79 ms</td>
-<td style="text-align: right;">352 µs</td>
-<td style="text-align: right;">6.97 ms</td>
+<td style="text-align: right;">3.75 ms</td>
+<td style="text-align: right;">349 µs</td>
+<td style="text-align: right;">6.96 ms</td>
 </tr>
 <tr>
 <td style="text-align: right;">20,000</td>
@@ -1857,39 +1886,39 @@ Python. Complexity describes how cost grows, not who wins at small sizes.</p>
 <td style="text-align: right;">50,000</td>
 <td style="text-align: right;"></td>
 <td style="text-align: right;"></td>
-<td style="text-align: right;">167 ms</td>
+<td style="text-align: right;">165 ms</td>
 </tr>
 <tr>
 <td style="text-align: right;">100,000</td>
-<td style="text-align: right;">18.6 ms</td>
+<td style="text-align: right;">38.2 ms</td>
 <td style="text-align: right;">3.54 ms</td>
 <td style="text-align: right;"></td>
 </tr>
 <tr>
 <td style="text-align: right;">1,000,000</td>
-<td style="text-align: right;">184 ms</td>
-<td style="text-align: right;">37.2 ms</td>
+<td style="text-align: right;">384 ms</td>
+<td style="text-align: right;">37.5 ms</td>
 <td style="text-align: right;"></td>
 </tr>
 <tr>
 <td style="text-align: right;"><strong>slope</strong></td>
-<td style="text-align: right;"><strong>1.02</strong></td>
+<td style="text-align: right;"><strong>1.01</strong></td>
 <td style="text-align: right;"><strong>1.07</strong></td>
-<td style="text-align: right;"><strong>1.89</strong></td>
+<td style="text-align: right;"><strong>1.90</strong></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<p><small>Measured on cs-survival-kit 0.6.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-05. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
+<p><small>Measured on cs-survival-kit 0.7.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-06. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
 <p>The same picture, for the same reason: removing the first element of an array
 shifts every remaining element one slot to the left.</p>
 <h3 id="reading-by-position">Reading by position<a class="headerlink" href="#reading-by-position" title="Permanent link">&para;</a></h3>
 <p>Here n is the size of the container, and every run performs the same 100
 reads at positions spread evenly across it. The time is not divided by n: a
 flat line means a read costs the same in a container of any size.</p>
-<figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>DynamicArray</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the singly_linked_list.index benchmark, on logarithmic axes. Series: SinglyLinkedList, DynamicArray, list. The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="332.0" y2="332.0"/><text class="bm-tick" x="68" y="332.0" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-grid" x1="76" x2="698" y1="272.0" y2="272.0"/><text class="bm-tick" x="68" y="272.0" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="212.0" y2="212.0"/><text class="bm-tick" x="68" y="212.0" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-grid" x1="76" x2="698" y1="152.0" y2="152.0"/><text class="bm-tick" x="68" y="152.0" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="92.0" y2="92.0"/><text class="bm-tick" x="68" y="92.0" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="32.1" y2="32.1"/><text class="bm-tick" x="68" y="32.1" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="289.2" x2="289.2" y1="332" y2="337"/><text class="bm-tick" x="289.2" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="484.8" x2="484.8" y1="332" y2="337"/><text class="bm-tick" x="484.8" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">100K</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,204.9 289.2,144.4 484.8,82.5 680.4,22.5"/><polyline class="bm-line bm-s1" points="93.6,259.1 289.2,257.3 484.8,256.9 680.4,256.8"/><polyline class="bm-line bm-s2" points="93.6,321.5 289.2,319.0 484.8,318.5 680.4,318.4"/><g class="bm-point bm-s0" transform="translate(93.6 204.9)"><title>SinglyLinkedList, n = 100: 131 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(289.2 144.4)"><title>SinglyLinkedList, n = 1,000: 1.34 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(484.8 82.5)"><title>SinglyLinkedList, n = 10,000: 14.4 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 22.5)"><title>SinglyLinkedList, n = 100,000: 145 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 259.1)"><title>DynamicArray, n = 100: 16.4 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(289.2 257.3)"><title>DynamicArray, n = 1,000: 17.6 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(484.8 256.9)"><title>DynamicArray, n = 10,000: 17.8 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 256.8)"><title>DynamicArray, n = 100,000: 18 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(93.6 321.5)"><title>list, n = 100: 1.49 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(289.2 319.0)"><title>list, n = 1,000: 1.65 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(484.8 318.5)"><title>list, n = 10,000: 1.68 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(680.4 318.4)"><title>list, n = 100,000: 1.69 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure>
+<figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>DynamicArray</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the singly_linked_list.index benchmark, on logarithmic axes. Series: SinglyLinkedList, DynamicArray, list. The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="332.0" y2="332.0"/><text class="bm-tick" x="68" y="332.0" dy="0.32em" text-anchor="end">1 µs</text><line class="bm-grid" x1="76" x2="698" y1="272.0" y2="272.0"/><text class="bm-tick" x="68" y="272.0" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="212.0" y2="212.0"/><text class="bm-tick" x="68" y="212.0" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-grid" x1="76" x2="698" y1="152.0" y2="152.0"/><text class="bm-tick" x="68" y="152.0" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="92.0" y2="92.0"/><text class="bm-tick" x="68" y="92.0" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="32.1" y2="32.1"/><text class="bm-tick" x="68" y="32.1" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="289.2" x2="289.2" y1="332" y2="337"/><text class="bm-tick" x="289.2" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="484.8" x2="484.8" y1="332" y2="337"/><text class="bm-tick" x="484.8" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">100K</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,204.4 289.2,145.1 484.8,83.5 680.4,23.0"/><polyline class="bm-line bm-s1" points="93.6,263.7 289.2,262.6 484.8,262.6 680.4,262.7"/><polyline class="bm-line bm-s2" points="93.6,321.6 289.2,319.1 484.8,318.5 680.4,318.3"/><g class="bm-point bm-s0" transform="translate(93.6 204.4)"><title>SinglyLinkedList, n = 100: 134 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(289.2 145.1)"><title>SinglyLinkedList, n = 1,000: 1.3 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(484.8 83.5)"><title>SinglyLinkedList, n = 10,000: 13.9 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 23.0)"><title>SinglyLinkedList, n = 100,000: 141 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 263.7)"><title>DynamicArray, n = 100: 13.8 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(289.2 262.6)"><title>DynamicArray, n = 1,000: 14.4 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(484.8 262.6)"><title>DynamicArray, n = 10,000: 14.3 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 262.7)"><title>DynamicArray, n = 100,000: 14.3 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(93.6 321.6)"><title>list, n = 100: 1.49 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(289.2 319.1)"><title>list, n = 1,000: 1.64 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(484.8 318.5)"><title>list, n = 10,000: 1.68 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(680.4 318.3)"><title>list, n = 100,000: 1.69 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure>
 
 <table>
 <thead>
@@ -1903,37 +1932,37 @@ flat line means a read costs the same in a container of any size.</p>
 <tbody>
 <tr>
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">131 µs</td>
-<td style="text-align: right;">16.4 µs</td>
+<td style="text-align: right;">134 µs</td>
+<td style="text-align: right;">13.8 µs</td>
 <td style="text-align: right;">1.49 µs</td>
 </tr>
 <tr>
 <td style="text-align: right;">1,000</td>
-<td style="text-align: right;">1.34 ms</td>
-<td style="text-align: right;">17.6 µs</td>
-<td style="text-align: right;">1.65 µs</td>
+<td style="text-align: right;">1.3 ms</td>
+<td style="text-align: right;">14.4 µs</td>
+<td style="text-align: right;">1.64 µs</td>
 </tr>
 <tr>
 <td style="text-align: right;">10,000</td>
-<td style="text-align: right;">14.4 ms</td>
-<td style="text-align: right;">17.8 µs</td>
+<td style="text-align: right;">13.9 ms</td>
+<td style="text-align: right;">14.3 µs</td>
 <td style="text-align: right;">1.68 µs</td>
 </tr>
 <tr>
 <td style="text-align: right;">100,000</td>
-<td style="text-align: right;">145 ms</td>
-<td style="text-align: right;">18 µs</td>
+<td style="text-align: right;">141 ms</td>
+<td style="text-align: right;">14.3 µs</td>
 <td style="text-align: right;">1.69 µs</td>
 </tr>
 <tr>
 <td style="text-align: right;"><strong>slope</strong></td>
-<td style="text-align: right;"><strong>1.02</strong></td>
-<td style="text-align: right;"><strong>0.01</strong></td>
+<td style="text-align: right;"><strong>1.01</strong></td>
+<td style="text-align: right;"><strong>0.00</strong></td>
 <td style="text-align: right;"><strong>0.02</strong></td>
 </tr>
 </tbody>
 </table>
-<p><small>Measured on cs-survival-kit 0.6.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-05. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
+<p><small>Measured on cs-survival-kit 0.7.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-06. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
 <p>This is the linked list's weak spot and the array's strength. Both arrays are
 flat. The linked list's time grows in step with the size of the list, since
 each read walks from the head to the position it wants.</p>
@@ -1942,7 +1971,7 @@ each read walks from the head to the position it wants.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Time per operation</label><label for="__tabbed_3_2">Total time</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>DynamicArray</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of time per operation against input size for the singly_linked_list.append benchmark, on logarithmic axes. Series: SinglyLinkedList, DynamicArray, list. The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="332.0" y2="332.0"/><text class="bm-tick" x="68" y="332.0" dy="0.32em" text-anchor="end">10 ns</text><line class="bm-grid" x1="76" x2="698" y1="275.7" y2="275.7"/><text class="bm-tick" x="68" y="275.7" dy="0.32em" text-anchor="end">20 ns</text><line class="bm-grid" x1="76" x2="698" y1="201.2" y2="201.2"/><text class="bm-tick" x="68" y="201.2" dy="0.32em" text-anchor="end">50 ns</text><line class="bm-grid" x1="76" x2="698" y1="144.8" y2="144.8"/><text class="bm-tick" x="68" y="144.8" dy="0.32em" text-anchor="end">100 ns</text><line class="bm-grid" x1="76" x2="698" y1="88.5" y2="88.5"/><text class="bm-tick" x="68" y="88.5" dy="0.32em" text-anchor="end">200 ns</text><line class="bm-grid" x1="76" x2="698" y1="14.0" y2="14.0"/><text class="bm-tick" x="68" y="14.0" dy="0.32em" text-anchor="end">500 ns</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">time per operation (log scale)</text><polyline class="bm-line bm-s0" points="93.6,82.9 240.3,80.3 387.0,78.2 533.7,66.7 680.4,62.3"/><polyline class="bm-line bm-s1" points="93.6,105.7 240.3,111.1 387.0,95.4 533.7,102.2 680.4,102.5"/><polyline class="bm-line bm-s2" points="93.6,267.6 240.3,277.6 387.0,275.7 533.7,280.0 680.4,245.1"/><g class="bm-point bm-s0" transform="translate(93.6 82.9)"><title>SinglyLinkedList, n = 100: 214 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 80.3)"><title>SinglyLinkedList, n = 1,000: 221 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 78.2)"><title>SinglyLinkedList, n = 10,000: 227 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 66.7)"><title>SinglyLinkedList, n = 100,000: 261 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 62.3)"><title>SinglyLinkedList, n = 1,000,000: 276 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 105.7)"><title>DynamicArray, n = 100: 162 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 111.1)"><title>DynamicArray, n = 1,000: 151 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 95.4)"><title>DynamicArray, n = 10,000: 184 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 102.2)"><title>DynamicArray, n = 100,000: 169 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 102.5)"><title>DynamicArray, n = 1,000,000: 168 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(93.6 267.6)"><title>list, n = 100: 22.1 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 277.6)"><title>list, n = 1,000: 19.5 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 275.7)"><title>list, n = 10,000: 20 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(533.7 280.0)"><title>list, n = 100,000: 19 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(680.4 245.1)"><title>list, n = 1,000,000: 29.1 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>DynamicArray</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of time per operation against input size for the singly_linked_list.append benchmark, on logarithmic axes. Series: SinglyLinkedList, DynamicArray, list. The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="332.0" y2="332.0"/><text class="bm-tick" x="68" y="332.0" dy="0.32em" text-anchor="end">10 ns</text><line class="bm-grid" x1="76" x2="698" y1="275.7" y2="275.7"/><text class="bm-tick" x="68" y="275.7" dy="0.32em" text-anchor="end">20 ns</text><line class="bm-grid" x1="76" x2="698" y1="201.2" y2="201.2"/><text class="bm-tick" x="68" y="201.2" dy="0.32em" text-anchor="end">50 ns</text><line class="bm-grid" x1="76" x2="698" y1="144.8" y2="144.8"/><text class="bm-tick" x="68" y="144.8" dy="0.32em" text-anchor="end">100 ns</text><line class="bm-grid" x1="76" x2="698" y1="88.5" y2="88.5"/><text class="bm-tick" x="68" y="88.5" dy="0.32em" text-anchor="end">200 ns</text><line class="bm-grid" x1="76" x2="698" y1="14.0" y2="14.0"/><text class="bm-tick" x="68" y="14.0" dy="0.32em" text-anchor="end">500 ns</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">time per operation (log scale)</text><polyline class="bm-line bm-s0" points="93.6,36.9 240.3,32.7 387.0,31.2 533.7,23.3 680.4,21.0"/><polyline class="bm-line bm-s1" points="93.6,41.4 240.3,44.9 387.0,37.2 533.7,39.7 680.4,39.1"/><polyline class="bm-line bm-s2" points="93.6,267.8 240.3,267.7 387.0,273.5 533.7,279.5 680.4,244.2"/><g class="bm-point bm-s0" transform="translate(93.6 36.9)"><title>SinglyLinkedList, n = 100: 377 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 32.7)"><title>SinglyLinkedList, n = 1,000: 397 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 31.2)"><title>SinglyLinkedList, n = 10,000: 404 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 23.3)"><title>SinglyLinkedList, n = 100,000: 446 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 21.0)"><title>SinglyLinkedList, n = 1,000,000: 459 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 41.4)"><title>DynamicArray, n = 100: 357 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 44.9)"><title>DynamicArray, n = 1,000: 342 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 37.2)"><title>DynamicArray, n = 10,000: 376 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 39.7)"><title>DynamicArray, n = 100,000: 364 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 39.1)"><title>DynamicArray, n = 1,000,000: 367 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(93.6 267.8)"><title>list, n = 100: 22 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 267.7)"><title>list, n = 1,000: 22.1 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 273.5)"><title>list, n = 10,000: 20.5 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(533.7 279.5)"><title>list, n = 100,000: 19.1 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(680.4 244.2)"><title>list, n = 1,000,000: 29.5 ns</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
 <table>
 <thead>
 <tr>
@@ -1955,39 +1984,39 @@ each read walks from the head to the position it wants.</p>
 <tbody>
 <tr>
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">214 ns</td>
-<td style="text-align: right;">162 ns</td>
-<td style="text-align: right;">22.1 ns</td>
+<td style="text-align: right;">377 ns</td>
+<td style="text-align: right;">357 ns</td>
+<td style="text-align: right;">22 ns</td>
 </tr>
 <tr>
 <td style="text-align: right;">1,000</td>
-<td style="text-align: right;">221 ns</td>
-<td style="text-align: right;">151 ns</td>
-<td style="text-align: right;">19.5 ns</td>
+<td style="text-align: right;">397 ns</td>
+<td style="text-align: right;">342 ns</td>
+<td style="text-align: right;">22.1 ns</td>
 </tr>
 <tr>
 <td style="text-align: right;">10,000</td>
-<td style="text-align: right;">227 ns</td>
-<td style="text-align: right;">184 ns</td>
-<td style="text-align: right;">20 ns</td>
+<td style="text-align: right;">404 ns</td>
+<td style="text-align: right;">376 ns</td>
+<td style="text-align: right;">20.5 ns</td>
 </tr>
 <tr>
 <td style="text-align: right;">100,000</td>
-<td style="text-align: right;">261 ns</td>
-<td style="text-align: right;">169 ns</td>
-<td style="text-align: right;">19 ns</td>
+<td style="text-align: right;">446 ns</td>
+<td style="text-align: right;">364 ns</td>
+<td style="text-align: right;">19.1 ns</td>
 </tr>
 <tr>
 <td style="text-align: right;">1,000,000</td>
-<td style="text-align: right;">276 ns</td>
-<td style="text-align: right;">168 ns</td>
-<td style="text-align: right;">29.1 ns</td>
+<td style="text-align: right;">459 ns</td>
+<td style="text-align: right;">367 ns</td>
+<td style="text-align: right;">29.5 ns</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="tabbed-block">
-<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>DynamicArray</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the singly_linked_list.append benchmark, on logarithmic axes. Series: SinglyLinkedList, DynamicArray, list. The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="290.8" y2="290.8"/><text class="bm-tick" x="68" y="290.8" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="231.9" y2="231.9"/><text class="bm-tick" x="68" y="231.9" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-grid" x1="76" x2="698" y1="173.0" y2="173.0"/><text class="bm-tick" x="68" y="173.0" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="114.1" y2="114.1"/><text class="bm-tick" x="68" y="114.1" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="55.2" y2="55.2"/><text class="bm-tick" x="68" y="55.2" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,271.3 240.3,211.6 387.0,152.0 533.7,89.5 680.4,29.2"/><polyline class="bm-line bm-s1" points="93.6,278.5 240.3,221.3 387.0,157.4 533.7,100.7 680.4,41.8"/><polyline class="bm-line bm-s2" points="93.6,329.5 240.3,273.7 387.0,214.2 533.7,156.6 680.4,86.7"/><g class="bm-point bm-s0" transform="translate(93.6 271.3)"><title>SinglyLinkedList, n = 100: 21.4 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 211.6)"><title>SinglyLinkedList, n = 1,000: 221 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 152.0)"><title>SinglyLinkedList, n = 10,000: 2.27 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 89.5)"><title>SinglyLinkedList, n = 100,000: 26.1 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 29.2)"><title>SinglyLinkedList, n = 1,000,000: 276 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 278.5)"><title>DynamicArray, n = 100: 16.2 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 221.3)"><title>DynamicArray, n = 1,000: 151 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 157.4)"><title>DynamicArray, n = 10,000: 1.84 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 100.7)"><title>DynamicArray, n = 100,000: 16.9 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 41.8)"><title>DynamicArray, n = 1,000,000: 168 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(93.6 329.5)"><title>list, n = 100: 2.21 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 273.7)"><title>list, n = 1,000: 19.5 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 214.2)"><title>list, n = 10,000: 200 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(533.7 156.6)"><title>list, n = 100,000: 1.9 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(680.4 86.7)"><title>list, n = 1,000,000: 29.1 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
+<p><figure class="bm-chart"><div class="bm-legend"><span class="bm-key bm-s0"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></svg><code>SinglyLinkedList</code></span><span class="bm-key bm-s1"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></svg><code>DynamicArray</code></span><span class="bm-key bm-s2"><svg viewBox="-16 -7 32 14" width="32" height="14" aria-hidden="true"><line class="bm-line" x1="-15" x2="15" y1="0" y2="0"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></svg><code>list</code></span></div><svg class="bm-plot" viewBox="0 0 720 380" role="img" aria-label="Line chart of total time against input size for the singly_linked_list.append benchmark, on logarithmic axes. Series: SinglyLinkedList, DynamicArray, list. The table below has the same values."><line class="bm-grid" x1="76" x2="698" y1="290.8" y2="290.8"/><text class="bm-tick" x="68" y="290.8" dy="0.32em" text-anchor="end">10 µs</text><line class="bm-grid" x1="76" x2="698" y1="231.9" y2="231.9"/><text class="bm-tick" x="68" y="231.9" dy="0.32em" text-anchor="end">100 µs</text><line class="bm-grid" x1="76" x2="698" y1="173.0" y2="173.0"/><text class="bm-tick" x="68" y="173.0" dy="0.32em" text-anchor="end">1 ms</text><line class="bm-grid" x1="76" x2="698" y1="114.1" y2="114.1"/><text class="bm-tick" x="68" y="114.1" dy="0.32em" text-anchor="end">10 ms</text><line class="bm-grid" x1="76" x2="698" y1="55.2" y2="55.2"/><text class="bm-tick" x="68" y="55.2" dy="0.32em" text-anchor="end">100 ms</text><line class="bm-axis" x1="76" x2="698" y1="332" y2="332"/><line class="bm-axis" x1="93.6" x2="93.6" y1="332" y2="337"/><text class="bm-tick" x="93.6" y="352" text-anchor="middle">100</text><line class="bm-axis" x1="240.3" x2="240.3" y1="332" y2="337"/><text class="bm-tick" x="240.3" y="352" text-anchor="middle">1K</text><line class="bm-axis" x1="387.0" x2="387.0" y1="332" y2="337"/><text class="bm-tick" x="387.0" y="352" text-anchor="middle">10K</text><line class="bm-axis" x1="533.7" x2="533.7" y1="332" y2="337"/><text class="bm-tick" x="533.7" y="352" text-anchor="middle">100K</text><line class="bm-axis" x1="680.4" x2="680.4" y1="332" y2="337"/><text class="bm-tick" x="680.4" y="352" text-anchor="middle">1M</text><text class="bm-title" x="387" y="374" text-anchor="middle">n, the input size (log scale)</text><text class="bm-title" transform="translate(14 173) rotate(-90)" text-anchor="middle">total time (log scale)</text><polyline class="bm-line bm-s0" points="93.6,256.8 240.3,196.6 387.0,137.2 533.7,75.9 680.4,16.2"/><polyline class="bm-line bm-s1" points="93.6,258.3 240.3,200.5 387.0,139.1 533.7,81.0 680.4,21.9"/><polyline class="bm-line bm-s2" points="93.6,329.5 240.3,270.6 387.0,213.5 533.7,156.5 680.4,86.4"/><g class="bm-point bm-s0" transform="translate(93.6 256.8)"><title>SinglyLinkedList, n = 100: 37.7 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(240.3 196.6)"><title>SinglyLinkedList, n = 1,000: 397 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(387.0 137.2)"><title>SinglyLinkedList, n = 10,000: 4.04 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(533.7 75.9)"><title>SinglyLinkedList, n = 100,000: 44.6 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s0" transform="translate(680.4 16.2)"><title>SinglyLinkedList, n = 1,000,000: 459 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4.5,0a4.5,4.5 0 1,0 9,0a4.5,4.5 0 1,0 -9,0Z"/></g><g class="bm-point bm-s1" transform="translate(93.6 258.3)"><title>DynamicArray, n = 100: 35.7 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(240.3 200.5)"><title>DynamicArray, n = 1,000: 342 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(387.0 139.1)"><title>DynamicArray, n = 10,000: 3.76 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(533.7 81.0)"><title>DynamicArray, n = 100,000: 36.4 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s1" transform="translate(680.4 21.9)"><title>DynamicArray, n = 1,000,000: 367 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M-4,-4H4V4H-4Z"/></g><g class="bm-point bm-s2" transform="translate(93.6 329.5)"><title>list, n = 100: 2.2 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(240.3 270.6)"><title>list, n = 1,000: 22.1 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(387.0 213.5)"><title>list, n = 10,000: 205 µs</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(533.7 156.5)"><title>list, n = 100,000: 1.91 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g><g class="bm-point bm-s2" transform="translate(680.4 86.4)"><title>list, n = 1,000,000: 29.5 ms</title><circle class="bm-hit" r="13"/><path class="bm-marker" d="M0,-5.2L5,3.8H-5Z"/></g></svg></figure></p>
 <table>
 <thead>
 <tr>
@@ -2000,37 +2029,37 @@ each read walks from the head to the position it wants.</p>
 <tbody>
 <tr>
 <td style="text-align: right;">100</td>
-<td style="text-align: right;">21.4 µs</td>
-<td style="text-align: right;">16.2 µs</td>
-<td style="text-align: right;">2.21 µs</td>
+<td style="text-align: right;">37.7 µs</td>
+<td style="text-align: right;">35.7 µs</td>
+<td style="text-align: right;">2.2 µs</td>
 </tr>
 <tr>
 <td style="text-align: right;">1,000</td>
-<td style="text-align: right;">221 µs</td>
-<td style="text-align: right;">151 µs</td>
-<td style="text-align: right;">19.5 µs</td>
+<td style="text-align: right;">397 µs</td>
+<td style="text-align: right;">342 µs</td>
+<td style="text-align: right;">22.1 µs</td>
 </tr>
 <tr>
 <td style="text-align: right;">10,000</td>
-<td style="text-align: right;">2.27 ms</td>
-<td style="text-align: right;">1.84 ms</td>
-<td style="text-align: right;">200 µs</td>
+<td style="text-align: right;">4.04 ms</td>
+<td style="text-align: right;">3.76 ms</td>
+<td style="text-align: right;">205 µs</td>
 </tr>
 <tr>
 <td style="text-align: right;">100,000</td>
-<td style="text-align: right;">26.1 ms</td>
-<td style="text-align: right;">16.9 ms</td>
-<td style="text-align: right;">1.9 ms</td>
+<td style="text-align: right;">44.6 ms</td>
+<td style="text-align: right;">36.4 ms</td>
+<td style="text-align: right;">1.91 ms</td>
 </tr>
 <tr>
 <td style="text-align: right;">1,000,000</td>
-<td style="text-align: right;">276 ms</td>
-<td style="text-align: right;">168 ms</td>
-<td style="text-align: right;">29.1 ms</td>
+<td style="text-align: right;">459 ms</td>
+<td style="text-align: right;">367 ms</td>
+<td style="text-align: right;">29.5 ms</td>
 </tr>
 <tr>
 <td style="text-align: right;"><strong>slope</strong></td>
-<td style="text-align: right;"><strong>1.03</strong></td>
+<td style="text-align: right;"><strong>1.02</strong></td>
 <td style="text-align: right;"><strong>1.01</strong></td>
 <td style="text-align: right;"><strong>1.02</strong></td>
 </tr>
@@ -2039,7 +2068,7 @@ each read walks from the head to the position it wants.</p>
 </div>
 </div>
 </div>
-<p><small>Measured on cs-survival-kit 0.6.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-05. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
+<p><small>Measured on cs-survival-kit 0.7.0 · CPython 3.13.16 · Linux x86_64 · 2026-10-06. Each time is the best of five runs. The slope is fitted on a log-log scale: about 1 is linear, about 2 is quadratic. Both chart axes are logarithmic, so a power law is a straight line and its steepness is that slope.</small></p>
 <p>All three are flat, as the complexity table predicts: appending is O(1) for
 each of them. They differ only by a constant. The linked list pays for
 creating a node on every append, while the dynamic array usually just writes
