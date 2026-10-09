@@ -10,36 +10,36 @@
       
       
       
-        <link rel="canonical" href="https://jwallace145.github.io/cs-survival-guide/reference/cs_survival_kit/">
+        <link rel="canonical" href="https://jwallace145.github.io/cs-survival-guide/reference/cs_survival_kit/data_structures/default_list/">
       
       
-        <link rel="prev" href="../../changelog/">
+        <link rel="prev" href="../abstract_list/">
       
       
-        <link rel="next" href="./algorithms/">
+        <link rel="next" href="../doubly_linked_list/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="zensical-0.0.67">
     
     
       
-        <title>cs_survival_kit - CS Survival Guide</title>
+        <title>default_list - CS Survival Guide</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../assets/stylesheets/modern/main.4ae390e2.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/modern/main.4ae390e2.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../assets/stylesheets/modern/palette.96d1a7e4.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/modern/palette.96d1a7e4.min.css">
       
       
 
@@ -58,9 +58,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/benchmarks.css">
+      <link rel="stylesheet" href="../../../../stylesheets/benchmarks.css">
     
-    <script>__md_scope=new URL("../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cs_survival_kit" class="md-skip">
+        <a href="#cs_survival_kit.data_structures.default_list" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="CS Survival Guide" class="md-header__button md-logo" aria-label="CS Survival Guide" data-md-component="logo">
+    <a href="../../../.." title="CS Survival Guide" class="md-header__button md-logo" aria-label="CS Survival Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              cs_survival_kit
+              default_list
             
           </span>
         </div>
@@ -220,7 +220,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="CS Survival Guide" class="md-nav__button md-logo" aria-label="CS Survival Guide" data-md-component="logo">
+    <a href="../../../.." title="CS Survival Guide" class="md-nav__button md-logo" aria-label="CS Survival Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
@@ -250,7 +250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -335,7 +335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structures/dynamic-array/" class="md-nav__link">
+      <a href="../../../../data-structures/dynamic-array/" class="md-nav__link">
         
   
   
@@ -362,7 +362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structures/singly-linked-list/" class="md-nav__link">
+      <a href="../../../../data-structures/singly-linked-list/" class="md-nav__link">
         
   
   
@@ -389,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data-structures/doubly-linked-list/" class="md-nav__link">
+      <a href="../../../../data-structures/doubly-linked-list/" class="md-nav__link">
         
   
   
@@ -479,7 +479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../math/cheat-sheet/" class="md-nav__link">
+      <a href="../../../../math/cheat-sheet/" class="md-nav__link">
         
   
   
@@ -569,7 +569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../networking/http-cheat-sheet/" class="md-nav__link">
+      <a href="../../../../networking/http-cheat-sheet/" class="md-nav__link">
         
   
   
@@ -604,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../changelog/" class="md-nav__link">
+      <a href="../../../../changelog/" class="md-nav__link">
         
   
   
@@ -715,7 +715,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="././" class="md-nav__link md-nav__link--active">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -732,7 +732,7 @@
             </a>
             
               
-              <label class="md-nav__link md-nav__link--active" for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6_1" id="__nav_6_1_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -780,7 +780,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./algorithms/" class="md-nav__link ">
+            <a href="../../algorithms/" class="md-nav__link ">
               
   
   
@@ -847,7 +847,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./algorithms/sorting/" class="md-nav__link ">
+            <a href="../../algorithms/sorting/" class="md-nav__link ">
               
   
   
@@ -890,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./algorithms/sorting/insertion_sort/" class="md-nav__link">
+      <a href="../../algorithms/sorting/insertion_sort/" class="md-nav__link">
         
   
   
@@ -917,7 +917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./algorithms/sorting/sortable/" class="md-nav__link">
+      <a href="../../algorithms/sorting/sortable/" class="md-nav__link">
         
   
   
@@ -988,7 +988,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./bench/" class="md-nav__link ">
+            <a href="../../bench/" class="md-nav__link ">
               
   
   
@@ -1031,7 +1031,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./bench/cli/" class="md-nav__link">
+      <a href="../../bench/cli/" class="md-nav__link">
         
   
   
@@ -1058,7 +1058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./bench/core/" class="md-nav__link">
+      <a href="../../bench/core/" class="md-nav__link">
         
   
   
@@ -1085,7 +1085,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./bench/storage/" class="md-nav__link">
+      <a href="../../bench/storage/" class="md-nav__link">
         
   
   
@@ -1118,6 +1118,8 @@
                   
   
   
+    
+  
   
   
     
@@ -1143,15 +1145,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_4" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="./data_structures/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1175,7 +1177,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_4_label" aria-expanded="false">
+          <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_4_label" aria-expanded="true">
             <label class="md-nav__title" for="__nav_6_1_4">
               <span class="md-nav__icon md-icon"></span>
               
@@ -1194,7 +1196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./data_structures/abstract_list/" class="md-nav__link">
+      <a href="../abstract_list/" class="md-nav__link">
         
   
   
@@ -1218,10 +1220,36 @@
                   
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="./data_structures/default_list/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>default_list
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1236,6 +1264,38 @@
   
 
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cs_survival_kit.data_structures.default_list.List" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        List
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1248,7 +1308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./data_structures/doubly_linked_list/" class="md-nav__link">
+      <a href="../doubly_linked_list/" class="md-nav__link">
         
   
   
@@ -1275,7 +1335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./data_structures/dynamic_array/" class="md-nav__link">
+      <a href="../dynamic_array/" class="md-nav__link">
         
   
   
@@ -1302,7 +1362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="./data_structures/singly_linked_list/" class="md-nav__link">
+      <a href="../singly_linked_list/" class="md-nav__link">
         
   
   
@@ -1389,7 +1449,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cs_survival_kit.List" class="md-nav__link">
+  <a href="#cs_survival_kit.data_structures.default_list.List" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
         List
@@ -1424,7 +1484,7 @@
   
   
     <li class="md-path__item">
-      <a href="../.." class="md-path__link">
+      <a href="../../../.." class="md-path__link">
         
   
   <span class="md-ellipsis">
@@ -1470,7 +1530,7 @@
     
     
       <li class="md-path__item">
-        <a href="././" class="md-path__link">
+        <a href="../../" class="md-path__link">
           
   
   <span class="md-ellipsis">
@@ -1507,11 +1567,49 @@
     
     
       <li class="md-path__item">
-        <a href="././" class="md-path__link">
+        <a href="../../" class="md-path__link">
           
   
   <span class="md-ellipsis">
     <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>cs_survival_kit
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>data_structures
   </span>
 
         </a>
@@ -1533,21 +1631,24 @@
 
 
 
-<h1 id="cs_survival_kit" class="doc doc-heading">
-            <span class="doc doc-object-name doc-module-name">cs_survival_kit</span>
+<h1 id="cs_survival_kit.data_structures.default_list" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">cs_survival_kit.data_structures.default_list</span>
 
 
-<a href="#cs_survival_kit" class="headerlink" title="Permanent link">&para;</a></h1>
+<a href="#cs_survival_kit.data_structures.default_list" class="headerlink" title="Permanent link">&para;</a></h1>
 
     <div class="doc doc-contents first">
 
-        <p>Hand-written data structures and algorithms, plus a benchmarking toolkit.</p>
-<p>The companion library to the <a href="https://jwallace145.github.io/cs-survival-guide/">CS Survival Guide</a>,
-which renders this package's docstrings and source as its API reference.</p>
-<p>The package namespace holds the defaults: <code>List</code> is the list to use when any
-list will do. The individual implementations live in
-<code>cs_survival_kit.data_structures</code>, and the algorithms in
-<code>cs_survival_kit.algorithms</code>.</p>
+        <p>The kit's default list: the one to reach for when any list will do.</p>
+<p>The kit has several list implementations so that their costs can be
+compared. Most code does not want to choose; it wants a list. <code>List</code> is
+that list. It is a <code>DynamicArray</code>, because a dynamic array is the right
+general-purpose list: O(1) indexing, amortized O(1) <code>append</code>, and elements
+packed together in memory so that scanning them is fast. It is what Python's
+own <code>list</code>, Java's <code>ArrayList</code> and C++'s <code>vector</code> are, for the same reasons.</p>
+<p>Choose a linked list instead only when the workload adds and removes at the
+front, which a dynamic array does in O(n). That decision is what the
+individual structures and their guide pages are for.</p>
 
           
 
@@ -1573,17 +1674,17 @@ list will do. The individual implementations live in
 
 
 
-<h2 id="cs_survival_kit.List" class="doc doc-heading">
+<h2 id="cs_survival_kit.data_structures.default_list.List" class="doc doc-heading">
             <span class="doc doc-object-name doc-class-name">List</span>
 
 
-<a href="#cs_survival_kit.List" class="headerlink" title="Permanent link">&para;</a></h2>
+<a href="#cs_survival_kit.data_structures.default_list.List" class="headerlink" title="Permanent link">&para;</a></h2>
 <div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">List</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="o">=</span> <span class="p">(),</span> <span class="o">*</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">growth</span><span class="p">:</span> <span class="n">GrowthPolicy</span> <span class="o">=</span> <span class="n">doubling</span><span class="p">)</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
             <p class="doc doc-class-bases">
-              Bases: <code><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;DynamicArray&lt;/span&gt; (&lt;code&gt;cs_survival_kit.data_structures.dynamic_array.DynamicArray&lt;/code&gt;)" href="data_structures/dynamic_array/#cs_survival_kit.data_structures.dynamic_array.DynamicArray">DynamicArray</a>[<span title="cs_survival_kit.data_structures.default_list.List[T]">T</span>]</code></p>
+              Bases: <code><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;DynamicArray&lt;/span&gt; (&lt;code&gt;cs_survival_kit.data_structures.dynamic_array.DynamicArray&lt;/code&gt;)" href="../dynamic_array/#cs_survival_kit.data_structures.dynamic_array.DynamicArray">DynamicArray</a>[<span title="cs_survival_kit.data_structures.default_list.List[T]">T</span>]</code></p>
 
 
 
@@ -1683,7 +1784,7 @@ after the position shift. Constructing from <code>items</code> is O(n).</p>
                 <code>growth</code>
             </td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-type_alias-name&quot;&gt;GrowthPolicy&lt;/span&gt; (&lt;code&gt;cs_survival_kit.data_structures.dynamic_array.GrowthPolicy&lt;/code&gt;)" href="data_structures/dynamic_array/#cs_survival_kit.data_structures.dynamic_array.GrowthPolicy">GrowthPolicy</a></code>
+                  <code><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-type_alias-name&quot;&gt;GrowthPolicy&lt;/span&gt; (&lt;code&gt;cs_survival_kit.data_structures.dynamic_array.GrowthPolicy&lt;/code&gt;)" href="../dynamic_array/#cs_survival_kit.data_structures.dynamic_array.GrowthPolicy">GrowthPolicy</a></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1692,7 +1793,7 @@ default.</p>
               </div>
             </td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;doubling&lt;/span&gt; (&lt;code&gt;cs_survival_kit.data_structures.dynamic_array.doubling&lt;/code&gt;)" href="data_structures/dynamic_array/#cs_survival_kit.data_structures.dynamic_array.doubling">doubling</a></code>
+                  <code><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;doubling&lt;/span&gt; (&lt;code&gt;cs_survival_kit.data_structures.dynamic_array.doubling&lt;/code&gt;)" href="../dynamic_array/#cs_survival_kit.data_structures.dynamic_array.doubling">doubling</a></code>
             </td>
           </tr>
       </tbody>
@@ -1838,7 +1939,7 @@ default.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../changelog/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Changelog">
+          <a href="../abstract_list/" class="md-footer__link md-footer__link--prev" aria-label="Previous: &lt;code class=&quot;doc-symbol doc-symbol-nav doc-symbol-module&quot;&gt;&lt;&#x2f;code&gt;abstract_list">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
@@ -1848,20 +1949,20 @@ default.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Changelog
+                <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>abstract_list
               </div>
             </div>
           </a>
         
         
           
-          <a href="./algorithms/" class="md-footer__link md-footer__link--next" aria-label="Next: algorithms">
+          <a href="../doubly_linked_list/" class="md-footer__link md-footer__link--next" aria-label="Next: &lt;code class=&quot;doc-symbol doc-symbol-nav doc-symbol-module&quot;&gt;&lt;&#x2f;code&gt;doubly_linked_list">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                algorithms
+                <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>doubly_linked_list
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1906,12 +2007,12 @@ default.</p>
       
         
         
-      <script id="__config" type="application/json">{"annotate":null,"base":"../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.67a597eb.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.67a597eb.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
