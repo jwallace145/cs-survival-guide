@@ -28,6 +28,15 @@
         <loc>https://jwallace145.github.io/cs-survival-guide/reference/cs_survival_kit/algorithms/</loc>
       </url>
       <url>
+        <loc>https://jwallace145.github.io/cs-survival-guide/reference/cs_survival_kit/algorithms/sorting/</loc>
+      </url>
+      <url>
+        <loc>https://jwallace145.github.io/cs-survival-guide/reference/cs_survival_kit/algorithms/sorting/insertion_sort/</loc>
+      </url>
+      <url>
+        <loc>https://jwallace145.github.io/cs-survival-guide/reference/cs_survival_kit/algorithms/sorting/sortable/</loc>
+      </url>
+      <url>
         <loc>https://jwallace145.github.io/cs-survival-guide/reference/cs_survival_kit/bench/</loc>
       </url>
       <url>
@@ -44,6 +53,9 @@
       </url>
       <url>
         <loc>https://jwallace145.github.io/cs-survival-guide/reference/cs_survival_kit/data_structures/abstract_list/</loc>
+      </url>
+      <url>
+        <loc>https://jwallace145.github.io/cs-survival-guide/reference/cs_survival_kit/data_structures/default_list/</loc>
       </url>
       <url>
         <loc>https://jwallace145.github.io/cs-survival-guide/reference/cs_survival_kit/data_structures/doubly_linked_list/</loc>

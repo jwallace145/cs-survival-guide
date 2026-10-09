@@ -10,36 +10,36 @@
       
       
       
-        <link rel="canonical" href="https://jwallace145.github.io/cs-survival-guide/reference/cs_survival_kit/bench/storage/">
+        <link rel="canonical" href="https://jwallace145.github.io/cs-survival-guide/reference/cs_survival_kit/algorithms/sorting/insertion_sort/">
       
       
-        <link rel="prev" href="../core/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../../data_structures/">
+        <link rel="next" href="../sortable/">
       
       
         
       
       
-      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
       <meta name="generator" content="zensical-0.0.67">
     
     
       
-        <title>storage - CS Survival Guide</title>
+        <title>insertion_sort - CS Survival Guide</title>
       
     
     
       
         
       
-      <link rel="stylesheet" href="../../../../assets/stylesheets/modern/main.4ae390e2.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/modern/main.4ae390e2.min.css">
       
         
           
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/modern/palette.96d1a7e4.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/modern/palette.96d1a7e4.min.css">
       
       
 
@@ -58,9 +58,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../stylesheets/benchmarks.css">
+      <link rel="stylesheet" href="../../../../../stylesheets/benchmarks.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    <script>__md_scope=new URL("../../../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
     
       
 
@@ -85,7 +85,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cs_survival_kit.bench.storage" class="md-skip">
+        <a href="#cs_survival_kit.algorithms.sorting.insertion_sort" class="md-skip">
           Skip to content
         </a>
       
@@ -101,7 +101,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="CS Survival Guide" class="md-header__button md-logo" aria-label="CS Survival Guide" data-md-component="logo">
+    <a href="../../../../.." title="CS Survival Guide" class="md-header__button md-logo" aria-label="CS Survival Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
@@ -121,7 +121,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              storage
+              insertion_sort
             
           </span>
         </div>
@@ -220,7 +220,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="CS Survival Guide" class="md-nav__button md-logo" aria-label="CS Survival Guide" data-md-component="logo">
+    <a href="../../../../.." title="CS Survival Guide" class="md-nav__button md-logo" aria-label="CS Survival Guide" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
@@ -250,7 +250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../.." class="md-nav__link">
+      <a href="../../../../.." class="md-nav__link">
         
   
   
@@ -335,7 +335,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../data-structures/dynamic-array/" class="md-nav__link">
+      <a href="../../../../../data-structures/dynamic-array/" class="md-nav__link">
         
   
   
@@ -362,7 +362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../data-structures/singly-linked-list/" class="md-nav__link">
+      <a href="../../../../../data-structures/singly-linked-list/" class="md-nav__link">
         
   
   
@@ -389,7 +389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../data-structures/doubly-linked-list/" class="md-nav__link">
+      <a href="../../../../../data-structures/doubly-linked-list/" class="md-nav__link">
         
   
   
@@ -479,7 +479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../math/cheat-sheet/" class="md-nav__link">
+      <a href="../../../../../math/cheat-sheet/" class="md-nav__link">
         
   
   
@@ -569,7 +569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../networking/http-cheat-sheet/" class="md-nav__link">
+      <a href="../../../../../networking/http-cheat-sheet/" class="md-nav__link">
         
   
   
@@ -604,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../changelog/" class="md-nav__link">
+      <a href="../../../../../changelog/" class="md-nav__link">
         
   
   
@@ -715,7 +715,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../" class="md-nav__link ">
               
   
   
@@ -755,6 +755,8 @@
                   
   
   
+    
+  
   
   
     
@@ -772,15 +774,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../algorithms/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -804,7 +806,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_2_label" aria-expanded="false">
+          <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_2_label" aria-expanded="true">
             <label class="md-nav__title" for="__nav_6_1_2">
               <span class="md-nav__icon md-icon"></span>
               
@@ -820,6 +822,8 @@
                   
   
   
+    
+  
   
   
     
@@ -839,15 +843,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_2_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../algorithms/sorting/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -871,7 +875,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_1_2_2_label" aria-expanded="false">
+          <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_6_1_2_2_label" aria-expanded="true">
             <label class="md-nav__title" for="__nav_6_1_2_2">
               <span class="md-nav__icon md-icon"></span>
               
@@ -887,10 +891,36 @@
                   
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../algorithms/sorting/insertion_sort/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>insertion_sort
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
         
   
   
@@ -905,6 +935,38 @@
   
 
       </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cs_survival_kit.algorithms.sorting.insertion_sort.insertion_sort" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        insertion_sort
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -917,7 +979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../algorithms/sorting/sortable/" class="md-nav__link">
+      <a href="../sortable/" class="md-nav__link">
         
   
   
@@ -959,8 +1021,6 @@
                   
   
   
-    
-  
   
   
     
@@ -982,15 +1042,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_1_3" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../../bench/" class="md-nav__link ">
               
   
   
@@ -1014,7 +1074,7 @@
           </div>
         
         
-          <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_3_label" aria-expanded="true">
+          <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_1_3_label" aria-expanded="false">
             <label class="md-nav__title" for="__nav_6_1_3">
               <span class="md-nav__icon md-icon"></span>
               
@@ -1033,7 +1093,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cli/" class="md-nav__link">
+      <a href="../../../bench/cli/" class="md-nav__link">
         
   
   
@@ -1060,7 +1120,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../core/" class="md-nav__link">
+      <a href="../../../bench/core/" class="md-nav__link">
         
   
   
@@ -1084,36 +1144,10 @@
                   
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-  <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>storage
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="././" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../bench/storage/" class="md-nav__link">
         
   
   
@@ -1128,49 +1162,6 @@
   
 
       </a>
-      
-        
-
-
-<nav class="md-nav md-nav--secondary" aria-label="On this page">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      On this page
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#cs_survival_kit.bench.storage.load" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        load
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cs_survival_kit.bench.storage.merge" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        merge
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1222,7 +1213,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../data_structures/" class="md-nav__link ">
+            <a href="../../../data_structures/" class="md-nav__link ">
               
   
   
@@ -1265,7 +1256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data_structures/abstract_list/" class="md-nav__link">
+      <a href="../../../data_structures/abstract_list/" class="md-nav__link">
         
   
   
@@ -1292,7 +1283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data_structures/default_list/" class="md-nav__link">
+      <a href="../../../data_structures/default_list/" class="md-nav__link">
         
   
   
@@ -1319,7 +1310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data_structures/doubly_linked_list/" class="md-nav__link">
+      <a href="../../../data_structures/doubly_linked_list/" class="md-nav__link">
         
   
   
@@ -1346,7 +1337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data_structures/dynamic_array/" class="md-nav__link">
+      <a href="../../../data_structures/dynamic_array/" class="md-nav__link">
         
   
   
@@ -1373,7 +1364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../data_structures/singly_linked_list/" class="md-nav__link">
+      <a href="../../../data_structures/singly_linked_list/" class="md-nav__link">
         
   
   
@@ -1460,21 +1451,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#cs_survival_kit.bench.storage.load" class="md-nav__link">
+  <a href="#cs_survival_kit.algorithms.sorting.insertion_sort.insertion_sort" class="md-nav__link">
     <span class="md-ellipsis">
       <span class="md-typeset">
-        load
-      </span>
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#cs_survival_kit.bench.storage.merge" class="md-nav__link">
-    <span class="md-ellipsis">
-      <span class="md-typeset">
-        merge
+        insertion_sort
       </span>
     </span>
   </a>
@@ -1506,7 +1486,7 @@
   
   
     <li class="md-path__item">
-      <a href="../../../.." class="md-path__link">
+      <a href="../../../../.." class="md-path__link">
         
   
   <span class="md-ellipsis">
@@ -1552,7 +1532,7 @@
     
     
       <li class="md-path__item">
-        <a href="../../" class="md-path__link">
+        <a href="../../../" class="md-path__link">
           
   
   <span class="md-ellipsis">
@@ -1589,7 +1569,7 @@
     
     
       <li class="md-path__item">
-        <a href="../../" class="md-path__link">
+        <a href="../../../" class="md-path__link">
           
   
   <span class="md-ellipsis">
@@ -1614,6 +1594,34 @@
       
         
       
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>algorithms
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+        
+          
+        
+      
         
       
         
@@ -1627,7 +1635,7 @@
           
   
   <span class="md-ellipsis">
-    <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>bench
+    <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>sorting
   </span>
 
         </a>
@@ -1649,15 +1657,18 @@
 
 
 
-<h1 id="cs_survival_kit.bench.storage" class="doc doc-heading">
-            <span class="doc doc-object-name doc-module-name">cs_survival_kit.bench.storage</span>
+<h1 id="cs_survival_kit.algorithms.sorting.insertion_sort" class="doc doc-heading">
+            <span class="doc doc-object-name doc-module-name">cs_survival_kit.algorithms.sorting.insertion_sort</span>
 
 
-<a href="#cs_survival_kit.bench.storage" class="headerlink" title="Permanent link">&para;</a></h1>
+<a href="#cs_survival_kit.algorithms.sorting.insertion_sort" class="headerlink" title="Permanent link">&para;</a></h1>
 
     <div class="doc doc-contents first">
 
-        <p>Reading and writing the benchmark results file, <code>benchmarks.json</code>.</p>
+        <p>TODO: One-line summary of the module.</p>
+<p>TODO: Extended description. The idea of a sorted prefix that grows by one
+element per pass, and why this is the sort to reach for on small or nearly
+sorted input.</p>
 
           
 
@@ -1683,17 +1694,22 @@
 <div class="doc doc-object doc-function">
 
 
-<h2 id="cs_survival_kit.bench.storage.load" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">load</span>
+<h2 id="cs_survival_kit.algorithms.sorting.insertion_sort.insertion_sort" class="doc doc-heading">
+            <span class="doc doc-object-name doc-function-name">insertion_sort</span>
 
 
-<a href="#cs_survival_kit.bench.storage.load" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">load</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+<a href="#cs_survival_kit.algorithms.sorting.insertion_sort.insertion_sort" class="headerlink" title="Permanent link">&para;</a></h2>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">insertion_sort</span><span class="p">(</span><span class="n">items</span><span class="p">:</span> <span class="n">Sortable</span><span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="o">/</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">SupportsLessThan</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
 
-        <p>Load a results file.</p>
+        <p>TODO: One-line summary.</p>
+<p>TODO: Extended description. How each element is taken from the unsorted
+part and shifted left into its place in the sorted prefix, what that
+does on already sorted and on reversed input, why the shifting keeps
+equal elements in order, how <code>reverse</code> is handled without losing that,
+and where Python's own <code>list.sort</code> uses this algorithm.</p>
 
 
 <p><span class="doc-section-title">Parameters:</span></p>
@@ -1709,76 +1725,105 @@
       <tbody>
           <tr class="doc-section-item">
             <td>
-                <code>path</code>
+                <code>items</code>
             </td>
             <td>
-                  <code><a class="autorefs autorefs-external" title="&lt;code&gt;pathlib.Path&lt;/code&gt;" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path">Path</a></code>
+                  <code><a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;Sortable&lt;/span&gt; (&lt;code&gt;cs_survival_kit.algorithms.sorting.sortable.Sortable&lt;/code&gt;)" href="../sortable/#cs_survival_kit.algorithms.sorting.sortable.Sortable">Sortable</a>[<span title="cs_survival_kit.algorithms.sorting.insertion_sort.insertion_sort[T]">T</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The results file. It does not have to exist.</p>
+                <p>TODO</p>
               </div>
             </td>
             <td>
                 <em>required</em>
             </td>
           </tr>
-      </tbody>
-    </table>
-
-
-    <p><span class="doc-section-title">Returns:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
           <tr class="doc-section-item">
             <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" title="&lt;code&gt;typing.Any&lt;/code&gt;" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]</code>
+                <code>key</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" title="&lt;code&gt;collections.abc.Callable&lt;/code&gt;" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Callable">Callable</a>[[<span title="cs_survival_kit.algorithms.sorting.insertion_sort.insertion_sort[T]">T</span>], <a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-class-name&quot;&gt;SupportsLessThan&lt;/span&gt; (&lt;code&gt;cs_survival_kit.algorithms.sorting.sortable.SupportsLessThan&lt;/code&gt;)" href="../sortable/#cs_survival_kit.algorithms.sorting.sortable.SupportsLessThan">SupportsLessThan</a>] | None</code>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>The stored document, or an empty one if the file does not exist.</p>
+                <p>TODO</p>
               </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>reverse</code>
+            </td>
+            <td>
+                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/functions.html#bool">bool</a></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>TODO</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
             </td>
           </tr>
       </tbody>
     </table>
 
 
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/exceptions.html#ValueError">ValueError</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If the file was written with a different schema version.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+<details class="complexity" open>
+  <summary>Complexity</summary>
+  <table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Comparisons</th>
+<th>Writes</th>
+<th>Space</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Best (sorted input)</td>
+<td>TODO</td>
+<td>TODO</td>
+<td>TODO</td>
+</tr>
+<tr>
+<td>Average</td>
+<td>TODO</td>
+<td>TODO</td>
+<td>TODO</td>
+</tr>
+<tr>
+<td>Worst (reversed)</td>
+<td>TODO</td>
+<td>TODO</td>
+<td>TODO</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Stable: TODO</li>
+<li>Adaptive: TODO</li>
+<li>In place: TODO</li>
+</ul>
+<p>TODO: Anything the table cannot say on its own, such as what the
+bounds become on a linked list.</p>
+</details>
+
+<p><span class="doc-section-title">Examples:</span></p>
+    <p>TODO</p>
 
           
 
             <details class="mkdocstrings-source">
-              <summary>Source code in <code>lib/cs_survival_kit/bench/storage.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-11">11</a></span>
-<span class="normal"><a href="#__codelineno-0-12">12</a></span>
-<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+              <summary>Source code in <code>lib/cs_survival_kit/algorithms/sorting/insertion_sort.py</code></summary>
+              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-13">13</a></span>
 <span class="normal"><a href="#__codelineno-0-14">14</a></span>
 <span class="normal"><a href="#__codelineno-0-15">15</a></span>
 <span class="normal"><a href="#__codelineno-0-16">16</a></span>
@@ -1796,127 +1841,10 @@
 <span class="normal"><a href="#__codelineno-0-28">28</a></span>
 <span class="normal"><a href="#__codelineno-0-29">29</a></span>
 <span class="normal"><a href="#__codelineno-0-30">30</a></span>
-<span class="normal"><a href="#__codelineno-0-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="sd">"""Load a results file.</span>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="sd">    Args:</span>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="sd">        path: The results file. It does not have to exist.</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="sd">    Returns:</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="sd">        The stored document, or an empty one if the file does not exist.</span>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="sd">    Raises:</span>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="sd">        ValueError: If the file was written with a different schema version.</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">    """</span>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a>        <span class="k">return</span> <span class="p">{</span><span class="s2">"schema_version"</span><span class="p">:</span> <span class="n">SCHEMA_VERSION</span><span class="p">,</span> <span class="s2">"benchmarks"</span><span class="p">:</span> <span class="p">[]}</span>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a>    <span class="n">document</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">(</span><span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)))</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a>    <span class="k">if</span> <span class="n">document</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"schema_version"</span><span class="p">)</span> <span class="o">!=</span> <span class="n">SCHEMA_VERSION</span><span class="p">:</span>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a>        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a>            <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">: expected schema_version </span><span class="si">{</span><span class="n">SCHEMA_VERSION</span><span class="si">}</span><span class="s2">, "</span>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a>            <span class="sa">f</span><span class="s2">"found </span><span class="si">{</span><span class="n">document</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'schema_version'</span><span class="p">)</span><span class="si">!r}</span><span class="s2">"</span>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a>        <span class="p">)</span>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a>    <span class="k">return</span> <span class="n">document</span>
-</span></code></pre></div></td></tr></table></div>
-            </details>
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h2 id="cs_survival_kit.bench.storage.merge" class="doc doc-heading">
-            <span class="doc doc-object-name doc-function-name">merge</span>
-
-
-<a href="#cs_survival_kit.bench.storage.merge" class="headerlink" title="Permanent link">&para;</a></h2>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">merge</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">results</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span>
-</span></code></pre></div>
-
-    <div class="doc doc-contents ">
-
-        <p>Merge benchmark entries into a results file, by benchmark name.</p>
-<p>An entry replaces the stored entry with the same name. Every other stored
-entry is kept, so re-running one benchmark updates only that benchmark.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>path</code>
-            </td>
-            <td>
-                  <code><a class="autorefs autorefs-external" title="&lt;code&gt;pathlib.Path&lt;/code&gt;" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path">Path</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>The results file. Created, along with its parent directories,
-if it does not exist.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>results</code>
-            </td>
-            <td>
-                  <code><a class="autorefs autorefs-external" title="&lt;code&gt;collections.abc.Sequence&lt;/code&gt;" href="https://docs.python.org/3/library/collections.abc.html#collections.abc.Sequence">Sequence</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#dict">dict</a>[<a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/stdtypes.html#str">str</a>, <a class="autorefs autorefs-external" title="&lt;code&gt;typing.Any&lt;/code&gt;" href="https://docs.python.org/3/library/typing.html#typing.Any">Any</a>]]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Benchmark entries, as produced by
-<a class="autorefs autorefs-internal" title="&lt;span class=&quot;doc doc-object-name doc-function-name&quot;&gt;to_dict&lt;/span&gt;" href="../core/#cs_survival_kit.bench.core.Results.to_dict"><code>Results.to_dict</code></a>.</p>
-              </div>
-            </td>
-            <td>
-                <em>required</em>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-
-<p><span class="doc-section-title">Raises:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Type</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                  <code><a class="autorefs autorefs-external" href="https://docs.python.org/3/builtins/exceptions.html#ValueError">ValueError</a></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>If the existing file has a different schema version.</p>
-              </div>
-            </td>
-          </tr>
-      </tbody>
-    </table>
-
-          
-
-            <details class="mkdocstrings-source">
-              <summary>Source code in <code>lib/cs_survival_kit/bench/storage.py</code></summary>
-              <div class="language-python highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span>
 <span class="normal"><a href="#__codelineno-0-35">35</a></span>
 <span class="normal"><a href="#__codelineno-0-36">36</a></span>
 <span class="normal"><a href="#__codelineno-0-37">37</a></span>
@@ -1932,37 +1860,44 @@ if it does not exist.</p>
 <span class="normal"><a href="#__codelineno-0-47">47</a></span>
 <span class="normal"><a href="#__codelineno-0-48">48</a></span>
 <span class="normal"><a href="#__codelineno-0-49">49</a></span>
-<span class="normal"><a href="#__codelineno-0-50">50</a></span>
-<span class="normal"><a href="#__codelineno-0-51">51</a></span>
-<span class="normal"><a href="#__codelineno-0-52">52</a></span>
-<span class="normal"><a href="#__codelineno-0-53">53</a></span>
-<span class="normal"><a href="#__codelineno-0-54">54</a></span>
-<span class="normal"><a href="#__codelineno-0-55">55</a></span>
-<span class="normal"><a href="#__codelineno-0-56">56</a></span>
-<span class="normal"><a href="#__codelineno-0-57">57</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="k">def</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">results</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">    </span><span class="sd">"""Merge benchmark entries into a results file, by benchmark name.</span>
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36"></a>
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="sd">    An entry replaces the stored entry with the same name. Every other stored</span>
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="sd">    entry is kept, so re-running one benchmark updates only that benchmark.</span>
+<span class="normal"><a href="#__codelineno-0-50">50</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="k">def</span><span class="w"> </span><span class="nf">insertion_sort</span><span class="p">[</span><span class="n">T</span><span class="p">](</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="n">items</span><span class="p">:</span> <span class="n">Sortable</span><span class="p">[</span><span class="n">T</span><span class="p">],</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="o">/</span><span class="p">,</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16"></a>    <span class="o">*</span><span class="p">,</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17"></a>    <span class="n">key</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">T</span><span class="p">],</span> <span class="n">SupportsLessThan</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18"></a>    <span class="n">reverse</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="sd">"""TODO: One-line summary.</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21"></a>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="sd">    TODO: Extended description. How each element is taken from the unsorted</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="sd">    part and shifted left into its place in the sorted prefix, what that</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="sd">    does on already sorted and on reversed input, why the shifting keeps</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="sd">    equal elements in order, how `reverse` is handled without losing that,</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="sd">    and where Python's own `list.sort` uses this algorithm.</span>
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27"></a>
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="sd">    Args:</span>
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="sd">        items: TODO</span>
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="sd">        key: TODO</span>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="sd">        reverse: TODO</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32"></a>
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="sd">    Complexity:</span>
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="sd">        | Case                 | Comparisons | Writes | Space |</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="sd">        | -------------------- | ----------- | ------ | ----- |</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="sd">        | Best (sorted input)  | TODO        | TODO   | TODO  |</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="sd">        | Average              | TODO        | TODO   | TODO  |</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="sd">        | Worst (reversed)     | TODO        | TODO   | TODO  |</span>
 </span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39"></a>
-</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">    Args:</span>
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="sd">        path: The results file. Created, along with its parent directories,</span>
-</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="sd">            if it does not exist.</span>
-</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43"></a><span class="sd">        results: Benchmark entries, as produced by</span>
-</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="sd">            [`Results.to_dict`][cs_survival_kit.bench.core.Results.to_dict].</span>
-</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45"></a>
-</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46"></a><span class="sd">    Raises:</span>
-</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">        ValueError: If the existing file has a different schema version.</span>
-</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">    """</span>
-</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49"></a>    <span class="n">document</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50"></a>    <span class="n">stored</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]],</span> <span class="n">document</span><span class="p">[</span><span class="s2">"benchmarks"</span><span class="p">])</span>
-</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51"></a>    <span class="n">by_name</span> <span class="o">=</span> <span class="p">{</span><span class="n">entry</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]:</span> <span class="n">entry</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">stored</span><span class="p">}</span>
-</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52"></a>    <span class="n">by_name</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">entry</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]:</span> <span class="n">entry</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">results</span><span class="p">})</span>
-</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53"></a>    <span class="n">document</span><span class="p">[</span><span class="s2">"benchmarks"</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">by_name</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">by_name</span><span class="p">)]</span>
-</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54"></a>    <span class="n">path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55"></a>    <span class="n">path</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span>
-</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56"></a>        <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">document</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span>
-</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57"></a>    <span class="p">)</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="sd">        - Stable: TODO</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41"></a><span class="sd">        - Adaptive: TODO</span>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42"></a><span class="sd">        - In place: TODO</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43"></a>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44"></a><span class="sd">        TODO: Anything the table cannot say on its own, such as what the</span>
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45"></a><span class="sd">        bounds become on a linked list.</span>
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46"></a>
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47"></a><span class="sd">    Examples:</span>
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48"></a><span class="sd">        TODO</span>
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49"></a><span class="sd">    """</span>
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50"></a>    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
 </span></code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -2018,7 +1953,7 @@ if it does not exist.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../core/" class="md-footer__link md-footer__link--prev" aria-label="Previous: &lt;code class=&quot;doc-symbol doc-symbol-nav doc-symbol-module&quot;&gt;&lt;&#x2f;code&gt;core">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: sorting">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
@@ -2028,20 +1963,20 @@ if it does not exist.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>core
+                sorting
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../data_structures/" class="md-footer__link md-footer__link--next" aria-label="Next: data_structures">
+          <a href="../sortable/" class="md-footer__link md-footer__link--next" aria-label="Next: &lt;code class=&quot;doc-symbol doc-symbol-nav doc-symbol-module&quot;&gt;&lt;&#x2f;code&gt;sortable">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                data_structures
+                <code class="doc-symbol doc-symbol-nav doc-symbol-module"></code>sortable
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2086,12 +2021,12 @@ if it does not exist.</p>
       
         
         
-      <script id="__config" type="application/json">{"annotate":null,"base":"../../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"redirect":null,"search":"../../../../../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","clipboard.error":"Could not copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.67a597eb.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.67a597eb.min.js"></script>
       
-        <script src="../../../../javascripts/mathjax.js"></script>
+        <script src="../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
