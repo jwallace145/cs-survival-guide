@@ -4,7 +4,7 @@ site_name = "CS Survival Guide"
 site_description = "A field guide to computer science fundamentals: algorithms, systems, databases, networking, and AI."
 
 # The version below is managed by Release Please — do not edit by hand.
-copyright = "CS Survival Guide v0.7.0" # x-release-please-version
+copyright = "CS Survival Guide v0.8.0" # x-release-please-version
 
 repo_url = "https://github.com/jwallace145/cs-survival-guide"
 repo_name = "jwallace145/cs-survival-guide"

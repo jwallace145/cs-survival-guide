@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.8.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.7.0...v0.8.0) (2026-10-09)
+
+
+### Features
+
+* **networking:** add HTTP cheat sheet with status codes ([#25](https://github.com/jwallace145/cs-survival-guide/issues/25)) ([2a611e2](https://github.com/jwallace145/cs-survival-guide/commit/2a611e2b7648d764d20badfba6d500bebec54c4e))
+
+
+### Bug Fixes
+
+* **deps:** bump cs-survival-kit to 0.8.0 ([#27](https://github.com/jwallace145/cs-survival-guide/issues/27)) ([f67b480](https://github.com/jwallace145/cs-survival-guide/commit/f67b480371aed0022aba5d4a0ca98b6f03e77d0b))
+
 ## [0.7.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.6.0...v0.7.0) (2026-10-06)
 
 
