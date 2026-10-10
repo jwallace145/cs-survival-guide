@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.8.0...v0.9.0) (2026-10-10)
+
+
+### Features
+
+* **site:** link Reference source blocks to the implementation on GitHub ([#29](https://github.com/jwallace145/cs-survival-guide/issues/29)) ([40b1025](https://github.com/jwallace145/cs-survival-guide/commit/40b1025bffa1641d55a0fbe2fc265218e873c9ad))
+
 ## [0.8.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.7.0...v0.8.0) (2026-10-09)
 
 
