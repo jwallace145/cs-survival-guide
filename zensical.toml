@@ -97,13 +97,22 @@ scheme = "slate"
 toggle.icon = "lucide/moon"
 toggle.name = "Switch to system preference"
 
-# [[project.extra.social]]
-# icon = "fontawesome/brands/github"
-# link = "https://github.com/user/repo"
+# Footer links: the guide's source, and the companion library on GitHub and
+# PyPI, so readers can find the implementation from any page.
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/jwallace145/cs-survival-guide"
+name = "cs-survival-guide on GitHub"
 
-# [[project.extra.social]]
-# icon = "fontawesome/brands/mastodon"
-# link = "https://fosstodon.org/@user"
+[[project.extra.social]]
+icon = "fontawesome/brands/github"
+link = "https://github.com/jwallace145/cs-survival-kit"
+name = "cs-survival-kit on GitHub"
+
+[[project.extra.social]]
+icon = "fontawesome/brands/python"
+link = "https://pypi.org/project/cs-survival-kit/"
+name = "cs-survival-kit on PyPI"
 
 [project.markdown_extensions]
 abbr = {}
