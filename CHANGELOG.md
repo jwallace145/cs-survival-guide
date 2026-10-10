@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.10.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.9.0...v0.10.0) (2026-10-10)
+
+
+### Features
+
+* **site:** link the landing page and footer to cs-survival-kit on PyPI and GitHub ([#31](https://github.com/jwallace145/cs-survival-guide/issues/31)) ([b9a7031](https://github.com/jwallace145/cs-survival-guide/commit/b9a70319e7d18715dde6df44fc0461c1cdbcfad9))
+
 ## [0.9.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.8.0...v0.9.0) (2026-10-10)
 
 
