@@ -1,6 +1,7 @@
 # Reference section fragment — not a standalone config. scripts/zensical.sh
 # appends it to zensical.toml when lib/cs_survival_kit exists, replacing
-# @KIT_VERSION@ with the installed library version.
+# @KIT_VERSION@ with the installed library version and @KIT_REF@ with the git
+# ref that holds its sources (the vX.Y.Z tag, or main for a local checkout).
 #
 # Generates the Reference section from the package sources; no hand-written
 # markdown. The section is appended after the explicit nav entries.
@@ -8,3 +9,8 @@
 modules = ["lib/cs_survival_kit"]
 api_root_uri = "reference"
 nav_section_title = "Reference (cs-survival-kit @KIT_VERSION@)"
+
+# The Reference section's "View on GitHub" links (templates/mkdocstrings) point
+# into the package directory at the ref the installed sources came from.
+[project.plugins.mkdocstrings.handlers.python.options.extra]
+source_url = "https://github.com/jwallace145/cs-survival-kit/blob/@KIT_REF@/src"

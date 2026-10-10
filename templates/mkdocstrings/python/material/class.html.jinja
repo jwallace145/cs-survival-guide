@@ -1,0 +1,19 @@
+{#- Extends the shipped class template; only the source block changes, so
+that it links to the implementation on GitHub (see _source.html.jinja). -#}
+{% extends "_base/class.html.jinja" %}
+
+{% block source scoped %}
+  {% if config.show_source %}
+    {% if config.merge_init_into_class %}
+      {% if "__init__" in all_members and all_members["__init__"].source %}
+        {% with source_object = all_members["__init__"] %}
+          {% include "_source.html.jinja" with context %}
+        {% endwith %}
+      {% endif %}
+    {% elif class.source %}
+      {% with source_object = class %}
+        {% include "_source.html.jinja" with context %}
+      {% endwith %}
+    {% endif %}
+  {% endif %}
+{% endblock source %}

@@ -157,6 +157,10 @@ on_undefined = "strict"
 
 [project.plugins.mkdocstrings]
 default_handler = "python"
+# Overrides for the python handler's templates: the source block of every
+# class and function links to the implementation on GitHub. The link's base
+# URL is set per installed version in zensical.reference.toml.
+custom_templates = "templates/mkdocstrings"
 
 [project.plugins.mkdocstrings.handlers.python]
 paths = ["lib"]
