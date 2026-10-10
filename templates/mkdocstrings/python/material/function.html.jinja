@@ -1,0 +1,11 @@
+{#- Extends the shipped function template; only the source block changes, so
+that it links to the implementation on GitHub (see _source.html.jinja). -#}
+{% extends "_base/function.html.jinja" %}
+
+{% block source scoped %}
+  {% if config.show_source and function.source %}
+    {% with source_object = function %}
+      {% include "_source.html.jinja" with context %}
+    {% endwith %}
+  {% endif %}
+{% endblock source %}

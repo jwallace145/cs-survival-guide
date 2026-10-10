@@ -136,6 +136,10 @@ report its actual output before opening a PR.
   documents. `scripts/install-kit.sh` installs it into `lib/` (no dependencies, sources only), and
   `scripts/zensical.sh` appends `zensical.reference.toml` to the config so mkdocstrings and api-autonav
   render the Reference section, titled with that version. No reference markdown is written by hand.
+- Every class and function in the Reference section has a "View on GitHub" link to its lines in the
+  library repository at the pinned release tag (`main` for a local checkout). The link comes from the
+  template overrides under `templates/mkdocstrings/` and the `source_url` set in
+  `zensical.reference.toml`; `scripts/zensical.sh` substitutes the git ref.
 - The guide's version and the library's are independent. A library release reaches the site only
   through the `Bump Kit` PR, which is a `fix(deps)` and therefore a patch release of the guide.
 - To preview unreleased docstrings or benchmark names from a local checkout:

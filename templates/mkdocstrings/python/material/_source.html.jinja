@@ -1,0 +1,27 @@
+{#- Source block with a link to GitHub.
+
+Replaces the `source` block of the mkdocstrings-python class and function
+templates. It keeps the collapsible inline source and adds a link to the same
+lines in the cs-survival-kit repository, so a Reference entry can be read next
+to the public implementation it documents.
+
+Context:
+  source_object (griffe.Object | griffe.Alias): The object whose source to render.
+  config: The handler options; `config.extra.source_url` is the base URL of
+    the package directory at the pinned release, set in zensical.reference.toml.
+-#}
+{% if source_object.source %}
+  {% set source_path = source_object.relative_package_filepath.as_posix() %}
+  {% set source_url = config.extra.get("source_url") %}
+  <details class="mkdocstrings-source">
+    <summary>
+      {{ lang.t("Source code in") }} <code>{{ source_path }}</code>
+      {% if source_url %}
+        &middot;
+        <a href="{{ source_url }}/{{ source_path }}#L{{ source_object.lineno }}-L{{ source_object.endlineno }}"
+           target="_blank" rel="noopener">View on GitHub</a>
+      {% endif %}
+    </summary>
+    {{ source_object.source|highlight(language="python", linestart=source_object.lineno or 0, linenums=True) }}
+  </details>
+{% endif %}
