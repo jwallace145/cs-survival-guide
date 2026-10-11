@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.11.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.10.0...v0.11.0) (2026-10-11)
+
+
+### Features
+
+* serve the guide from survival-guide.jwall.engineering ([#33](https://github.com/jwallace145/cs-survival-guide/issues/33)) ([dec1675](https://github.com/jwallace145/cs-survival-guide/commit/dec16754770013e06cebe1741ad34472977fb385))
+
 ## [0.10.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.9.0...v0.10.0) (2026-10-10)
 
 
