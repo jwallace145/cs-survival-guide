@@ -34,6 +34,10 @@ jobs:
           GUIDE_BENCHMARKS_STRICT: "1"
       # GitHub Pages runs branch deployments through Jekyll unless told not to.
       - run: touch site/.nojekyll
+      # Custom domain. GitHub Pages reads it from a CNAME file on the branch,
+      # and the deploy below replaces the branch contents, so the build output
+      # must carry it on every deploy.
+      - run: echo survival-guide.jwall.engineering > site/CNAME
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: site
