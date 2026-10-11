@@ -4,7 +4,7 @@ Standing rules for any coding agent working in this repository. Read this before
 
 ## What this project is
 
-`cs-survival-guide` is the source of the [CS Survival Guide](https://jwallace145.github.io/cs-survival-guide/),
+`cs-survival-guide` is the source of the [CS Survival Guide](https://survival-guide.jwall.engineering/),
 a Zensical site of hand-written pages on data structures, algorithms and other computer science
 fundamentals. It is the companion to [cs-survival-kit](https://github.com/jwallace145/cs-survival-kit),
 the PyPI library whose docstrings and benchmark results this site renders. The guide explains the
@@ -126,7 +126,7 @@ GUIDE_BENCHMARKS_STRICT=1 scripts/zensical.sh build --clean
 ```
 
 `Conventional Commits` validates the PR title. `PR Preview` publishes the built site to
-`https://jwallace145.github.io/cs-survival-guide/pr-preview/pr-<number>/` and comments the link; use it
+`https://survival-guide.jwall.engineering/pr-preview/pr-<number>/` and comments the link; use it
 to check rendering, cross-references and charts before asking for review. Run the gate locally and
 report its actual output before opening a PR.
 

@@ -43,6 +43,8 @@ jobs:
       # pull request pointing at the preview.
       - uses: rossjrw/pr-preview-action@v1
         with:
+          # The site is served from a custom domain, not <owner>.github.io.
+          custom-url: survival-guide.jwall.engineering
           source-dir: site
           # The default comment embeds a QR code from a third-party service.
           qr-code: "false"
