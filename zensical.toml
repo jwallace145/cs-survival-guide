@@ -16,6 +16,8 @@ nav = [
     { "Dynamic Array" = "data-structures/dynamic-array.md" },
     { "Singly Linked List" = "data-structures/singly-linked-list.md" },
     { "Doubly Linked List" = "data-structures/doubly-linked-list.md" },
+    { "Stack" = "data-structures/stack.md" },
+    { "Queue" = "data-structures/queue.md" },
   ] },
   { "Math" = [
     { "Cheat Sheet" = "math/cheat-sheet.md" },
