@@ -64,6 +64,12 @@
         <loc>https://survival-guide.jwall.engineering/reference/cs_survival_kit/data_structures/dynamic_array/</loc>
       </url>
       <url>
+        <loc>https://survival-guide.jwall.engineering/reference/cs_survival_kit/data_structures/queue/</loc>
+      </url>
+      <url>
         <loc>https://survival-guide.jwall.engineering/reference/cs_survival_kit/data_structures/singly_linked_list/</loc>
+      </url>
+      <url>
+        <loc>https://survival-guide.jwall.engineering/reference/cs_survival_kit/data_structures/stack/</loc>
       </url>
 </urlset>
