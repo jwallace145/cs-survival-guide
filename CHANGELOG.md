@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.12.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.11.1...v0.12.0) (2026-10-13)
+
+
+### Features
+
+* **data-structures:** add stack and queue guides ([#38](https://github.com/jwallace145/cs-survival-guide/issues/38)) ([0be2d06](https://github.com/jwallace145/cs-survival-guide/commit/0be2d063907a7eb54cae86af579ee8a0ebcee79d))
+
 ## [0.11.1](https://github.com/jwallace145/cs-survival-guide/compare/v0.11.0...v0.11.1) (2026-10-13)
 
 
