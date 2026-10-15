@@ -116,7 +116,7 @@ table from the results shipped inside the installed library.
 
 ## Quality gates (all must pass in CI)
 
-On every PR, `Build Docs` runs exactly what `Deploy Docs` runs on `main`:
+On every PR, `Build Docs` runs exactly what the `deploy` job in `release-please.yml` runs on release:
 
 ```bash
 pip install -r requirements.txt
@@ -126,9 +126,29 @@ GUIDE_BENCHMARKS_STRICT=1 scripts/zensical.sh build --clean
 ```
 
 `Conventional Commits` validates the PR title. `PR Preview` publishes the built site to
-`https://survival-guide.jwall.engineering/pr-preview/pr-<number>/` and comments the link; use it
+`https://pr-<number>.preview.survival-guide.jwall.engineering/` and comments the link; use it
 to check rendering, cross-references and charts before asking for review. Run the gate locally and
 report its actual output before opening a PR.
+
+## Infrastructure (`infra/`)
+
+The site is served from S3 + CloudFront by the Terraform in `infra/`, using the public registry module
+`jwallace145/jwall-engineering/aws`. Production deploys only when Jimmy merges the Release Please PR.
+
+- **Never run `terraform apply`.** Applies happen only in the `deploy` job on release. Local `fmt`,
+  `validate`, `tflint` and read-only plans are fine.
+- **Module pins are exact** (`version = "0.4.0"`, not `~>`) in `infra/context.tf` and `infra/main.tf`.
+  Bump both together. Never switch a module to a git or local source; fix module bugs upstream in
+  `jwallace145/terraform-aws-jwall-engineering`.
+- **Do not add `ignore_changes`, `-lock=false`, or widen an IAM policy** to make a plan pass. Explain
+  the diff in the PR.
+- **The plan and preview jobs declare no GitHub environment** and the deploy job runs in `prod`; the
+  OIDC role trust depends on it.
+- **Owner-only steps** (AWS credentials, GitHub environments, repository variables, DNS changes) are
+  listed in the PR description, never attempted.
+- Gate for `infra/`: `cd infra && terraform fmt -check -recursive && terraform init -backend=false &&
+  terraform validate && tflint --init && tflint`. `.github/scripts/sync-site.sh` has a test in
+  `tests/test_sync_site.py`.
 
 ## The library
 

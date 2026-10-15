@@ -89,10 +89,24 @@ chore(deps): update Zensical
 3. Merging the release PR updates `version.txt`, `CHANGELOG.md`, and the
    footer version in `zensical.toml`, then creates the `vX.Y.Z` tag and the
    GitHub Release.
-4. The site redeploys to GitHub Pages on every push to `main`, so the
-   Changelog page and footer version update with the release merge.
+4. The same workflow then deploys: it applies `infra/`, builds the tagged
+   source, syncs it to S3 and invalidates CloudFront, so the Changelog page
+   and footer version update with the release merge. Merging to `main`
+   alone does not deploy; a page or a `Bump Kit` PR goes live with the next
+   release PR. **Run workflow** on `Release` redeploys the latest release (or
+   a given tag) without a new release.
 
 Before merging, a pull request can be reviewed as a live site: the
-`PR Preview` workflow comments a preview link on each pull request.
+`PR Preview` workflow comments a preview link
+(`https://pr-<n>.preview.survival-guide.jwall.engineering/`) on each pull
+request.
+
+## Infrastructure
+
+`infra/` holds the Terraform for the site's hosting; see
+[`infra/README.md`](infra/README.md). Changes to it get a `terraform plan`
+comment on the pull request and are applied by the deploy job on release.
+Use the `ci` scope (`feat(ci): ...`, `chore(ci): ...`) for infrastructure PRs.
+Never run `terraform apply` locally.
 
 The current version's source of truth is `version.txt`.
