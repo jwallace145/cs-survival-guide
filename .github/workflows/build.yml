@@ -51,6 +51,10 @@ jobs:
         with:
           tflint_version: latest
       - run: tflint --init
+        env:
+          # Downloads the AWS ruleset from GitHub releases; unauthenticated
+          # requests from shared runners hit the API rate limit.
+          GITHUB_TOKEN: ${{ github.token }}
       - run: tflint
 
   terraform-plan:
