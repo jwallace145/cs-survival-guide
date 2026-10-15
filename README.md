@@ -4,8 +4,8 @@ A field guide to computer science fundamentals — algorithms, data structures,
 system design, distributed systems, databases, networking, operating systems,
 concurrency, and AI.
 
-The guide is published with [Zensical](https://zensical.org) to GitHub Pages:
-**https://survival-guide.jwall.engineering/**
+The guide is published with [Zensical](https://zensical.org) to S3 +
+CloudFront: **https://survival-guide.jwall.engineering/**
 
 ## Local development
 
@@ -42,17 +42,23 @@ library that accompanies the guide — no reference markdown is written by hand.
 
 CI runs the same two scripts, on pull requests (`Build Docs`) and on deploy.
 
+## Hosting and deploys
+
+The site is served from S3 behind CloudFront. The infrastructure is the
+Terraform in [`infra/`](infra/README.md), built from the public
+[`jwallace145/jwall-engineering/aws`](https://registry.terraform.io/modules/jwallace145/jwall-engineering/aws/latest)
+registry module. Production deploys only when a Release Please release PR is
+merged: the `deploy` job in `release-please.yml` applies `infra/`, builds the
+tag, syncs it to the bucket and invalidates CloudFront. Nothing is applied or
+deployed from a laptop.
+
 ## Previewing a pull request
 
 Every pull request from a branch of this repository is built and published
-to `https://survival-guide.jwall.engineering/pr-preview/pr-<number>/`
-by the `PR Preview` workflow, which leaves a comment on the pull request with
-the link. The preview is rebuilt on each push and removed when the pull
-request closes.
-
-Previews and the production site share the `gh-pages` branch, which GitHub
-Pages serves: `Deploy Docs` replaces everything except `pr-preview/` on each
-push to `main`.
+to `https://pr-<number>.preview.survival-guide.jwall.engineering/` by the
+`PR Preview` workflow, which leaves a comment on the pull request with the
+link. The preview is rebuilt on each push and removed when the pull request
+closes (and expires from the bucket after 14 days regardless).
 
 ## Benchmark results
 

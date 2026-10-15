@@ -13,3 +13,16 @@ zensical.generated.toml
 
 # OS
 .DS_Store
+
+# Terraform (infra/)
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+plan.log
+plan-comment.md
+crash.log
+crash.*.log
+*_override.tf
+*_override.tf.json
