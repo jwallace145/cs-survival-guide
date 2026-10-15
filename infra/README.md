@@ -55,8 +55,9 @@ job must run in the `prod` environment for the same reason.
 
 This repository issues GitHub's immutable OIDC subject
 (`repo:jwallace145@35950238/cs-survival-guide@1402607832:...`). The roles trust it only
-when the infra repo passes `owner_id` and `repository_id` to `site-ci-roles`, which its
-`projects.tf` already does for this project.
+when the infra repo passes `owner_id` and `repository_id` to its CI role modules
+(`ci-plan-role`, `ci-preview-role` and `ci-apply-role`), which its `projects.tf` already
+does for this project.
 
 ## Workflows
 
