@@ -7,7 +7,7 @@
 # Dependabot opens bump PRs; keep both pins identical.
 module "context" {
   source  = "jwallace145/jwall-engineering/aws//modules/context"
-  version = "0.4.0"
+  version = "0.5.0"
 
   project     = "cs-survival-guide"
   environment = "prod"
