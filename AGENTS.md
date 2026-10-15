@@ -137,7 +137,7 @@ The site is served from S3 + CloudFront by the Terraform in `infra/`, using the 
 
 - **Never run `terraform apply`.** Applies happen only in the `deploy` job on release. Local `fmt`,
   `validate`, `tflint` and read-only plans are fine.
-- **Module pins are exact** (`version = "0.5.0"`, not `~>`) in `infra/context.tf` and `infra/main.tf`.
+- **Module pins are exact** (`version = "0.6.0"`, not `~>`) in `infra/context.tf` and `infra/main.tf`.
   Bump both together. Never switch a module to a git or local source; fix module bugs upstream in
   `jwallace145/terraform-aws-jwall-engineering`.
 - **Do not add `ignore_changes`, `-lock=false`, or widen an IAM policy** to make a plan pass. Explain
