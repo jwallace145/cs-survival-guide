@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.13.1](https://github.com/jwallace145/cs-survival-guide/compare/v0.13.0...v0.13.1) (2026-10-15)
+
+
+### Miscellaneous
+
+* **deps:** bump jwall-engineering module to 0.6.0 ([#42](https://github.com/jwallace145/cs-survival-guide/issues/42)) ([8f1b8da](https://github.com/jwallace145/cs-survival-guide/commit/8f1b8daf4aad167ac5f0d78e5b63827c4ac9b127))
+
 ## [0.13.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.12.0...v0.13.0) (2026-10-15)
 
 
