@@ -44,13 +44,14 @@ CI runs the same two scripts, on pull requests (`Build Docs`) and on deploy.
 
 ## Hosting and deploys
 
-The site is served from S3 behind CloudFront. The infrastructure is the
-Terraform in [`infra/`](infra/README.md), built from the public
-[`jwallace145/jwall-engineering/aws`](https://registry.terraform.io/modules/jwallace145/jwall-engineering/aws/latest)
-registry module. Production deploys only when a Release Please release PR is
-merged: the `deploy` job in `release-please.yml` applies `infra/`, builds the
-tag, syncs it to the bucket and invalidates CloudFront. Nothing is applied or
-deployed from a laptop.
+The site is served from S3 behind CloudFront. The infrastructure is described
+by [`jwall-engineering-sites.yaml`](jwall-engineering-sites.yaml) and managed
+by the `jwall-engineering-sites` CLI from
+[jwall-engineering-infra](https://github.com/jwallace145/jwall-engineering-infra);
+this repository holds no Terraform. Production deploys only when a Release
+Please release PR is merged: the workflow builds the tag and the reusable
+`deploy` workflow applies the infrastructure, syncs the build to the bucket and
+invalidates CloudFront. Nothing is applied or deployed from a laptop.
 
 ## Previewing a pull request
 

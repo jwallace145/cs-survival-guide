@@ -89,8 +89,9 @@ chore(deps): update Zensical
 3. Merging the release PR updates `version.txt`, `CHANGELOG.md`, and the
    footer version in `zensical.toml`, then creates the `vX.Y.Z` tag and the
    GitHub Release.
-4. The same workflow then deploys: it applies `infra/`, builds the tagged
-   source, syncs it to S3 and invalidates CloudFront, so the Changelog page
+4. The same workflow then deploys: it builds the tagged source and the
+   reusable `deploy` workflow applies the infrastructure, syncs the build to
+   S3 and invalidates CloudFront, so the Changelog page
    and footer version update with the release merge. Merging to `main`
    alone does not deploy; a page or a `Bump Kit` PR goes live with the next
    release PR. **Run workflow** on `Release` redeploys the latest release (or
@@ -103,10 +104,12 @@ request.
 
 ## Infrastructure
 
-`infra/` holds the Terraform for the site's hosting; see
-[`infra/README.md`](infra/README.md). Changes to it get a `terraform plan`
-comment on the pull request and are applied by the deploy job on release.
-Use the `ci` scope (`feat(ci): ...`, `chore(ci): ...`) for infrastructure PRs.
-Never run `terraform apply` locally.
+[`jwall-engineering-sites.yaml`](jwall-engineering-sites.yaml) describes the
+site's hosting; the `jwall-engineering-sites` CLI from
+[jwall-engineering-infra](https://github.com/jwallace145/jwall-engineering-infra)
+manages it. Changes to the file get a plan comment on the pull request and
+are applied by the deploy job on release. Use the `ci` scope
+(`feat(ci): ...`, `chore(ci): ...`) for infrastructure PRs. Nothing is applied
+locally.
 
 The current version's source of truth is `version.txt`.

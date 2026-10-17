@@ -130,25 +130,25 @@ GUIDE_BENCHMARKS_STRICT=1 scripts/zensical.sh build --clean
 to check rendering, cross-references and charts before asking for review. Run the gate locally and
 report its actual output before opening a PR.
 
-## Infrastructure (`infra/`)
+## Infrastructure (`jwall-engineering-sites.yaml`)
 
-The site is served from S3 + CloudFront by the Terraform in `infra/`, using the public registry module
-`jwallace145/jwall-engineering/aws`. Production deploys only when Jimmy merges the Release Please PR.
+The site is served from S3 + CloudFront. There is no Terraform in this repository: the one file
+`jwall-engineering-sites.yaml` (project, repository, domain, the six required tags, the build output
+directory, preview settings) is read by the `jwall-engineering-sites` CLI from
+`jwallace145/jwall-engineering-infra`, which renders the shared stack, plans it on every PR and
+applies and publishes on release. Production deploys only when Jimmy merges the Release Please PR.
 
-- **Never run `terraform apply`.** Applies happen only in the `deploy` job on release. Local `fmt`,
-  `validate`, `tflint` and read-only plans are fine.
-- **Module pins are exact** (`version = "0.6.0"`, not `~>`) in `infra/context.tf` and `infra/main.tf`.
-  Bump both together. Never switch a module to a git or local source; fix module bugs upstream in
-  `jwallace145/terraform-aws-jwall-engineering`.
-- **Do not add `ignore_changes`, `-lock=false`, or widen an IAM policy** to make a plan pass. Explain
-  the diff in the PR.
+- **Change infrastructure in the YAML file, nothing else here.** The CLI validates it and fails fast.
+  Infrastructure behaviour lives upstream in `jwallace145/jwall-engineering-infra` (CLI, reusable
+  workflows) and `jwallace145/terraform-aws-jwall-engineering` (modules); fix it there.
+- **Never apply or publish from a machine.** The reusable `deploy` workflow does it on release, as the
+  apply role in the `prod` environment; the CLI refuses other credentials.
+- **The reusable workflow refs are exact tags** (`@v0.8.0`) in the three workflow files. Dependabot
+  bumps them; bump all three together.
 - **The plan and preview jobs declare no GitHub environment** and the deploy job runs in `prod`; the
   OIDC role trust depends on it.
 - **Owner-only steps** (AWS credentials, GitHub environments, repository variables, DNS changes) are
   listed in the PR description, never attempted.
-- Gate for `infra/`: `cd infra && terraform fmt -check -recursive && terraform init -backend=false &&
-  terraform validate && tflint --init && tflint`. `.github/scripts/sync-site.sh` has a test in
-  `tests/test_sync_site.py`.
 
 ## The library
 
