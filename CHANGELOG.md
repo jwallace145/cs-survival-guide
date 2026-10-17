@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.13.1...v0.14.0) (2026-10-17)
+
+
+### Features
+
+* **ci:** manage the infrastructure with jwall-engineering-sites ([#44](https://github.com/jwallace145/cs-survival-guide/issues/44)) ([a6135a7](https://github.com/jwallace145/cs-survival-guide/commit/a6135a7bbd10911e6da74565928c376866fa4468))
+
 ## [0.13.1](https://github.com/jwallace145/cs-survival-guide/compare/v0.13.0...v0.13.1) (2026-10-15)
 
 
