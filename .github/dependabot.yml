@@ -3,10 +3,3 @@
 # version would change in AWS.
 version: 2
 updates:
-  - package-ecosystem: terraform
-    directory: /infra
-    schedule:
-      interval: weekly
-    commit-message:
-      prefix: chore
-      include: scope
