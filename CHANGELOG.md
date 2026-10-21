@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.14.1](https://github.com/jwallace145/cs-survival-guide/compare/v0.14.0...v0.14.1) (2026-10-21)
+
+
+### Bug Fixes
+
+* **deps:** bump cs-survival-kit to 0.12.0 ([#48](https://github.com/jwallace145/cs-survival-guide/issues/48)) ([cdac87d](https://github.com/jwallace145/cs-survival-guide/commit/cdac87d6c9a4998bebaa2d4041fa36fa77f6a2d4))
+
 ## [0.14.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.13.1...v0.14.0) (2026-10-17)
 
 
