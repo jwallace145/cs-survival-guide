@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.0](https://github.com/jwallace145/cs-survival-guide/compare/v0.14.1...v0.15.0) (2026-10-21)
+
+
+### Features
+
+* **data-structures:** add heap guide ([#47](https://github.com/jwallace145/cs-survival-guide/issues/47)) ([1c183b1](https://github.com/jwallace145/cs-survival-guide/commit/1c183b199cabec8f7d0c5af37fdfd06f3dfefd95))
+
 ## [0.14.1](https://github.com/jwallace145/cs-survival-guide/compare/v0.14.0...v0.14.1) (2026-10-21)
 
 
