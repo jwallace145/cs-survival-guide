@@ -18,6 +18,7 @@ nav = [
     { "Doubly Linked List" = "data-structures/doubly-linked-list.md" },
     { "Stack" = "data-structures/stack.md" },
     { "Queue" = "data-structures/queue.md" },
+    { "Heap" = "data-structures/heap.md" },
   ] },
   { "Math" = [
     { "Cheat Sheet" = "math/cheat-sheet.md" },

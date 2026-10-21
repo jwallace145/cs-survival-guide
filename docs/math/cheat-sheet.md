@@ -193,3 +193,40 @@ algorithms that halve their input at each step.
 
     A complete binary tree with levels $0$ to $h$ has
     $1 + 2 + 4 + \dots + 2^h = 2^{h+1} - 1$ nodes.
+
+## Weighted geometric series
+
+Multiply each term of a geometric series by its index. When $|r| < 1$ the
+terms still shrink fast enough for the infinite sum to be finite:
+
+$$
+\sum_{i=0}^{\infty} i \, r^i = r + 2r^2 + 3r^3 + \dots = \frac{r}{(1 - r)^2}
+$$
+
+The case that matters most is $r = \tfrac{1}{2}$:
+
+$$
+\sum_{i=0}^{\infty} \frac{i}{2^i} = \frac{1}{2} + \frac{2}{4} + \frac{3}{8} + \frac{4}{16} + \dots = 2
+$$
+
+In words: weighting the halving series by its index only doubles it. The
+terms far out are multiplied by a large $i$, but $2^i$ grows so much faster
+that they still contribute almost nothing.
+
+??? note "Why it is 2"
+
+    Write each term $i / 2^i$ as $i$ copies of $1 / 2^i$ and stack them in
+    columns: one copy of every term from $i = 1$ onwards, then one copy of
+    every term from $i = 2$ onwards, and so on. Each column is a tail of
+    the [halving series](#geometric-series), and a tail that starts at
+    $1 / 2^j$ sums to $2 / 2^j$. Adding the columns gives
+
+    $$
+    \sum_{j=1}^{\infty} \frac{2}{2^j} = 2 \cdot 1 = 2
+    $$
+
+**Where it shows up:** any total where the number of items halves at each
+level while the work per item grows by one. Building a
+[heap in linear time](../data-structures/heap.md#building-a-heap-in-linear-time)
+is the classic case: half the nodes sift zero steps, a quarter sift one, an
+eighth sift two, and the sum is linear in $n$.
