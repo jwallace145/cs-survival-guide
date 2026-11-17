@@ -1,7 +1,7 @@
 # Pull request checks: builds the Zensical site exactly as the deploy job in
 # release-please.yml does, without deploying, so a broken build is caught
-# before it reaches main; and asks the jwall-engineering-sites CLI to validate
-# jwall-engineering-sites.yaml and plan the infrastructure against prod.
+# before it reaches main; and asks the jaws CLI to validate
+# jaws.yaml and plan the infrastructure against prod.
 name: Build Docs
 
 on:
@@ -36,7 +36,7 @@ jobs:
   plan:
     name: plan
     if: github.event.pull_request.head.repo.full_name == github.repository
-    uses: jwallace145/jwall-engineering-infra/.github/workflows/site-plan.yml@v0.8.0
+    uses: jwallace145/jaws/.github/workflows/site-plan.yml@v0.48.0
     with:
       plan-role-arn: ${{ vars.AWS_PLAN_ROLE_ARN }}
     permissions:

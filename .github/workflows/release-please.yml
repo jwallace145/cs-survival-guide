@@ -1,7 +1,7 @@
 # Merges to main accumulate in a Release Please PR; merging it creates a tag
 # and deploys it. `workflow_dispatch` re-deploys a tag (defaults to the latest
 # release). The build is this repo's; applying the infrastructure, publishing
-# prod/ and invalidating CloudFront are the jwall-engineering-sites reusable
+# prod/ and invalidating CloudFront are the Jaws reusable
 # workflow, which runs as the apply role in the prod environment.
 name: Release
 
@@ -26,7 +26,7 @@ jobs:
   release-please:
     name: release-please
     if: github.event_name == 'push'
-    uses: jwallace145/jwall-engineering-infra/.github/workflows/site-release-please.yml@v0.8.0
+    uses: jwallace145/jaws/.github/workflows/site-release-please.yml@v0.48.0
     secrets:
       RELEASE_BOT_CLIENT_ID: ${{ secrets.RELEASE_APP_CLIENT_ID }}
       RELEASE_BOT_PRIVATE_KEY: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
@@ -101,7 +101,7 @@ jobs:
   deploy:
     name: deploy
     needs: [tag, build]
-    uses: jwallace145/jwall-engineering-infra/.github/workflows/site-deploy.yml@v0.8.0
+    uses: jwallace145/jaws/.github/workflows/site-deploy.yml@v0.48.0
     with:
       artifact: site
       tag: ${{ needs.tag.outputs.tag }}
