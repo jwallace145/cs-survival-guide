@@ -130,16 +130,16 @@ GUIDE_BENCHMARKS_STRICT=1 scripts/zensical.sh build --clean
 to check rendering, cross-references and charts before asking for review. Run the gate locally and
 report its actual output before opening a PR.
 
-## Infrastructure (`jwall-engineering-sites.yaml`)
+## Infrastructure (`jaws.yaml`)
 
 The site is served from S3 + CloudFront. There is no Terraform in this repository: the one file
-`jwall-engineering-sites.yaml` (project, repository, domain, the six required tags, the build output
-directory, preview settings) is read by the `jwall-engineering-sites` CLI from
-`jwallace145/jwall-engineering-infra`, which renders the shared stack, plans it on every PR and
+`jaws.yaml` (project, repository, domain, the six required tags, the build output
+directory, preview settings) is read by the `jaws` CLI from
+`jwallace145/jaws`, which renders the shared stack, plans it on every PR and
 applies and publishes on release. Production deploys only when Jimmy merges the Release Please PR.
 
 - **Change infrastructure in the YAML file, nothing else here.** The CLI validates it and fails fast.
-  Infrastructure behaviour lives upstream in `jwallace145/jwall-engineering-infra` (CLI, reusable
+  Infrastructure behaviour lives upstream in `jwallace145/jaws` (CLI, reusable
   workflows) and `jwallace145/terraform-aws-jwall-engineering` (modules); fix it there.
 - **Never apply or publish from a machine.** The reusable `deploy` workflow does it on release, as the
   apply role in the `prod` environment; the CLI refuses other credentials.

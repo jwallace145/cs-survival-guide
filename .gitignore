@@ -27,7 +27,7 @@ crash.*.log
 *_override.tf
 *_override.tf.json
 
-# jwall-engineering-sites run artifacts (plan text, comments, debug log)
-.jwall-engineering-sites/
-.jwall-engineering-sites-dist/
-.jwall-engineering-infra/
+# jaws run artifacts (plan text, comments, debug log)
+.jaws-tool/
+.jaws/
+.jaws-dist/

@@ -104,9 +104,9 @@ request.
 
 ## Infrastructure
 
-[`jwall-engineering-sites.yaml`](jwall-engineering-sites.yaml) describes the
-site's hosting; the `jwall-engineering-sites` CLI from
-[jwall-engineering-infra](https://github.com/jwallace145/jwall-engineering-infra)
+[`jaws.yaml`](jaws.yaml) describes the
+site's hosting; the `jaws` CLI from
+[jaws](https://github.com/jwallace145/jaws)
 manages it. Changes to the file get a plan comment on the pull request and
 are applied by the deploy job on release. Use the `ci` scope
 (`feat(ci): ...`, `chore(ci): ...`) for infrastructure PRs. Nothing is applied
