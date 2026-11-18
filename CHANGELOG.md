@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.15.2](https://github.com/jwallace145/cs-survival-guide/compare/v0.15.1...v0.15.2) (2026-11-18)
+
+
+### Bug Fixes
+
+* **ci:** build and deploy a release dispatched by hand ([#56](https://github.com/jwallace145/cs-survival-guide/issues/56)) ([4439a17](https://github.com/jwallace145/cs-survival-guide/commit/4439a17998cf3dce68bcbdb47f872317826c1208))
+
 ## [0.15.1](https://github.com/jwallace145/cs-survival-guide/compare/v0.15.0...v0.15.1) (2026-10-21)
 
 
