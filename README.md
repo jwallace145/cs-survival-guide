@@ -47,7 +47,7 @@ CI runs the same two scripts, on pull requests (`Build Docs`) and on deploy.
 The site is served from S3 behind CloudFront. The infrastructure is described
 by [`jaws.yaml`](jaws.yaml) and managed
 by the `jaws` CLI from
-[jaws](https://github.com/jwallace145/jaws);
+[jaws](https://github.com/Jaws-Platform/jaws);
 this repository holds no Terraform. Production deploys only when a Release
 Please release PR is merged: the workflow builds the tag and the reusable
 `deploy` workflow applies the infrastructure, syncs the build to the bucket and
