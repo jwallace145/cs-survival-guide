@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.15.3](https://github.com/jwallace145/cs-survival-guide/compare/v0.15.2...v0.15.3) (2026-11-21)
+
+
+### Miscellaneous
+
+* pin jaws v0.73.0 and drop the management account's leftovers ([#62](https://github.com/jwallace145/cs-survival-guide/issues/62)) ([8ceb680](https://github.com/jwallace145/cs-survival-guide/commit/8ceb6808f24af32aee6b506a98067ad0946df2f0))
+* tag the project with the jaws organization ([#60](https://github.com/jwallace145/cs-survival-guide/issues/60)) ([d0affe9](https://github.com/jwallace145/cs-survival-guide/commit/d0affe917f09afe173a9c631183e306c9e2fa409))
+
 ## [0.15.2](https://github.com/jwallace145/cs-survival-guide/compare/v0.15.1...v0.15.2) (2026-11-18)
 
 
