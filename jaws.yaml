@@ -4,7 +4,6 @@ repository: jwallace145/cs-survival-guide
 domain: survival-guide.jwall.engineering
 
 tags:
-  Organization: jaws
   Project: cs-survival-guide
   Environment: prod
   Repository: jwallace145/cs-survival-guide
