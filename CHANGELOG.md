@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.15.4](https://github.com/jwallace145/cs-survival-guide/compare/v0.15.3...v0.15.4) (2026-11-27)
+
+
+### Miscellaneous
+
+* pin jaws v0.76.0 and drop the Organization tag, which jaws now sets ([#64](https://github.com/jwallace145/cs-survival-guide/issues/64)) ([06efdb5](https://github.com/jwallace145/cs-survival-guide/commit/06efdb5d7e5a3e843e204a84440d4810f2a6b9e5))
+* pin jaws v0.81.0 ([#66](https://github.com/jwallace145/cs-survival-guide/issues/66)) ([125acd0](https://github.com/jwallace145/cs-survival-guide/commit/125acd0efe052d7ac83f8bfe56ee4884f5891dca))
+
 ## [0.15.3](https://github.com/jwallace145/cs-survival-guide/compare/v0.15.2...v0.15.3) (2026-11-21)
 
 
